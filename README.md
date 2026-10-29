@@ -40,7 +40,7 @@ pnpm build
 pnpm preview
 ```
 
-The build clears `dist/` and creates the portal at its root, with the four documentations under their respective subdirectories. Preview serves the complete collection at http://127.0.0.1:4320/. Stop the development servers before previewing. Relative asset and navigation URLs also support deployment under a URL prefix.
+The build clears `dist/` and creates the portal at its root, with the four documentations under their respective subdirectories. Preview serves the complete collection at http://127.0.0.1:4330/. Its separate port allows development and preview servers to run at the same time. Relative asset and navigation URLs also support deployment under a URL prefix.
 
 The compiled component runtime is copied into each site's output, following the existing tp-examples convention. This is a starting point; runtime distribution and automated deployment can be refined separately. Build output is not committed. No GitHub Pages deployment is configured yet.
 
