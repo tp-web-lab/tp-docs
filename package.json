@@ -1,0 +1,24 @@
+{
+  "name": "@tp/tp-docs",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.5",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel -r dev",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "dev:home": "pnpm --filter @tp/docs-home dev",
+    "dev:components": "pnpm --filter @tp/docs-components dev",
+    "dev:markdown": "pnpm --filter @tp/docs-markdown dev",
+    "dev:asciidoc": "pnpm --filter @tp/docs-asciidoc dev",
+    "dev:restructuredtext": "pnpm --filter @tp/docs-restructuredtext dev"
+  },
+  "devDependencies": {
+    "vite": "8.1.5",
+    "vite-plugin-static-copy": "4.1.1"
+  }
+}
