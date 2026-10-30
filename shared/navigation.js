@@ -4,7 +4,7 @@ import './style.css';
 const current = document.documentElement.dataset.site;
 const nav = document.querySelector('[aria-label="Documentation"]');
 const root = new URL(current === 'home' ? './' : '../', window.location.href);
-for (const site of sites) {
+for (const site of nav ? sites : []) {
   const link = document.createElement('a');
   link.textContent = site.title;
   link.href = import.meta.env.DEV

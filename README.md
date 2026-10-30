@@ -31,7 +31,17 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-`pnpm dev` starts all five sites and opens the portal. Use `pnpm dev:components` (or `dev:home`, `dev:markdown`, `dev:asciidoc`, `dev:restructuredtext`) to start one site. Links to other development sites require those sites to be running. Set `OPEN_BROWSER=0` to suppress automatic browser opening.
+`pnpm dev` starts only the home site and opens the portal. Each documentation has an independent command; run the sites you need in separate terminals:
+
+| Command | Site | Port |
+| --- | --- | --- |
+| `pnpm dev` or `pnpm dev:home` | Home | 4320 |
+| `pnpm dev:components` | Components | 4321 |
+| `pnpm dev:markdown` | Markdown | 4322 |
+| `pnpm dev:asciidoc` | AsciiDoc | 4323 |
+| `pnpm dev:restructuredtext` | reStructuredText | 4324 |
+
+Links to other development sites require those sites to be running. Set `OPEN_BROWSER=0` to suppress automatic browser opening. If an older `pnpm dev` session is still running all sites, stop it with Ctrl+C in its terminal before using these independent commands. A site cannot be started twice on the same port.
 
 ## Production build
 
