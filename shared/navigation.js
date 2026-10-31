@@ -35,3 +35,18 @@ const homeUrl = import.meta.env.DEV
   ? new URL(`http://${window.location.hostname}:${home.port}/`)
   : root;
 linkDocumentLogos(homeUrl.href);
+
+// The component reference is shared by all guides; keep the selected component in the drawer.
+const componentSite = sites.find(site => site.id === 'components');
+const componentRoot = import.meta.env.DEV
+  ? new URL(`http://${window.location.hostname}:${componentSite.port}/`)
+  : new URL('components/', root);
+for (const [name, path] of [
+  ['tp-components-docs-root', 'docs/components/'],
+  ['tp-components-api-root', 'api/'],
+]) {
+  const meta = document.createElement('meta');
+  meta.name = name;
+  meta.content = new URL(path, componentRoot).href;
+  document.head.append(meta);
+}

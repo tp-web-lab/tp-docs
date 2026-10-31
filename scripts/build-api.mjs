@@ -1,3 +1,4 @@
+import { writeComponentApiMap } from '../../tp-components/scripts/write-component-api-map.mjs';
 import { existsSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -18,4 +19,8 @@ for (const id of selected) {
   const result = spawnSync('pnpm', ['exec', 'typedoc', '--options', `config/api/${id}.json`], { cwd: root, stdio: 'inherit' });
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status ?? 1);
+  if (id === 'components') writeComponentApiMap(
+    fileURLToPath(new URL('../../tp-components/src/components/', import.meta.url)),
+    fileURLToPath(new URL('../packages/components/public/api/', import.meta.url)),
+  );
 }

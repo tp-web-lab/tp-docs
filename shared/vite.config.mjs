@@ -25,7 +25,11 @@ export function docsConfig(id) {
         src: 'node_modules/@tp/tp-components/dist/**/*',
         dest: '@tp/tp-components',
         rename: { stripBase: 4 },
-      }] })],
+      }, ...(id === 'components' ? [{
+        src: 'node_modules/@tp/tp-components/public/docs/{components,medias,appendices,component-authoring,exercises,fr}',
+        dest: 'docs',
+        rename: { stripBase: 5 },
+      }] : [])] })],
     };
   });
 }

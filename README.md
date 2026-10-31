@@ -98,3 +98,16 @@ components. Each `public/docs/` directory contains `cover`, `sidebar`, `index`,
 `base` and `extensions` files in its native format (`.md`, `.adoc` or `.rst`).
 The shared entry resolves the repository path relative to each site, including a
 publication prefix. The toolbar logo returns to the documentation portal.
+
+## Component help
+
+Ctrl+? opens the selected component's help drawer. Its header offers User help
+(interactions and preview), Author help (component guide) and Developer help
+(TypeDoc class reference). The component guides and their assets are copied from
+`tp-components/public/docs` into the components documentation site at build time.
+In development, run `pnpm dev:components` alongside any other guide that needs
+Author help or Developer help. User help continues to use the local runtime manifests.
+
+Hosts can configure the reference locations with the `tp-components-docs-root`
+and `tp-components-api-root` meta elements. The latter points to the API directory,
+which includes a generated `component-pages.json` mapping tags to TypeDoc pages.

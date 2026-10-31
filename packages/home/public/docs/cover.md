@@ -24,26 +24,43 @@ tp-examples
 : A gallery of notable examples illustrating the capabilities of the tp-components library.
 
 tp-asciidoc
-: An adaptation of [`asciidoctor.js`](https://docs.asciidoctor.org/asciidoctor.js/latest/) to make it easy to use `tp-components`.
+: <tp-icon name="file_type_asciidoc" library="languages" size="2em"></tp-icon>
+
+  An adaptation of [`asciidoctor.js`](https://docs.asciidoctor.org/asciidoctor.js/latest/) to make it easy to use `tp-components`.
 
   {style="margin-bottom:1rem;"}
 
+  <tp-badge outlined variant="brand" size="xs"><tp-icon name="file_type_asciidoc" library="languages"></tp-icon>asciidoctor.js<tp-divider orientation="vertical"></tp-divider>4.0.6</tp-badge>
 
-  <tp-icon name="file_type_asciidoc" library="languages" size="3em"></tp-icon>
+  
 
 tp-markdown
-: An adaptation of [`markdown-it`](https://github.com/markdown-it/markdown-it) to make it easy to use `tp-components`.
+: <tp-icon name="file_type_markdown" library="languages" size="2em"></tp-icon>
+
+  An adaptation of [`markdown-it`](https://github.com/markdown-it/markdown-it) to make it easy to use `tp-components`.
 
   {style="margin-bottom:1rem;"}
 
-  <tp-icon name="file_type_markdown" library="languages" size="3em"></tp-icon>
+  <tp-badge outlined variant="brand" size="xs"><tp-icon name="file_type_markdown" library="languages"></tp-icon>markdown-it<tp-divider orientation="vertical"></tp-divider>14.3.0</tp-badge>
 
 tp-restructuredtext
-: An adaptation of [`docutils.py`](https://docutils.sourceforge.io) under [`pyodide`](https://pyodide.org) to make it easy to use `tp-components`.
+: <tp-icon name="file_type_restructuredtext" library="languages" size="2em"></tp-icon>
+
+  An adaptation of [`docutils.py`](https://docutils.sourceforge.io) under [`pyodide`](https://pyodide.org) to make it easy to use `tp-components`.
 
   {style="margin-bottom:1rem;"}
 
-  <tp-icon name="file_type_restructuredtext" library="languages" size="3em"></tp-icon>
+   <tp-badge outlined variant="brand" size="xs"><tp-icon name="file_type_restructuredtext" library="languages"></tp-icon>docutils<tp-divider orientation="vertical"></tp-divider>0.23</tp-badge>
+  <tp-badge outlined variant="brand" size="xs"><tp-icon name="file_type_python" library="languages"></tp-icon>pyodide<tp-divider orientation="vertical"></tp-divider>314.0.7</tp-badge>
+ 
+
+tp-docs
+: The official documentations for the <tp-icon name="logo-tp" size=2em></tp-icon> web ecosystem tools, aimed at users, authors and developers.
+
+  {style="margin-bottom:1rem;"}
+
+  Try <kbd>Ctrl</kbd>+<kbd>?</kbd>
+
 ::::
 :::
 :::::: 
