@@ -1,5 +1,14 @@
+import { linkDocumentLogos } from './document-logo.js';
 import { sites } from './sites.mjs';
 import './style.css';
+
+// Document shells expect a path rooted at the server, including any publication prefix.
+for (const shell of document.querySelectorAll('[repository]')) {
+  const repository = shell.getAttribute('repository');
+  if (repository.startsWith('./')) {
+    shell.setAttribute('repository', new URL(repository, window.location.href).pathname);
+  }
+}
 
 const current = document.documentElement.dataset.site;
 const nav = document.querySelector('[aria-label="Documentation"]');
@@ -13,3 +22,16 @@ for (const site of nav ? sites : []) {
   if (site.id === current) link.setAttribute('aria-current', 'page');
   nav.append(link);
 }
+
+if (nav && current !== 'home') {
+  const api = document.createElement('a');
+  api.textContent = 'API reference';
+  api.href = new URL('./api/index.html', window.location.href).href;
+  nav.append(api);
+}
+
+const home = sites.find(site => site.id === 'home');
+const homeUrl = import.meta.env.DEV
+  ? new URL(`http://${window.location.hostname}:${home.port}/`)
+  : root;
+linkDocumentLogos(homeUrl.href);

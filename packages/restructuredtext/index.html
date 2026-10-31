@@ -9,10 +9,11 @@
   <script vite-ignore type="module" src="./@tp/tp-components/tp-loader.js"></script>
 </head>
 <body>
-  <nav aria-label="Documentation"></nav>
-  <main>
-    <h1>TP reStructuredText</h1>
-    <tp-markup-single-page src="./docs/index.md" label="TP reStructuredText" git="https://github.com/tp-web-lab/tp-docs/tree/main/packages/restructuredtext" logo="./logo-tp.svg" toolbar></tp-markup-single-page>
-  </main>
+  <style>
+    .marge-custom {
+      margin-bottom: 1rem;
+    }
+  </style>
+  <tp-restructuredtext-multi-pages repository="./docs" label="TP reStructuredText" git="https://github.com/tp-web-lab/tp-docs/tree/main/packages/restructuredtext" logo="./logo-tp.svg" menu></tp-restructuredtext-multi-pages>
 </body>
 </html>

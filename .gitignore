@@ -2,3 +2,9 @@ node_modules/
 dist/
 .DS_Store
 *.log
+
+# Generated TypeDoc references
+packages/components/public/api/
+packages/markdown/public/api/
+packages/asciidoc/public/api/
+packages/restructuredtext/public/api/

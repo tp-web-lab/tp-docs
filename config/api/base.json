@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPointStrategy": "expand",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.browser.test.ts"
+  ],
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "readme": "none",
+  "customJs": "../../shared/typedoc.js",
+  "logLevel": "Warn"
+}

@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "../../../tp-components/typedoc.json",
+    "./base.json"
+  ],
+  "name": "@tp/tp-components API",
+  "entryPoints": [
+    "../../../tp-components/src/components",
+    "../../../tp-components/src/utilities/declarative-text-source.ts"
+  ],
+  "tsconfig": "../../../tp-components/tsconfig.json",
+  "out": "../../packages/components/public/api",
+  "customCss": "../../../tp-components/scripts/typedoc.css",
+  "logLevel": "Error"
+}

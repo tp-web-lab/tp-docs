@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TP API references</title>
+  <script type="module" src="../@tp/tp-components/tp-loader.js"></script>
+  <style>
+    body { max-width: 54rem; margin: auto; padding: 2rem; line-height: 1.6; }
+    li { margin-block: 1rem; }
+  </style>
+</head>
+<body>
+  <nav aria-label="Documentation"><a href="../index.html">Documentation home</a></nav>
+  <main>
+    <h1>TP API references</h1>
+    <p>Browse the TypeDoc references generated from the library sources.</p>
+    <ul>
+      <li><a href="../components/api/index.html" data-port="4321">TP Components</a> — web components, classes and utilities.</li>
+      <li><a href="../markdown/api/index.html" data-port="4322">TP Markdown</a> — Markdown engine, extensions and renderers.</li>
+      <li><a href="../asciidoc/api/index.html" data-port="4323">TP AsciiDoc</a> — parser, converter and extensions.</li>
+      <li><a href="../restructuredtext/api/index.html" data-port="4324">TP reStructuredText</a> — parser, component directives and renderers.</li>
+    </ul>
+  </main>
+  <script>
+    if (['127.0.0.1', 'localhost'].includes(location.hostname) && location.port === '4320') {
+      for (const link of document.querySelectorAll('[data-port]')) {
+        link.href = `http://${location.hostname}:${link.dataset.port}/api/index.html`;
+      }
+    }
+  </script>
+</body>
+</html>

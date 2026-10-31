@@ -1,0 +1,8 @@
+= TP AsciiDoc
+:showtitle:
+
+Write interactive technical and educational documents with AsciiDoc and TP components.
+
+* link:index.adoc[Read the introduction]
+* link:base.adoc[Explore the basic syntax]
+* link:extensions.adoc[Use TP components]

@@ -1,0 +1,8 @@
+= Extensions
+:showtitle:
+
+`tp-asciidoc` extends Asciidoctor with TP web component support.
+
+The component library provides controls, viewers and interactive activities that can be included in AsciiDoc documents.
+
+The detailed extension guide is being migrated. Consult the https://github.com/tp-web-lab/tp-asciidoc[library repository] for the current reference.

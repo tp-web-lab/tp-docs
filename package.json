@@ -15,10 +15,17 @@
     "dev:components": "pnpm --filter @tp/docs-components dev",
     "dev:markdown": "pnpm --filter @tp/docs-markdown dev",
     "dev:asciidoc": "pnpm --filter @tp/docs-asciidoc dev",
-    "dev:restructuredtext": "pnpm --filter @tp/docs-restructuredtext dev"
+    "dev:restructuredtext": "pnpm --filter @tp/docs-restructuredtext dev",
+    "api:build": "node scripts/build-api.mjs",
+    "api:build:components": "node scripts/build-api.mjs components",
+    "api:build:markdown": "node scripts/build-api.mjs markdown",
+    "api:build:asciidoc": "node scripts/build-api.mjs asciidoc",
+    "api:build:restructuredtext": "node scripts/build-api.mjs restructuredtext"
   },
   "devDependencies": {
     "vite": "8.1.5",
-    "vite-plugin-static-copy": "4.1.1"
+    "vite-plugin-static-copy": "4.1.1",
+    "typedoc": "0.28.20",
+    "typescript": "6.0.3"
   }
 }

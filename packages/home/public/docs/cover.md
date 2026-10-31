@@ -24,7 +24,7 @@ tp-examples
 : A gallery of notable examples illustrating the capabilities of the tp-components library.
 
 tp-asciidoc
-: An adaptation of [`asccidoctor.js`](https://docs.asciidoctor.org/asciidoctor.js/latest/) to make it easy to use `tp-components`.
+: An adaptation of [`asciidoctor.js`](https://docs.asciidoctor.org/asciidoctor.js/latest/) to make it easy to use `tp-components`.
 
   {style="margin-bottom:1rem;"}
 
@@ -39,7 +39,7 @@ tp-markdown
   <tp-icon name="file_type_markdown" library="languages" size="3em"></tp-icon>
 
 tp-restructuredtext
-: An adaptation of [`docutils.py`](https://docutils.sourceforge.io) to make it easy to use `tp-components`.
+: An adaptation of [`docutils.py`](https://docutils.sourceforge.io) under [`pyodide`](https://pyodide.org) to make it easy to use `tp-components`.
 
   {style="margin-bottom:1rem;"}
 
@@ -87,7 +87,7 @@ main
 footer
 : 
   ::: center
-  :tp-button:Explore the API{size=xxl variant=brand href=/api/index.html}
+  :tp-button:Explore the API{size=xxl variant=brand href=./api/index.html}
   ::: 
 ::::
 :::::::

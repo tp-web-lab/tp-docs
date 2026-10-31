@@ -1,0 +1,18 @@
+= Base
+:showtitle:
+
+AsciiDoc supports headings, paragraphs, lists and links.
+
+== Text
+
+Use *bold text*, _emphasis_ and `inline code`.
+
+== Lists
+
+* Write a document.
+* Add links between its pages.
+* Include interactive components where useful.
+
+== Navigation
+
+link:index.adoc[Return to the introduction] or link:extensions.adoc[read about extensions].

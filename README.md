@@ -60,4 +60,41 @@ Every entry loads `./@tp/tp-components/tp-loader.js`. Add TP elements to an HTML
 
 ## Migration status
 
-This initial scaffold contains landing pages only. Existing documentation, examples, tests, coverage and Lighthouse reports remain in their original repositories. Migrate them incrementally, preserving links, assets and generated report workflows. The current component runtime is supplied by the local checkout; this repository does not yet pin or publish that runtime.
+The four TypeDoc references are integrated here, and migration of the guides has started with Markdown. Other documentation, examples, tests, coverage and Lighthouse reports remain in their original repositories. Migrate them incrementally, preserving links, assets and generated report workflows. The current component runtime is supplied by the local checkout; this repository does not yet pin or publish that runtime.
+
+## TypeDoc API references
+
+API comments remain in each library's TypeScript sources. This workspace owns the
+shared TypeDoc configuration, generation and publication of their HTML references.
+Place the four library checkouts alongside `tp-docs` and install their workspace
+dependencies before generating references. `tp-components` must also be built to
+provide the live HTML example previews.
+
+```sh
+pnpm api:build                    # All four references
+pnpm api:build:components         # One reference
+pnpm api:build:markdown
+pnpm api:build:asciidoc
+pnpm api:build:restructuredtext
+```
+
+Each reference is generated into `packages/<name>/public/api/` (ignored by Git).
+`pnpm build` regenerates all references before building the sites. Each independent
+`pnpm dev:<name>` generates only its own API before starting Vite. After changing
+library comments, rerun the corresponding API command to refresh the HTML.
+`pnpm dev` still starts only the home site; links to the other development sites
+require their servers to be running.
+
+The portal is available at `/api/index.html`; published references are under
+`/<name>/api/index.html`. In development each reference is served at
+`http://127.0.0.1:<site-port>/api/index.html`. Generated pages link back to their
+guides and to the API portal. Relative URLs support deployment under a path prefix.
+The source repositories' existing TypeDoc commands remain available independently.
+
+## Native multipage guides
+
+Markdown, AsciiDoc and reStructuredText use their respective `tp-LANG-multi-pages`
+components. Each `public/docs/` directory contains `cover`, `sidebar`, `index`,
+`base` and `extensions` files in its native format (`.md`, `.adoc` or `.rst`).
+The shared entry resolves the repository path relative to each site, including a
+publication prefix. The toolbar logo returns to the documentation portal.

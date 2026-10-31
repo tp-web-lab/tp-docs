@@ -23,7 +23,7 @@ header
 : Curious?
 
 main
-: Would you like to see **what** you can do with...
+: Would you like to see **what** you can do with tp-markdown...
 
 footer
 : 
@@ -51,57 +51,13 @@ header
 : Geek?
 
 main
-: Would you like to **take a look** at the TypeScript code...
+: Would you like to **take a look** at the TypeScript code of tp-markdown...
 
 footer
 : 
   ::: center
-  :tp-button:Explore the API{size=xxl variant=brand href=/api/index.html}
+  :tp-button:Explore the API{size=xxl variant=brand href=./api/index.html}
   ::: 
-::::
-:::::::
-
-::::::: tp-switcher {max-horizontal=3}
-:::: tp-card
-header
-: AsciiDoc writer?
-
-main
-: Would you like to use **tp-components with AsciiDoc** in a simple way...
-
-footer
-: 
-  ::: center
-  :tp-button:Visit tp-asciidoc{size=xxl variant=brand href="https://tp-web-lab.github.io/tp-asciidoc/"}
-  :::
-::::
-
-:::: tp-card
-header
-: Markdown writer?
-
-main
-: Would you like to use **tp-components with Markdown** in a simple way...
-
-footer
-: 
-  ::: center
-  :tp-button:Discover tp-markdown{size=xxl variant=brand href="https://tp-web-lab.github.io/tp-markdown/"}
-  :::
-::::
-
-:::: tp-card
-header
-: reStructuredText writer?
-
-main
-: Would you like to use **tp-components with reStructuredText** in a simple way...
-
-footer
-: 
-  ::: center
-  :tp-button:See tp-reStructuredText{size=xxl variant=brand href="https://tp-web-lab.github.io/tp-reStructuredText/"}
-  :::
 ::::
 :::::::
 :::::::::

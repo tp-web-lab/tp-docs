@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "./base.json"
+  ],
+  "name": "@tp/tp-markdown API",
+  "entryPoints": [
+    "../../../tp-markdown/src/markdown"
+  ],
+  "tsconfig": "../../../tp-markdown/tsconfig.json",
+  "out": "../../packages/markdown/public/api"
+}

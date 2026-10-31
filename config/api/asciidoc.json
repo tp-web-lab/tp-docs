@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "./base.json"
+  ],
+  "name": "@tp/tp-asciidoc API",
+  "entryPoints": [
+    "../../../tp-asciidoc/src/asciidoc.ts"
+  ],
+  "tsconfig": "../../../tp-asciidoc/tsconfig.json",
+  "out": "../../packages/asciidoc/public/api"
+}

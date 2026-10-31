@@ -1,8 +1,8 @@
-html { color-scheme: light; font-family: system-ui, sans-serif; }
-body { margin: 0; color: #182536; background: #fff; }
-body > nav[aria-label="Documentation"] { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; padding: 1rem; border-bottom: 1px solid #d4dce5; }
-a { color: #075b98; text-underline-offset: .2em; }
-a[aria-current="page"] { font-weight: 700; }
-a:focus-visible { outline: 3px solid #075b98; outline-offset: 4px; }
+/* Colors, typography, link states and focus rings come from tp-components. */
+body { margin: 0; }
+body > nav[aria-label="Documentation"] { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; padding: 1rem; border-bottom: var(--tp-border-width) var(--tp-border-style) var(--tp-neutral-stroke-softer); }
+body > nav[aria-label="Documentation"] a[aria-current="page"] { font-weight: var(--tp-font-weight-bold); }
 body > main { max-width: 75rem; margin: auto; padding: 1rem; }
 tp-markup-single-page { display: block; min-height: 24rem; }
+
+a[data-docs-home-logo] { display: inline-flex; align-items: center; flex-shrink: 0; text-decoration: none; }

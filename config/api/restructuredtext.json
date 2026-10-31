@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "./base.json"
+  ],
+  "name": "@tp/tp-restructuredtext API",
+  "entryPoints": [
+    "../../../tp-restructuredtext/src/restructuredtext.ts"
+  ],
+  "tsconfig": "../../../tp-restructuredtext/tsconfig.json",
+  "out": "../../packages/restructuredtext/public/api"
+}
