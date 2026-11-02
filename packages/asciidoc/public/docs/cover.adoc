@@ -1,8 +1,66 @@
-= TP AsciiDoc
-:showtitle:
+[tp-stack, style="gap:2em;"]
+====
+[h2, style="text-align:center;"]
+======
+Welcome to **tp-asciidoc** documentation
+======
 
-Write interactive technical and educational documents with AsciiDoc and TP components.
+[tp-callout, variant=brand, style="font-size:1.2em;"]
+======
+[tp-center%intrinsic%center-text]
+========
 
-* link:index.adoc[Read the introduction]
-* link:base.adoc[Explore the basic syntax]
-* link:extensions.adoc[Use TP components]
+[style="margin-bottom:1rem;"]
+*tp-asciidoc* is an adaptation of https://github.com/asciidoctor/asciidoctor.js[`asciidoctor.js`] to make it easy to use *tp-components*.
+
+tp-asciidoc and tp-components are parts of the +++<tp-icon name="logo-tp" size=2em></tp-icon>+++ web ecosystem, a colllection of web tools designed for creating *interactive technical documents for educational purposes*.
+========
+======
+
+[tp-switcher, max-horizontal=3]
+======
+[tp-card]
+========
+header:: Curious?
+
+main:: Would you like to see **what** you can do with tp-asciidoc...
+
+footer:: {empty}
++
+[tp-center%intrinsic%center-text]
+==========
+[tp-button, size=xxl, variant=brand, href="https://tp-web-lab.github.io/tp-examples/"]#Browse the examples#
+==========
+========
+
+[tp-card]
+========
+header:: Impatient?
+
+main:: Would you like to find out **how to** use the tp-asciidoc parser...
+
+footer:: {empty}
++
+[tp-center%intrinsic%center-text]
+==========
+[tp-button, size=xxl, variant=brand, href=index.md]#Read the doc#
+==========
+========
+
+[tp-card]
+========
+header:: Geek?
+
+main:: Would you like to **take a look** at the TypeScript code of tp-asciidoc...
+
+footer:: {empty}
++
+[tp-center%intrinsic%center-text]
+==========
+[tp-button, size=xxl, variant=brand, href="./api/index.html"]#Explore the API#
+==========
+========
+======
+====
+
+

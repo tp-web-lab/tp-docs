@@ -40,6 +40,9 @@ pnpm dev
 | `pnpm dev:markdown` | Markdown | 4322 |
 | `pnpm dev:asciidoc` | AsciiDoc | 4323 |
 | `pnpm dev:restructuredtext` | reStructuredText | 4324 |
+| `pnpm dev:jt-vr` | JT VR example (sibling `tp-examples`) | 4316 |
+
+`pnpm dev:jt-vr` forwards to the existing example in `../tp-examples`; keep that checkout next to `tp-docs` and install its dependencies first. It starts the example independently and does not add it to the documentation build.
 
 Links to other development sites require those sites to be running. Set `OPEN_BROWSER=0` to suppress automatic browser opening. If an older `pnpm dev` session is still running all sites, stop it with Ctrl+C in its terminal before using these independent commands. A site cannot be started twice on the same port.
 

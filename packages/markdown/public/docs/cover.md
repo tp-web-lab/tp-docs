@@ -5,10 +5,6 @@ Welcome to **tp-markdown** documentation
 
 :::::: tp-callout { variant=brand style="font-size:1.2em;" }
 ::: tp-center {intrinsic center-text}
-Yet another parser of Markdown!
-
-{style="margin-bottom:1rem;"}
-
 **tp-markdown** is an adaptation of [`markdown-it`](https://github.com/markdown-it/markdown-it) to make it easy to use **tp-components**.
 
 {style="margin-bottom:1rem;"}

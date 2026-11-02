@@ -20,7 +20,9 @@
     "api:build:components": "node scripts/build-api.mjs components",
     "api:build:markdown": "node scripts/build-api.mjs markdown",
     "api:build:asciidoc": "node scripts/build-api.mjs asciidoc",
-    "api:build:restructuredtext": "node scripts/build-api.mjs restructuredtext"
+    "api:build:restructuredtext": "node scripts/build-api.mjs restructuredtext",
+    "dev:jt-vr": "pnpm --dir ../tp-examples dev:jt-vr",
+    "dev:pint-of-science-rv": "pnpm --dir ../tp-examples dev:pint-of-science-rv"
   },
   "devDependencies": {
     "vite": "8.1.5",

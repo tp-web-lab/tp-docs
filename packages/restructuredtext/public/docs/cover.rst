@@ -19,10 +19,6 @@
       
       .. class:: marge-custom
 
-      Yet another parser of reStructuredText!
-
-      .. class:: marge-custom
-
       **tp-restructuredtext** is an adaptation of `docutils <https://docutils.sourceforge.io/>`_ under `pyodide <https://pyodide.org/>`_ to make it easy to use **tp-components**.
 
       .. class:: marge-custom
