@@ -4,5 +4,3 @@ body > nav[aria-label="Documentation"] { display: flex; flex-wrap: wrap; gap: .6
 body > nav[aria-label="Documentation"] a[aria-current="page"] { font-weight: var(--tp-font-weight-bold); }
 body > main { max-width: 75rem; margin: auto; padding: 1rem; }
 tp-markup-single-page { display: block; min-height: 24rem; }
-
-a[data-docs-home-logo] { display: inline-flex; align-items: center; flex-shrink: 0; text-decoration: none; }
