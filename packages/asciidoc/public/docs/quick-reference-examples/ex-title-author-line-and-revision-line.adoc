@@ -1,0 +1,6 @@
+= Document Title
+Author Name <author@email.org>; Another Author <a.author@email.org>
+v2.0, 2019-03-22
+:showtitle:
+
+This document provides...

@@ -1,0 +1,10 @@
+= Document Title
+Author Name <author@email.org>
+v2.0, 2019-03-22
+:toc:
+:homepage: https://asciidoc.org
+:showtitle:
+
+This document provides...
+
+Visit the {homepage}[AsciiDoc homepage] to learn more.

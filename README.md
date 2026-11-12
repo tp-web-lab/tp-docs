@@ -114,3 +114,11 @@ Author help or Developer help. User help continues to use the local runtime mani
 Hosts can configure the reference locations with the `tp-components-docs-root`
 and `tp-components-api-root` meta elements. The latter points to the API directory,
 which includes a generated `component-pages.json` mapping tags to TypeDoc pages.
+
+## AsciiDoc quick reference
+
+The official syntax quick reference is reproduced under CC BY 4.0 in `packages/asciidoc/public/docs/base.adoc`. Its expanded source and upstream license are kept in `packages/asciidoc/source/`. Run `node scripts/build-asciidoc-quick-reference.mjs` to regenerate the Base page. The pinned upstream revision and adaptation details are displayed at the top of the page. The 97 examples share one continuous numbering sequence. The 92 executable examples use `tp-asciidoc-viewer lite`; their individual sources are generated in `public/docs/quick-reference-examples/`. Examples requiring unavailable files or services are explicitly labeled syntax-only. Relative and inter-document links have a bundled sample target. The audio and MP4 samples are bundled in `packages/asciidoc/source/media/` and copied when regenerating the page; they come from the TP audio-playlist and video-player demonstration assets. YouTube, Vimeo and external images remain hosted by their providers.
+
+Examples 56–58 include bundled Ruby and Java source files relative to the viewer source. The last example selects the `main` tag and uses `indent=0`; links next to each viewer expose the original files.
+
+Example 74 builds a table from the bundled `customers.csv` file using `format=csv`, `options=header` and an actual include directive.

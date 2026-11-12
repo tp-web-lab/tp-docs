@@ -43,7 +43,7 @@ footer:: {empty}
 +
 [tp-center%intrinsic%center-text]
 ==========
-[tp-button, size=xxl, variant=brand, href=index.md]#Read the doc#
+[tp-button, size=xxl, variant=brand, href="base.adoc"]#Read the doc#
 ==========
 ========
 

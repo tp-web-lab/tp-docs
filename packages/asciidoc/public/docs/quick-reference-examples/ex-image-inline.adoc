@@ -1,0 +1,3 @@
+Click image:https://docs.asciidoctor.org/asciidoc/latest/macros/_images/play.png[] to get the party started.
+
+Click image:https://docs.asciidoctor.org/asciidoc/latest/macros/_images/pause.png[title="Pause"] when you need a break.

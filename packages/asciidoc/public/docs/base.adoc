@@ -1,18 +1,1116 @@
-= Base
+= AsciiDoc Syntax Quick Reference
+:navtitle: Syntax Quick Reference
 :showtitle:
+:listing-caption!:
+:source-language: asciidoc
+:description: The quick reference for common AsciiDoc document and text formatting markup.
+:collapsible:
+:url-char-xml: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+:url-data-uri: https://developer.mozilla.org/en-US/docs/data_URIs
+:!table-frame:
+:!table-grid:
+// release-version is used for an example; it's not the release version for this document
+:release-version: 2.4.3
 
-AsciiDoc supports headings, paragraphs, lists and links.
 
-== Text
 
-Use *bold text*, _emphasis_ and `inline code`.
+*tp-asciidoc* adapts https://github.com/asciidoctor/asciidoctor.js[Asciidoctor.js] for the web, with convenient support for TP components and standard HTML elements.
+This quick reference covers AsciiDoc syntax from the link:https://docs.asciidoctor.org/[AsciiDoctor documentation]. The additional component and HTML syntax is covered separately in link:extensions.adoc[Extensions].
+
+[tp-callout,variant=info]
+====
+This quick reference reproduces the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[AsciiDoc Syntax Quick Reference] by Sarah White, Dan Allen and other contributors, under https://creativecommons.org/licenses/by/4.0/[CC BY 4.0].
+The https://github.com/asciidoctor/asciidoc-docs/blob/45b7693d7327c8850e7f486049c125fb61e666db/docs/modules/ROOT/pages/syntax-quick-reference.adoc[original source] is pinned to revision `45b7693d7327c8850e7f486049c125fb61e666db`.
+
+Executable examples use the https://tp-web-lab.github.io/tp-components/#/components/asciidoc-viewer/index.md[`tp-asciidoc-viewer`] component from the `@tp/tp-components` library in lite mode. You can easily edit and modify their AsciiDoc source directly in the viewer to experiment with the syntax and immediately see the result.
+
+For this TP adaptation, Antora includes have been expanded, documentation links point to the official site and rendered image paths have been resolved. Examples use continuous numbering. Image URLs and the release-version attribute are made explicit in those isolated examples; outer-listing annotation markers are removed. Examples requiring unavailable files, filesystem access or external services are explicitly marked as syntax-only. Document examples include the attributes and content needed to display their result. The results use the TP semantic HTML renderer and TP styling, so their appearance may differ from the original site. The audio and MP4 examples use bundled TP demonstration assets. YouTube and Vimeo players and other external media depend on their providers; sample filenames in code blocks are illustrative and are not downloadable assets of this guide.
+====
+
+[tp-toc%expand-all,position=end]
+====
+====
+
+[IMPORTANT]
+The examples on this page demonstrate the output produced by the built-in HTML converter.
+An AsciiDoc converter is expected to produce complementary output when generating other output formats, such as PDF, EPUB, and DocBook.
+
+[#paragraphs]
+== Paragraphs
+
+[#ex-normal]
+*Example 1. Paragraph*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-normal.adoc]
+====
+====
+
+
+
+[#ex-literal]
+*Example 2. Literal paragraph*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-literal.adoc]
+====
+====
+
+
+
+[#ex-hardbreaks]
+*Example 3. Hard line breaks*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-hardbreaks.adoc]
+====
+====
+
+
+
+[#ex-lead]
+*Example 4. Lead paragraph*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-lead.adoc]
+====
+====
+
+
+
+TIP: The default Asciidoctor stylesheet automatically styles the first paragraph of the preamble as a https://docs.asciidoctor.org/asciidoc/latest/blocks/preamble-and-lead/[lead paragraph] if no role is specified on that paragraph.
+
+== Text formatting
+
+[#ex-constrained]
+*Example 5. Constrained bold, italic, and monospace*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-constrained.adoc]
+====
+====
+
+
+
+[#ex-unconstrained]
+*Example 6. Unconstrained bold, italic, and monospace*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-unconstrained.adoc]
+====
+====
+
+
+
+[#ex-lines]
+*Example 7. Highlight, underline, strikethrough, and custom role*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-lines.adoc]
+====
+====
+
+
+
+[#ex-sub-sup]
+*Example 8. Superscript and subscript*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-sub-sup.adoc]
+====
+====
+
+
+
+[#ex-curved]
+*Example 9. Smart quotes and apostrophes*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-curved.adoc]
+====
+====
+
+
+
+== Links
+
+[#ex-urls]
+*Example 10. Autolinks, URL macro, and mailto macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-urls.adoc]
+====
+====
+
+
+
+[#ex-linkattrs]
+*Example 11. URL macros with attributes*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-linkattrs.adoc]
+====
+====
+
+
+
+IMPORTANT: The `link:` macro prefix is _not_ required when the target starts with a URL scheme like `https:`.
+The URL scheme acts as an implicit macro prefix.
+
+CAUTION: If the link text contains a comma and the text is followed by one or more named attributes, you must enclose the text in double quotes.
+Otherwise, the text will be cut off at the comma (and the remaining text will get pulled into the attribute parsing).
+
+[#ex-urls-with-spaces-and-special-characters]
+*Example 12. URLs with spaces and special characters*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-urls-with-spaces-and-special-characters.adoc]
+====
+====
+
+[#ex-link-to-relative-file]
+*Example 13. Link to relative file*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-link-to-relative-file.adoc]
+====
+====
+
+[#ex-link-using-a-windows-unc-path]
+*Example 14. Link using a Windows UNC path*
+
+Syntax only: the referenced document is a placeholder and is not supplied with this example.
+
+----
+link:\\server\share\whitepaper.pdf[Whitepaper]
+----
+
+[#ex-inline-anchors]
+*Example 15. Inline anchors*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-inline-anchors.adoc]
+====
+====
+
+[#ex-xrefs]
+*Example 16. Cross references*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-xrefs.adoc]
+====
+====
+
+
+
+[#ex-inter-document-cross-references]
+*Example 17. Inter-document cross references*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-inter-document-cross-references.adoc]
+====
+====
+
+== Document header
+
+The https://docs.asciidoctor.org/asciidoc/latest/document/header/[document header] is optional.
+The header may not contain any empty lines and must be separated from the content by at least one empty line.
+
+[#ex-title]
+*Example 18. Title*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-title.adoc]
+====
+====
+
+[#ex-title-and-author-line]
+*Example 19. Title and author line*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-title-and-author-line.adoc]
+====
+====
+
+[#ex-title-author-line-and-revision-line]
+*Example 20. Title, author line, and revision line*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-title-author-line-and-revision-line.adoc]
+====
+====
+
+IMPORTANT: You cannot have a https://docs.asciidoctor.org/asciidoc/latest/document/revision-line/[revision line] without an https://docs.asciidoctor.org/asciidoc/latest/document/author-line/[author line].
+
+[#ex-document-header-with-attribute-entries]
+*Example 21. Document header with attribute entries*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-document-header-with-attribute-entries.adoc]
+====
+====
+
+[#section-titles]
+== Section titles
+
+When the document type is `article` (the default), the document can only have one level 0 section title (`=`), which is the document title (i.e., doctitle).
+
+[#ex-article]
+*Example 22. Article section levels*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-article.adoc]
+====
+====
+
+
+
+The `book` document type can have additional level 0 section titles, which are interpreted as https://docs.asciidoctor.org/asciidoc/latest/sections/parts/[parts].
+The presence of at least one part implicitly makes the document a multi-part book.
+
+[#ex-book-section-levels]
+*Example 23. Book section levels*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-book-section-levels.adoc]
+====
+====
+
+
+[#ex-discrete]
+*Example 24. Discrete heading (not a section)*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-discrete.adoc]
+====
+====
+
+
+
+== Automatic TOC
+
+[#ex-activate-table-of-contents-for-a-document]
+*Example 25. Activate Table of Contents for a document*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-activate-table-of-contents-for-a-document.adoc]
+====
+====
+
+The Table of Content's https://docs.asciidoctor.org/asciidoc/latest/toc/title/[title], https://docs.asciidoctor.org/asciidoc/latest/toc/levels/[displayed section depth], and https://docs.asciidoctor.org/asciidoc/latest/toc/position/[position] can be customized.
+
+== Includes
+
+[#ex-include-document-parts]
+*Example 26. Include document parts*
+
+Syntax only: the source files or remote content referenced here are not bundled. Examples 56–58 demonstrate working includes with supplied files.
+
+----
+= Reference Documentation
+Lead Developer
+
+This is documentation for project X.
+
+\include::basics.adoc[]
+
+\include::installation.adoc[]
+
+\include::example.adoc[]
+----
+
+[#ex-include-content-by-tagged-regions-or-lines]
+*Example 27. Include content by tagged regions or lines*
+
+Syntax only: the source files or remote content referenced here are not bundled. Examples 56–58 demonstrate working includes with supplied files.
+
+----
+\include::filename.txt[tag=definition]
+
+\include::filename.txt[lines=5..10]
+----
+
+[#ex-include-content-from-a-url]
+*Example 28. Include content from a URL*
+
+Syntax only: the source files or remote content referenced here are not bundled. Examples 56–58 demonstrate working includes with supplied files.
+
+----
+\include::https://raw.githubusercontent.com/asciidoctor/asciidoctor/main/README.adoc[]
+----
+
+WARNING: Including content from a URL is potentially dangerous, so it's disabled if the safe mode is SECURE or greater.
+Assuming the safe mode is less than SECURE, you must also set the `allow-uri-read` attribute to permit the AsciiDoc processor to read content from a URL.
 
 == Lists
 
-* Write a document.
-* Add links between its pages.
-* Include interactive components where useful.
+[#ex-ul]
+*Example 29. Unordered list*
 
-== Navigation
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-ul.adoc]
+====
+====
 
-link:index.adoc[Return to the introduction] or link:extensions.adoc[read about extensions].
+
+
+TIP: An empty line is required before and after a list to separate it from other blocks.
+You can force two adjacent lists apart by adding an empty attribute list (i.e., `[]`) above the second list or by inserting an empty line followed by a line comment after the first list.
+If you use a line comment, the convention is to use `//-` to provide a hint to other authors that it's serving as a list divider.
+
+[#ex-ul-max]
+*Example 30. Unordered list max level nesting*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-ul-max.adoc]
+====
+====
+
+
+
+The https://docs.asciidoctor.org/asciidoc/latest/lists/unordered/#markers[unordered list marker] can be changed using a list style (e.g., `square`).
+
+[#ex-ol]
+*Example 31. Ordered list*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-ol.adoc]
+====
+====
+
+
+
+[#ex-ol-max]
+*Example 32. Ordered list max level nesting*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-ol-max.adoc]
+====
+====
+
+
+
+Ordered lists support https://docs.asciidoctor.org/asciidoc/latest/lists/ordered/#styles[numeration styles] such as `lowergreek` and `decimal-leading-zero`.
+
+[#ex-check]
+*Example 33. Checklist*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-check.adoc]
+====
+====
+
+
+
+[#ex-dlist]
+*Example 34. Description list*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-dlist.adoc]
+====
+====
+
+
+
+[#ex-qa]
+*Example 35. Question and answer list*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-qa.adoc]
+====
+====
+
+
+
+[#ex-mixed]
+*Example 36. Mixed*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-mixed.adoc]
+====
+====
+
+
+
+TIP: Lists can be indented.
+Leading whitespace is not significant.
+
+[#ex-complex]
+*Example 37. Complex content in outline lists*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-complex.adoc]
+====
+====
+
+
+
+== Images
+
+You can use the https://docs.asciidoctor.org/asciidoc/latest/macros/images-directory/[imagesdir attribute] to avoid hard coding the common path to your images in every image macro.
+The value of this attribute can be an absolute path, relative path, or base URL.
+If the image target is a relative path, the attribute's value is prepended (i.e., it's resolved relative to the value of the `imagesdir` attribute).
+If the image target is a URL or absolute path, the attribute's value is _not_ prepended.
+
+[#ex-image-blocks]
+*Example 38. Block image macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-image-blocks.adoc]
+====
+====
+
+
+
+Two colons following the image keyword in the macro (i.e., `image::`) indicates a block image (aka figure), whereas one colon following the image keyword (i.e., `image:`) indicates an inline image.
+(All macros follow this pattern).
+You use an inline image when you need to place the image in a line of text.
+Otherwise, you should prefer the block form.
+
+[#ex-image-inline]
+*Example 39. Inline image macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-image-inline.adoc]
+====
+====
+
+
+
+[#ex-image-role]
+*Example 40. Inline image macro with positioning role*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-image-role.adoc]
+====
+====
+
+
+
+[#ex-embedded]
+*Example 41. Embedded*
+
+Syntax only: embedding external images as data URIs requires file access during conversion and is not demonstrated by this browser renderer.
+
+----
+= Document Title
+:data-uri:
+----
+
+When the `data-uri` attribute is set, all images in the document--including admonition icons--are embedded into the document as {url-data-uri}[data URIs].
+You can also pass it as a command line argument using `-a data-uri`.
+
+== Audio
+
+[#ex-block-audio-macro]
+*Example 42. Block audio macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-block-audio-macro.adoc]
+====
+====
+
+You can control the audio settings using https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/[additional attributes and options] on the macro.
+
+== Videos
+
+[#ex-block-video-macro]
+*Example 43. Block video macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-block-video-macro.adoc]
+====
+====
+
+[#ex-embedded-youtube-video]
+*Example 44. Embedded YouTube video*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-embedded-youtube-video.adoc]
+====
+====
+
+[#ex-embedded-vimeo-video]
+*Example 45. Embedded Vimeo video*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-embedded-vimeo-video.adoc]
+====
+====
+
+You can control the video settings using https://docs.asciidoctor.org/asciidoc/latest/macros/audio-and-video/[additional attributes and options] on the macro.
+
+== Keyboard, button, and menu macros
+
+NOTE: TP AsciiDoc enables `experimental` by default. Keyboard, menu and button macros work without an `:experimental:` document header. Standard Asciidoctor requires this attribute to be enabled explicitly.
+
+[#ex-kbd]
+*Example 46. Keyboard macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-kbd.adoc]
+====
+====
+
+
+
+[#ex-menu]
+*Example 47. Menu macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-menu.adoc]
+====
+====
+
+
+
+[#ex-button]
+*Example 48. Button macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-button.adoc]
+====
+====
+
+
+
+== Literals and source code
+
+
+[#ex-inline-literal]
+*Example 49. Inline literal monospace*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-inline-literal.adoc]
+====
+====
+
+
+
+[#ex-literal-line]
+*Example 50. Literal paragraph*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-literal-line.adoc]
+====
+====
+
+
+
+[#ex-literal-block]
+*Example 51. Literal block*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-literal-block.adoc]
+====
+====
+
+
+
+[#ex-listing]
+*Example 52. Listing block with title*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-listing.adoc]
+====
+====
+
+
+
+[#ex-highlight]
+*Example 53. Source block with title and syntax highlighting*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-highlight.adoc]
+====
+====
+
+
+
+[IMPORTANT]
+====
+TP AsciiDoc uses highlight.js by default for syntax highlighting. You do not need to declare the `source-highlighter` attribute.
+
+With standard Asciidoctor, you must enable https://docs.asciidoctor.org/asciidoc/latest/verbatim/source-highlighter/[source highlighting] by setting the `source-highlighter` attribute in the document header, CLI, or API.
+
+----
+:source-highlighter: rouge
+----
+
+See https://docs.asciidoctor.org/asciidoctor/latest/syntax-highlighting/[Asciidoctor syntax highlighting] to learn which values are accepted when using Asciidoctor.
+====
+
+[#ex-callouts]
+*Example 54. Code annotations included when copying*
+
+Select and copy the code in the result: the numbered annotation markers are included. Compare with the next example, which excludes them.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-callouts.adoc]
+====
+====
+
+
+
+[#ex-hide-callouts]
+*Example 55. Code annotations excluded from copying*
+
+Select and copy the code in the result: the numbered annotation markers are excluded. These markers refer to the explanations below the code; they are not tp-callout components. Each line illustrates a different language’s comment syntax.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-hide-callouts.adoc]
+====
+====
+
+
+
+[#ex-source-block-content-included-from-a-file]
+*Example 56. Source block content included from a file*
+
+Open link:docs/quick-reference-examples/app.rb[app.rb,window=_blank] to inspect the file included below.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-source-block-content-included-from-a-file.adoc]
+====
+====
+
+[#ex-source-block-content-included-from-file-relative-to-source-directory]
+*Example 57. Source block content included from file relative to source directory*
+
+Open link:docs/quick-reference-examples/src/main/java/org/asciidoctor/Asciidoctor.java[src/main/java/org/asciidoctor/Asciidoctor.java,window=_blank] to inspect the file included below.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-source-block-content-included-from-file-relative-to-source-directory.adoc]
+====
+====
+
+[#ex-strip-leading-indentation-from-partial-file-content]
+*Example 58. Strip leading indentation from partial file content*
+
+Open link:docs/quick-reference-examples/lib/app.rb[lib/app.rb,window=_blank] to inspect the file included below.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-strip-leading-indentation-from-partial-file-content.adoc]
+====
+====
+
+[NOTE]
+====
+The https://docs.asciidoctor.org/asciidoc/latest/directives/include-with-indent/[indent attribute] is frequently used when including source code by https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions/[tagged region] or https://docs.asciidoctor.org/asciidoc/latest/directives/include-lines/[lines].
+It can be specified on the include directive itself or the enclosing literal, listing, or source block.
+
+When indent is 0, the leading block indent is stripped.
+
+When indent is greater than 0, the leading block indent is first stripped, then a block is indented by the number of columns equal to this value.
+====
+
+[#ex-source-para]
+*Example 59. Source paragraph (no empty lines)*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-source-para.adoc]
+====
+====
+
+
+
+== Admonitions
+
+[#ex-admon-para]
+*Example 60. Admonition paragraph*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-admon-para.adoc]
+====
+====
+
+
+
+[#ex-admon-block]
+*Example 61. Admonition block*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-admon-block.adoc]
+====
+====
+
+
+
+== More delimited blocks
+
+Any block can have a title.
+A block title is defined using a line of text above the block that starts with a dot.
+That dot cannot be followed by a space.
+For block images, the title is displayed below the block.
+For all other blocks, the title is typically displayed above it.
+
+[#ex-sidebar]
+*Example 62. Sidebar block*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-sidebar.adoc]
+====
+====
+
+
+
+[#ex-example]
+*Example 63. Example block*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-example.adoc]
+====
+====
+
+
+
+[#ex-quotes]
+*Example 64. Blockquotes*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-quotes.adoc]
+====
+====
+
+
+
+[#ex-open]
+*Example 65. Open blocks*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-open.adoc]
+====
+====
+
+
+
+[#ex-pass-block]
+*Example 66. Passthrough block*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-pass-block.adoc]
+====
+====
+
+
+
+[#ex-block-subs]
+*Example 67. Customize block substitutions*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-block-subs.adoc]
+====
+====
+
+
+
+== Tables
+
+[#ex-header-row]
+*Example 68. Table with a title, two columns, a header row, and two rows of content*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-header-row.adoc]
+====
+====
+. Unless the `cols` attribute is specified, the number of columns is equal to the number of cell separators on the first (non-empty) line.
+. When an empty line immediately follows a non-empty line at the start of the table, the cells in the first line get promoted to the table header.
+
+
+
+[#ex-cols]
+*Example 69. Table with two columns, a header row, and two rows of content*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-cols.adoc]
+====
+====
+. The `+*+` in the `cols` attribute is the repeat operator.
+It means repeat the column specification across the remaining columns.
+In this case, we are repeating the default formatting across 2 columns.
+When the cells in the header are not defined on a single line, you must use the `cols` attribute to set the number of columns in the table and the `%header` option (or `options=header` attribute) to promote the first row to the table header.
+
+
+
+[#ex-cols-widths]
+*Example 70. Table with three columns, a header row, and two rows of content*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-cols-widths.adoc]
+====
+====
+. In this example, the `cols` attribute has two functions.
+It specifies that this table has three columns, and it sets their relative widths.
+
+
+
+[#ex-table-adoc]
+*Example 71. Table with column containing AsciiDoc content*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-table-adoc.adoc]
+====
+====
+
+
+
+[#ex-csv]
+*Example 72. Table from CSV data using shorthand*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-csv.adoc]
+====
+====
+
+
+
+[#ex-csv-formal]
+*Example 73. Table from CSV data*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-csv-formal.adoc]
+====
+====
+
+
+
+[#ex-csv-include]
+*Example 74. Table from CSV data in file*
+
+Open link:docs/quick-reference-examples/customers.csv[customers.csv,window=_blank] to inspect the file included below.
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-csv-include.adoc]
+====
+====
+
+[#ex-dsv]
+*Example 75. Table from DSV data using shorthand*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-dsv.adoc]
+====
+====
+
+
+
+[#ex-cell-format]
+*Example 76. Table with formatted, aligned and merged cells*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-cell-format.adoc]
+====
+====
+
+For a step-by-step explanation, start with https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[Build a Basic Table] in the complete AsciiDoc documentation, then follow the subsequent table topics for column formatting, cell alignment, and cells spanning multiple rows or columns.
+
+
+
+== IDs, roles, and options
+
+Roles correspond to CSS classes: `.role` or `role=role` adds a class to the generated HTML element. Options are boolean flags: a present option means `true`, and an absent option means `false`. For TP components, options become boolean HTML attributes; use `%option` or `options=option` to enable them. For standard AsciiDoc elements, options control the converter’s behavior and do not necessarily become HTML attributes.
+
+[#ex-shorthand-method-for-assigning-block-id-anchor-and-role]
+*Example 77. Shorthand method for assigning block ID (anchor) and role*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-shorthand-method-for-assigning-block-id-anchor-and-role.adoc]
+====
+====
+
+[TIP]
+====
+* To specify multiple roles using the shorthand syntax, delimit them by dots.
+* The order of `id` and `role` values in the shorthand syntax does not matter.
+====
+
+[#ex-formal-method-for-assigning-block-id-anchor-and-role]
+*Example 78. Formal method for assigning block ID (anchor) and role*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-formal-method-for-assigning-block-id-anchor-and-role.adoc]
+====
+====
+
+[#ex-explicit-section-id-anchor]
+*Example 79. Explicit section ID (anchor)*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-explicit-section-id-anchor.adoc]
+====
+====
+
+[#ex-assign-id-anchor-and-role-to-inline-formatted-text]
+*Example 80. Assign ID (anchor) and role to inline formatted text*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-assign-id-anchor-and-role-to-inline-formatted-text.adoc]
+====
+====
+
+[#ex-shorthand-method-for-assigning-block-options]
+*Example 81. Shorthand method for assigning block options*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-shorthand-method-for-assigning-block-options.adoc]
+====
+====
+
+[#ex-formal-method-for-assigning-block-options]
+*Example 82. Formal method for assigning block options*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-formal-method-for-assigning-block-options.adoc]
+====
+====
+
+== Comments
+
+[#ex-line-and-block-comments]
+*Example 83. Line and block comments*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-line-and-block-comments.adoc]
+====
+====
+
+== Breaks
+
+[#ex-thematic]
+*Example 84. Thematic break (aka horizontal rule)*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-thematic.adoc]
+====
+====
+
+
+
+[#ex-page-break]
+*Example 85. Page break*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-page-break.adoc]
+====
+====
+
+== Attributes and substitutions
+
+[#ex-attributes]
+*Example 86. Attribute declaration and usage*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-attributes.adoc]
+====
+====
+
+
+
+To learn more about the available attributes and substitution groups see:
+
+* https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes-ref/[document attributes ref]
+* https://docs.asciidoctor.org/asciidoc/latest/attributes/character-replacement-ref/[character replacement ref]
+* https://docs.asciidoctor.org/asciidoc/latest/subs/apply-subs-to-blocks/#subs-groups[Substitution Groups]
+
+[#ex-counter]
+*Example 87. Counter attributes*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-counter.adoc]
+====
+====
+
+
+
+== Text replacements
+
+[frame=none,grid=rows]
+[%autowidth,cols="~,^~,^~,^~,~"]
+.Textual symbol replacements
+|===
+|Name |Syntax |Unicode Replacement |Rendered |Notes
+
+|Copyright
+|+(C)+
+|+&#169;+
+|(C)
+|
+
+|Registered
+|+(R)+
+|+&#174;+
+|(R)
+|
+
+|Trademark
+|+(TM)+
+|+&#8482;+
+|(TM)
+|
+
+|Em dash
+|+--+
+|+&#8212;+
+|{empty}--{empty}
+|Only replaced if between two word characters, between a word character and a line boundary, or flanked by spaces.
+
+When flanked by space characters (e.g., `+a -- b+`), the normal spaces are replaced by thin spaces (\&#8201;).
+
+|Ellipses
+|+...+
+|+&#8230;+
+|...
+|
+
+|Single right arrow
+|+->+
+|+&#8594;+
+|->
+|
+
+|Double right arrow
+|+=>+
+|+&#8658;+
+|=>
+|
+
+|Single left arrow
+|+<-+
+|+&#8592;+
+|<-
+|
+
+|Double left arrow
+|+<=+
+|+&#8656;+
+|<=
+|
+
+|Typographic apostrophe
+|Sam\'s
+|+Sam&#8217;s+
+|Sam's
+|The typewriter apostrophe is replaced with the typographic (aka curly or smart) apostrophe.
+|===
+
+Any named, numeric or hexadecimal {url-char-xml}[XML character reference^] is supported.
+
+== Escaping substitutions
+
+[#ex-slash]
+*Example 88. Backslash*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-slash.adoc]
+====
+====
+
+
+
+[#ex-single-plus]
+*Example 89. Single and double plus inline passthroughs*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-single-plus.adoc]
+====
+====
+
+
+
+[#ex-inline-pass]
+*Example 90. Triple plus inline passthrough and inline pass macro*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-inline-pass.adoc]
+====
+====
+
+
+
+== Bibliography
+
+[#ex-biblio]
+*Example 91. Bibliography with inbound references*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-biblio.adoc]
+====
+====
+
+
+
+[#section-footnotes]
+== Footnotes
+
+[#ex-footnotes]
+*Example 92. Normal and reusable footnotes*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-footnotes.adoc]
+====
+====
+
+
+
+[#markdown-compatibility]
+== Markdown compatibility
+
+Markdown compatible syntax is an optional feature of the AsciiDoc language and is currently only available when using Asciidoctor.
+
+[#ex-md-headings]
+*Example 93. Markdown-style headings*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-md-headings.adoc]
+====
+====
+
+
+
+[#ex-fenced]
+*Example 94. Fenced code block with syntax highlighting*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-fenced.adoc]
+====
+====
+
+
+
+[#ex-md-quote]
+*Example 95. Markdown-style blockquote*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-md-quote.adoc]
+====
+====
+
+
+
+[#ex-md-blockquote]
+*Example 96. Markdown-style blockquote with block content*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-md-blockquote.adoc]
+====
+====
+
+
+
+[#ex-md-breaks]
+*Example 97. Markdown-style thematic breaks*
+
+[tp-asciidoc-viewer%lite,src=docs/quick-reference-examples/ex-md-breaks.adoc]
+====
+====
+
+For more details and further examples, see the https://docs.asciidoctor.org/asciidoc/latest/[complete AsciiDoc documentation].

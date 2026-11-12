@@ -1,0 +1,2 @@
+.Short melody
+audio::docs/quick-reference-examples/media/melody.wav[]

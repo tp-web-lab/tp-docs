@@ -1,0 +1,13 @@
+= Document Title
+Doc Writer <doc.writer@email.org>
+:toc:
+:showtitle:
+
+
+== Introduction
+
+A first section.
+
+== Next steps
+
+A second section.

@@ -1,0 +1,1 @@
+link:docs/quick-reference-examples/document-b.html[Document B]

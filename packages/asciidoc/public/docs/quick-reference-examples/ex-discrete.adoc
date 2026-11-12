@@ -1,0 +1,4 @@
+[discrete]
+=== I'm an independent heading!
+
+This paragraph is it's sibling, not it's child.

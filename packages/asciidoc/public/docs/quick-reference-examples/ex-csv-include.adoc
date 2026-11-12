@@ -1,0 +1,4 @@
+[format=csv,options=header]
+|===
+include::customers.csv[]
+|===

@@ -1,0 +1,2364 @@
+= AsciiDoc Syntax Quick Reference
+:navtitle: Syntax Quick Reference
+:description: The quick reference for common AsciiDoc document and text formatting markup.
+:collapsible:
+:url-char-xml: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+:url-data-uri: https://developer.mozilla.org/en-US/docs/data_URIs
+:!table-frame:
+:!table-grid:
+// release-version is used for an example; it's not the release version for this document
+:release-version: 2.4.3
+
+////
+This document is not meant to be a replacement for the documentation of the AsciiDoc language itself.
+It's meant to be a helpful guide you can give to a writer to refer to while in the thick of writing.
+Think of it a quick reminder of the most common syntax and scenarios.
+It should not go into any depth about AsciiDoc processing or the options you can use when converting to an output format.
+////
+
+[IMPORTANT]
+The examples on this page demonstrate the output produced by the built-in HTML converter.
+An AsciiDoc converter is expected to produce complementary output when generating other output formats, such as PDF, EPUB, and DocBook.
+
+== Paragraphs
+
+.Paragraph
+[#ex-normal]
+----
+Paragraphs don't require special markup in AsciiDoc.
+A paragraph is defined by one or more consecutive lines of text.
+Line breaks within a paragraph are not displayed.
+
+Leave at least one empty line to begin a new paragraph.
+----
+
+.View result of <<ex-normal>>
+[%collapsible.result]
+====
+Paragraphs don't require special markup in AsciiDoc.
+A paragraph is defined by one or more consecutive lines of text.
+Line breaks within a paragraph are not displayed.
+
+Leave at least one empty line to begin a new paragraph.
+====
+
+.Literal paragraph
+[#ex-literal]
+----
+A normal paragraph.
+
+ A literal paragraph.
+ One or more consecutive lines indented by at least one space.
+
+ The text is shown in a fixed-width (typically monospace) font.
+ The lines are preformatted (i.e., as formatted in the source).
+ Spaces and newlines,
+ like the ones in this sentence,
+ are preserved.
+----
+
+.View result of <<ex-literal>>
+[%collapsible.result]
+====
+A normal paragraph.
+
+ A literal paragraph.
+ One or more consecutive lines indented by at least one space.
+
+ The text is shown in a fixed-width (typically monospace) font.
+ The lines are preformatted (i.e., as formatted in the source).
+ Spaces and newlines,
+ like the ones in this sentence,
+ are preserved.
+====
+
+.Hard line breaks
+[#ex-hardbreaks]
+----
+Roses are red, +
+violets are blue.
+
+[%hardbreaks]
+A ruby is red.
+Java is black.
+----
+
+.View result of <<ex-hardbreaks>>
+[%collapsible.result]
+====
+Roses are red, +
+violets are blue.
+
+[%hardbreaks]
+A ruby is red.
+Java is black.
+====
+
+.Lead paragraph
+[#ex-lead]
+----
+[.lead]
+This text will be styled as a lead paragraph (i.e., larger font).
+
+This paragraph will not be.
+----
+
+.View result of <<ex-lead>>
+[%collapsible.result]
+====
+[.lead]
+This text will be styled as a lead paragraph (i.e., larger font).
+
+This paragraph will not be.
+====
+
+TIP: The default Asciidoctor stylesheet automatically styles the first paragraph of the preamble as a xref:blocks:preamble-and-lead.adoc[lead paragraph] if no role is specified on that paragraph.
+
+== Text formatting
+
+.Constrained bold, italic, and monospace
+[#ex-constrained]
+----
+It has *strong* significance to me.
+
+I _cannot_ stress this enough.
+
+Type `OK` to accept.
+
+That *_really_* has to go.
+
+Can't pick one? Let's use them `*_all_*`.
+----
+
+.View result of <<ex-constrained>>
+[%collapsible.result]
+====
+It has *strong* significance to me.
+
+I _cannot_ stress this enough.
+
+Type `OK` to accept.
+
+That *_really_* has to go.
+
+Can't pick one? Let's use them `*_all_*`.
+====
+
+.Unconstrained bold, italic, and monospace
+[#ex-unconstrained]
+----
+**C**reate, **R**ead, **U**pdate, and **D**elete (CRUD)
+
+That's fan__freakin__tastic!
+
+Don't pass generic ``Object``s to methods that accept ``String``s!
+
+It was Beatle**__mania__**!
+----
+
+.View result of <<ex-unconstrained>>
+[%collapsible.result]
+====
+**C**reate, **R**ead, **U**pdate, and **D**elete (CRUD)
+
+That's fan__freakin__tastic!
+
+Don't pass generic ``Object``s to methods that accept ``String``s!
+
+It was Beatle**__mania__**!
+====
+
+.Highlight, underline, strikethrough, and custom role
+[#ex-lines]
+----
+Mark my words, #automation is essential#.
+
+##Mark##up refers to text that contains formatting ##mark##s.
+
+Where did all the [.underline]#cores# go?
+
+We need [.line-through]#ten# twenty VMs.
+
+A [.myrole]#custom role# must be fulfilled by the theme.
+----
+
+.View result of <<ex-lines>>
+[%collapsible.result]
+====
+Mark my words, #automation is essential#.
+
+##Mark##up refers to text that contains formatting ##mark##s.
+
+Where did all the [.underline]#cores# go?
+
+We need [.line-through]#ten# twenty VMs.
+
+A [.myrole]#custom role# must be fulfilled by the theme.
+====
+
+.Superscript and subscript
+[#ex-sub-sup]
+----
+^super^script
+
+~sub~script
+----
+
+.View result of <<ex-sub-sup>>
+[%collapsible.result]
+====
+^super^script
+
+~sub~script
+====
+
+.Smart quotes and apostrophes
+[#ex-curved]
+----
+"`double curved quotes`"
+
+'`single curved quotes`'
+
+Olaf's desk was a mess.
+
+A ``std::vector```'s size is the number of items it contains.
+
+All of the werewolves`' desks were a mess.
+
+Olaf had been with the company since the `'00s.
+----
+
+.View result of <<ex-curved>>
+[%collapsible.result]
+====
+"`double curved quotes`"
+
+'`single curved quotes`'
+
+Olaf's desk was a mess.
+
+A ``std::vector```'s size is the number of items it contains.
+
+All of the werewolves`' desks were a mess.
+
+Olaf had been with the company since the `'00s.
+====
+
+== Links
+
+.Autolinks, URL macro, and mailto macro
+[#ex-urls]
+----
+https://asciidoctor.org - automatic!
+
+https://asciidoctor.org[Asciidoctor]
+
+devel@discuss.example.org
+
+mailto:devel@discuss.example.org[Discuss]
+
+mailto:join@discuss.example.org[Subscribe,Subscribe me,I want to join!]
+----
+
+.View result of <<ex-urls>>
+[%collapsible.result]
+====
+https://asciidoctor.org - automatic!
+
+https://asciidoctor.org[Asciidoctor]
+
+devel@discuss.example.org
+
+mailto:devel@discuss.example.org[Discuss]
+
+mailto:join@discuss.example.org[Subscribe,Subscribe me,I want to join!]
+====
+
+.URL macros with attributes
+[#ex-linkattrs]
+----
+https://chat.asciidoc.org[Discuss AsciiDoc,role=external,window=_blank]
+
+https://chat.asciidoc.org[Discuss AsciiDoc^]
+----
+
+.View result of <<ex-linkattrs>>
+[%collapsible.result]
+====
+https://chat.asciidoc.org[Discuss AsciiDoc,role=external,window=_blank]
+
+https://chat.asciidoc.org[Discuss AsciiDoc^]
+====
+
+IMPORTANT: The `link:` macro prefix is _not_ required when the target starts with a URL scheme like `https:`.
+The URL scheme acts as an implicit macro prefix.
+
+CAUTION: If the link text contains a comma and the text is followed by one or more named attributes, you must enclose the text in double quotes.
+Otherwise, the text will be cut off at the comma (and the remaining text will get pulled into the attribute parsing).
+
+.URLs with spaces and special characters
+----
+link:++https://example.org/?q=[a b]++[URL with special characters]
+
+https://example.org/?q=%5Ba%20b%5D[URL with special characters]
+----
+
+.Link to relative file
+----
+link:index.html[Docs]
+----
+
+.Link using a Windows UNC path
+----
+link:\\server\share\whitepaper.pdf[Whitepaper]
+----
+
+.Inline anchors
+----
+[[bookmark-a]]Inline anchors make arbitrary content referenceable.
+
+[#bookmark-b]#Inline anchors can be applied to a phrase like this one.#
+
+anchor:bookmark-c[]Use a cross reference to link to this location.
+
+[[bookmark-d,last paragraph]]The xreflabel attribute will be used as link text in the cross-reference link.
+----
+
+.Cross references
+[#ex-xrefs]
+----
+See <<paragraphs>> to learn how to write paragraphs.
+
+Learn how to organize the document into <<section-titles,sections>>.
+----
+
+.View result of <<ex-xrefs>>
+[%collapsible.result]
+====
+See <<paragraphs>> to learn how to write paragraphs.
+
+Learn how to organize the document into <<section-titles,sections>>.
+====
+
+.Inter-document cross references
+----
+Refer to xref:document-b.adoc#section-b[Section B of Document B] for more information.
+
+If you never return from xref:document-b.adoc[Document B], we'll send help.
+----
+
+== Document header
+
+The xref:document:header.adoc[document header] is optional.
+The header may not contain any empty lines and must be separated from the content by at least one empty line.
+
+.Title
+----
+= Document Title
+
+This document provides...
+----
+
+.Title and author line
+----
+= Document Title
+Author Name <author@email.org>
+
+This document provides...
+----
+
+.Title, author line, and revision line
+----
+= Document Title
+Author Name <author@email.org>; Another Author <a.author@email.org>
+v2.0, 2019-03-22
+
+This document provides...
+----
+
+IMPORTANT: You cannot have a xref:document:revision-line.adoc[revision line] without an xref:document:author-line.adoc[author line].
+
+.Document header with attribute entries
+----
+= Document Title
+Author Name <author@email.org>
+v2.0, 2019-03-22
+:toc:
+:homepage: https://example.org
+
+This document provides...
+----
+
+[#section-titles]
+== Section titles
+
+When the document type is `article` (the default), the document can only have one level 0 section title (`=`), which is the document title (i.e., doctitle).
+
+.Article section levels
+[#ex-article]
+----
+= Document Title (Level 0)
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+==== Level 3 Section Title
+
+===== Level 4 Section Title
+
+====== Level 5 Section Title
+
+== Another Level 1 Section Title
+----
+
+.View result of <<ex-article>>
+[%collapsible.result]
+====
+// the float style is required to create standalone (non-section) headings
+[float]
+= Document Title (Level 0)
+
+[float]
+== Level 1 Section Title
+
+[float]
+=== Level 2 Section Title
+
+[float]
+==== Level 3 Section Title
+
+[float]
+===== Level 4 Section Title
+
+[float]
+====== Level 5 Section Title
+
+[float]
+== Another Level 1 Section Title
+====
+
+The `book` document type can have additional level 0 section titles, which are interpreted as xref:sections:parts.adoc[parts].
+The presence of at least one part implicitly makes the document a multi-part book.
+
+.Book section levels
+----
+= Document Title (Level 0)
+
+== Level 1 Section Title
+
+= Level 0 Section Title (Part)
+
+== Level 1 Section Title
+
+=== Level 2 Section Title
+
+==== Level 3 Section Title
+
+===== Level 4 Section Title
+
+====== Level 5 Section Title
+
+= Another Level 0 Section Title (Part)
+----
+
+////
+xref:sections:title-links.adoc#link[sectlinks]::
+When the document attribute `sectlinks` is set, section titles become self-links.
+This feature allows a reader to easily bookmark the section.
+
+xref:sections:title-links.adoc#anchor[sectanchors]::
+When the document attribute `sectanchors` is set, a floating section icon anchor appears in front of the section title on hover.
+This feature provides an alternate way for the reader to easily bookmark the section.
+Section title anchors depend on support from the stylesheet to render properly.
+////
+
+.Discrete heading (not a section)
+[#ex-discrete]
+----
+[discrete]
+=== I'm an independent heading!
+
+This paragraph is it's sibling, not it's child.
+----
+
+.View result of <<ex-discrete>>
+[%collapsible.result]
+====
+[discrete]
+=== I'm an independent heading!
+
+This paragraph is it's sibling, not it's child.
+====
+
+== Automatic TOC
+
+.Activate Table of Contents for a document
+----
+= Document Title
+Doc Writer <doc.writer@email.org>
+:toc:
+----
+
+The Table of Content's xref:toc:title.adoc[title], xref:toc:levels.adoc[displayed section depth], and xref:toc:position.adoc[position] can be customized.
+
+== Includes
+
+.Include document parts
+----
+= Reference Documentation
+Lead Developer
+
+This is documentation for project X.
+
+\include::basics.adoc[]
+
+\include::installation.adoc[]
+
+\include::example.adoc[]
+----
+
+.Include content by tagged regions or lines
+----
+\include::filename.txt[tag=definition]
+
+\include::filename.txt[lines=5..10]
+----
+
+.Include content from a URL
+----
+\include::https://raw.githubusercontent.com/asciidoctor/asciidoctor/main/README.adoc[]
+----
+
+WARNING: Including content from a URL is potentially dangerous, so it's disabled if the safe mode is SECURE or greater.
+Assuming the safe mode is less than SECURE, you must also set the `allow-uri-read` attribute to permit the AsciiDoc processor to read content from a URL.
+
+== Lists
+
+.Unordered list
+[#ex-ul]
+----
+* List item
+** Nested list item
+*** Deeper nested list item
+* List item
+ ** Another nested list item
+* List item
+----
+
+.View result of <<ex-ul>>
+[%collapsible.result]
+====
+* List item
+** Nested list item
+*** Deeper nested list item
+* List item
+ ** Another nested list item
+* List item
+====
+
+TIP: An empty line is required before and after a list to separate it from other blocks.
+You can force two adjacent lists apart by adding an empty attribute list (i.e., `[]`) above the second list or by inserting an empty line followed by a line comment after the first list.
+If you use a line comment, the convention is to use `//-` to provide a hint to other authors that it's serving as a list divider.
+
+.Unordered list max level nesting
+[#ex-ul-max]
+----
+* Level 1 list item
+** Level 2 list item
+*** Level 3 list item
+**** Level 4 list item
+***** Level 5 list item
+****** etc.
+* Level 1 list item
+----
+
+.View result of <<ex-ul-max>>
+[%collapsible.result]
+====
+* Level 1 list item
+** Level 2 list item
+*** Level 3 list item
+**** Level 4 list item
+***** Level 5 list item
+****** etc.
+* Level 1 list item
+====
+
+The xref:lists:unordered.adoc#markers[unordered list marker] can be changed using a list style (e.g., `square`).
+
+.Ordered list
+[#ex-ol]
+----
+. Step 1
+. Step 2
+.. Step 2a
+.. Step 2b
+. Step 3
+----
+
+.View result of <<ex-ol>>
+[%collapsible.result]
+====
+. Step 1
+. Step 2
+.. Step 2a
+.. Step 2b
+. Step 3
+====
+
+.Ordered list max level nesting
+[#ex-ol-max]
+----
+. Level 1 list item
+.. Level 2 list item
+... Level 3 list item
+.... Level 4 list item
+..... Level 5 list item
+. Level 1 list item
+----
+
+.View result of <<ex-ol-max>>
+[%collapsible.result]
+====
+. Level 1 list item
+.. Level 2 list item
+... Level 3 list item
+.... Level 4 list item
+..... Level 5 list item
+. Level 1 list item
+====
+
+Ordered lists support xref:lists:ordered.adoc#styles[numeration styles] such as `lowergreek` and `decimal-leading-zero`.
+
+.Checklist
+[#ex-check]
+----
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+----
+
+.View result of <<ex-check>>
+[%collapsible.result]
+====
+* [*] checked
+* [x] also checked
+* [ ] not checked
+* normal list item
+====
+
+.Description list
+[#ex-dlist]
+----
+First term:: The description can be placed on the same line
+as the term.
+Second term::
+Description of the second term.
+The description can also start on its own line.
+----
+
+.View result of <<ex-dlist>>
+[%collapsible.result]
+====
+First term:: The description can be placed on the same line
+as the term.
+Second term::
+Description of the second term.
+The description can also start on its own line.
+====
+
+.Question and answer list
+[#ex-qa]
+----
+[qanda]
+What is the answer?::
+This is the answer.
+
+Are cameras allowed?::
+Are backpacks allowed?::
+No.
+----
+
+.View result of <<ex-qa>>
+[%collapsible.result]
+====
+[qanda]
+What is the answer?::
+This is the answer.
+
+Are cameras allowed?::
+Are backpacks allowed?::
+No.
+====
+
+.Mixed
+[#ex-mixed]
+----
+Operating Systems::
+  Linux:::
+    . Fedora
+      * Desktop
+    . Ubuntu
+      * Desktop
+      * Server
+  BSD:::
+    . FreeBSD
+    . NetBSD
+
+Cloud Providers::
+  PaaS:::
+    . OpenShift
+    . CloudBees
+  IaaS:::
+    . Amazon EC2
+    . Rackspace
+----
+
+.View result of <<ex-mixed>>
+[%collapsible.result]
+====
+Operating Systems::
+  Linux:::
+    . Fedora
+      * Desktop
+    . Ubuntu
+      * Desktop
+      * Server
+  BSD:::
+    . FreeBSD
+    . NetBSD
+
+Cloud Providers::
+  PaaS:::
+    . OpenShift
+    . CloudBees
+  IaaS:::
+    . Amazon EC2
+    . Rackspace
+====
+
+TIP: Lists can be indented.
+Leading whitespace is not significant.
+
+.Complex content in outline lists
+[#ex-complex]
+----
+* Every list item has at least one paragraph of content,
+  which may be wrapped, even using a hanging indent.
++
+Additional paragraphs or blocks are adjoined by putting
+a list continuation on a line adjacent to both blocks.
++
+list continuation:: a plus sign (`{plus}`) on a line by itself
+
+* A literal paragraph does not require a list continuation.
+
+ $ cd projects/my-book
+
+* AsciiDoc lists may contain any complex content.
++
+|===
+|Column 1, Header Row |Column 2, Header Row
+
+|Column 1, Row 1
+|Column 2, Row 1
+|===
+----
+
+.View result of <<ex-complex>>
+[%collapsible.result]
+====
+* Every list item has at least one paragraph of content,
+  which may be wrapped, even using a hanging indent.
++
+Additional paragraphs or blocks are adjoined by putting
+a list continuation on a line adjacent to both blocks.
++
+list continuation:: a plus sign (`{plus}`) on a line by itself
+
+* A literal paragraph does not require a list continuation.
+
+ $ cd projects/my-book
+
+* AsciiDoc lists may contain any complex content.
++
+|===
+|Column 1, Header Row |Column 2, Header Row
+
+|Column 1, Row 1
+|Column 2, Row 1
+|===
+====
+
+== Images
+
+You can use the xref:macros:images-directory.adoc[imagesdir attribute] to avoid hard coding the common path to your images in every image macro.
+The value of this attribute can be an absolute path, relative path, or base URL.
+If the image target is a relative path, the attribute's value is prepended (i.e., it's resolved relative to the value of the `imagesdir` attribute).
+If the image target is a URL or absolute path, the attribute's value is _not_ prepended.
+
+.Block image macro
+[#ex-image-blocks]
+----
+image::sunset.jpg[]
+
+image::sunset.jpg[Sunset]
+
+.A mountain sunset
+[#img-sunset,caption="Figure 1: ",link=https://www.flickr.com/photos/javh/5448336655]
+image::macros:sunset.jpg[Sunset,200,100]
+
+image::https://asciidoctor.org/images/octocat.jpg[GitHub mascot]
+----
+
+.View result of <<ex-image-blocks>>
+[%collapsible.result]
+====
+image::macros:sunset.jpg[]
+
+image::macros:sunset.jpg[Sunset]
+
+.A mountain sunset
+[#img-sunset,caption="Figure 1: ",link=https://www.flickr.com/photos/javh/5448336655]
+image::macros:sunset.jpg[Sunset,200,100]
+
+image::https://asciidoctor.org/images/octocat.jpg[GitHub mascot]
+====
+
+Two colons following the image keyword in the macro (i.e., `image::`) indicates a block image (aka figure), whereas one colon following the image keyword (i.e., `image:`) indicates an inline image.
+(All macros follow this pattern).
+You use an inline image when you need to place the image in a line of text.
+Otherwise, you should prefer the block form.
+
+.Inline image macro
+[#ex-image-inline]
+----
+Click image:play.png[] to get the party started.
+
+Click image:pause.png[title="Pause"] when you need a break.
+----
+
+.View result of <<ex-image-inline>>
+[%collapsible.result]
+====
+Click image:macros:play.png[] to get the party started.
+
+Click image:macros:pause.png[title="Pause"] when you need a break.
+====
+
+.Inline image macro with positioning role
+[#ex-image-role]
+----
+image:sunset.jpg[Sunset,150,150,role=right] What a beautiful sunset!
+----
+
+.View result of <<ex-image-role>>
+[%collapsible.result]
+====
+image:macros:sunset.jpg[Sunset,150,150,role=right] What a beautiful sunset!
+====
+
+.Embedded
+----
+= Document Title
+:data-uri:
+----
+
+When the `data-uri` attribute is set, all images in the document--including admonition icons--are embedded into the document as {url-data-uri}[data URIs].
+You can also pass it as a command line argument using `-a data-uri`.
+
+== Audio
+
+.Block audio macro
+----
+audio::ocean-waves.wav[]
+
+audio::ocean-waves.wav[start=60,opts=autoplay]
+----
+
+You can control the audio settings using xref:macros:audio-and-video.adoc[additional attributes and options] on the macro.
+
+== Videos
+
+.Block video macro
+----
+video::video-file.mp4[]
+
+video::video-file.mp4[width=640,start=60,opts=autoplay]
+----
+
+.Embedded YouTube video
+----
+video::RvRhUHTV_8k[youtube]
+----
+
+.Embedded Vimeo video
+----
+video::67480300[vimeo]
+----
+
+You can control the video settings using xref:macros:audio-and-video.adoc[additional attributes and options] on the macro.
+
+== Keyboard, button, and menu macros
+
+IMPORTANT: You must set the `experimental` attribute in the document header to enable these macros.
+
+.Keyboard macro
+[#ex-kbd]
+----
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+|===
+----
+
+.View result of <<ex-kbd>>
+[%collapsible.result]
+====
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+|===
+====
+
+.Menu macro
+[#ex-menu]
+----
+To save the file, select menu:File[Save].
+
+Select menu:View[Zoom > Reset] to reset the zoom level to the default setting.
+----
+
+.View result of <<ex-menu>>
+[%collapsible.result]
+====
+To save the file, select menu:File[Save].
+
+Select menu:View[Zoom > Reset] to reset the zoom level to the default setting.
+====
+
+.Button macro
+[#ex-button]
+----
+Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].
+----
+
+.View result of <<ex-button>>
+[%collapsible.result]
+====
+Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].
+====
+
+== Literals and source code
+
+////
+.Inline monospace only
+[#ex-inline-code]
+----
+Reference code like `types` or `methods` inline.
+
+Do not pass arbitrary ``Object``s to methods that accept ``String``s!
+----
+
+.View result of <<ex-inline-code>>
+[%collapsible.result]
+====
+Reference code like `types` or `methods` inline.
+
+Do not pass arbitrary ``Object``s to methods that accept ``String``s!
+====
+////
+
+.Inline literal monospace
+[#ex-inline-literal]
+----
+Output literal monospace text, such as `+{backtick}+` or `+http://localhost:8080+`, by enclosing the text in a pair of pluses surrounded by a pair backticks.
+----
+
+.View result of <<ex-inline-literal>>
+[%collapsible.result]
+====
+Output literal monospace text, such as `+{backtick}+` or `+http://localhost:8080+`, by enclosing the text in a pair of pluses surrounded by a pair backticks.
+====
+
+.Literal paragraph
+[#ex-literal-line]
+----
+Normal line.
+
+ Indent line by one space to create a literal line.
+
+Normal line.
+----
+
+.View result of <<ex-literal-line>>
+[%collapsible.result]
+====
+Normal line.
+
+ Indent line by one space to create a literal line.
+
+Normal line.
+====
+
+.Literal block
+[#ex-literal-block]
+----
+....
+error: 1954 Forbidden search
+absolutely fatal: operation lost in the dodecahedron of doom
+
+Would you like to try again? y/n
+....
+----
+
+.View result of <<ex-literal-block>>
+[%collapsible.result]
+====
+....
+error: 1954 Forbidden search
+absolutely fatal: operation lost in the dodecahedron of doom
+
+Would you like to try again? y/n
+....
+====
+
+.Listing block with title
+[#ex-listing]
+------
+.Gemfile.lock
+----
+GEM
+  remote: https://rubygems.org/
+  specs:
+    asciidoctor (2.0.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  asciidoctor (~> 2.0.15)
+----
+------
+
+.View result of <<ex-listing>>
+[%collapsible.result]
+====
+[caption="Listing 1. "]
+[listing]
+.Gemfile.lock
+----
+GEM
+  remote: https://rubygems.org/
+  specs:
+    asciidoctor (2.0.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  asciidoctor (~> 2.0.15)
+----
+====
+
+.Source block with title and syntax highlighting
+[#ex-highlight]
+------
+.Some Ruby code
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+------
+
+.View result of <<ex-highlight>>
+[%collapsible.result]
+====
+[caption="Listing 1. "]
+.Some Ruby code
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+====
+
+[IMPORTANT]
+====
+You must enable xref:verbatim:source-highlighter.adoc[source highlighting] by setting the `source-highlighter` attribute in the document header, CLI, or API.
+
+----
+:source-highlighter: rouge
+----
+
+See xref:asciidoctor:syntax-highlighting:index.adoc[] to learn which values are accepted when using Asciidoctor.
+====
+
+.Source block with callouts
+[#ex-callouts,subs=-callouts]
+------
+[source,ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do // <2>
+  "Hello World!" // <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> HTTP response body
+------
+
+.View result of <<ex-callouts>>
+[%collapsible.result]
+====
+[source,ruby]
+----
+require 'sinatra' // <1>
+
+get '/hi' do // <2>
+  "Hello World!" // <3>
+end
+----
+<1> Library import
+<2> URL mapping
+<3> HTTP response body
+====
+
+.Make callouts non-selectable
+[#ex-hide-callouts,subs=-callouts]
+------
+----
+line of code // <1>
+line of code # <2>
+line of code ;; <3>
+line of code <!--4-->
+----
+<1> A callout behind a line comment for C-style languages.
+<2> A callout behind a line comment for Ruby, Python, Perl, etc.
+<3> A callout behind a line comment for Clojure.
+<4> A callout behind a line comment for XML or SGML languages like HTML.
+------
+
+.View result of <<ex-hide-callouts>>
+[%collapsible.result]
+====
+----
+line of code // <1>
+line of code # <2>
+line of code ;; <3>
+line of code <!--4-->
+----
+<1> A callout behind a line comment for C-style languages.
+<2> A callout behind a line comment for Ruby, Python, Perl, etc.
+<3> A callout behind a line comment for Clojure.
+<4> A callout behind a line comment for XML or SGML languages like HTML.
+====
+
+.Source block content included from a file
+------
+[,ruby]
+----
+\include::app.rb[]
+----
+------
+
+.Source block content included from file relative to source directory
+------
+:sourcedir: src/main/java
+
+[source,java]
+----
+\include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
+----
+------
+
+.Strip leading indentation from partial file content
+------
+[source,ruby]
+----
+\include::lib/app.rb[tag=main,indent=0]
+----
+------
+
+[NOTE]
+====
+The xref:directives:include-with-indent.adoc[indent attribute] is frequently used when including source code by xref:directives:include-tagged-regions.adoc[tagged region] or xref:directives:include-lines.adoc[lines].
+It can be specified on the include directive itself or the enclosing literal, listing, or source block.
+
+When indent is 0, the leading block indent is stripped.
+
+When indent is greater than 0, the leading block indent is first stripped, then a block is indented by the number of columns equal to this value.
+====
+
+.Source paragraph (no empty lines)
+[#ex-source-para]
+----
+[source,xml]
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+This is normal content.
+----
+
+.View result of <<ex-source-para>>
+[%collapsible.result]
+====
+[source,xml]
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+This is normal content.
+====
+
+== Admonitions
+
+.Admonition paragraph
+[#ex-admon-para]
+----
+NOTE: An admonition draws the reader's attention to auxiliary information.
+
+Here are the other built-in admonition types:
+
+IMPORTANT: Don't forget the children!
+
+TIP: Look for the warp zone under the bridge.
+
+CAUTION: Slippery when wet.
+
+WARNING: The software you're about to use is untested.
+
+IMPORTANT: Sign off before stepping away from your computer.
+----
+
+.View result of <<ex-admon-para>>
+[%collapsible.result]
+====
+NOTE: An admonition draws the reader's attention to auxiliary information.
+
+Here are the other built-in admonition types:
+
+IMPORTANT: Don't forget the children!
+
+TIP: Look for the warp zone under the bridge.
+
+CAUTION: Slippery when wet.
+
+WARNING: The software you're about to use is untested.
+
+IMPORTANT: Sign off before stepping away from your computer.
+====
+
+.Admonition block
+[#ex-admon-block]
+----
+[NOTE]
+====
+An admonition block may contain complex content.
+
+.A list
+- one
+- two
+- three
+
+Another paragraph.
+====
+----
+
+.View result of <<ex-admon-block>>
+[%collapsible.result]
+=====
+[NOTE]
+====
+An admonition block may contain complex content.
+
+.A list
+- one
+- two
+- three
+
+Another paragraph.
+====
+=====
+
+== More delimited blocks
+
+Any block can have a title.
+A block title is defined using a line of text above the block that starts with a dot.
+That dot cannot be followed by a space.
+For block images, the title is displayed below the block.
+For all other blocks, the title is typically displayed above it.
+
+.Sidebar block
+[#ex-sidebar]
+----
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+****
+----
+
+.View result of <<ex-sidebar>>
+[%collapsible.result]
+====
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+****
+====
+
+.Example block
+[#ex-example]
+------
+====
+Here's a sample AsciiDoc document:
+
+----
+= Title of Document
+Doc Writer
+:toc:
+
+This guide provides...
+----
+
+The document header is useful, but not required.
+====
+------
+
+.View result of <<ex-example>>
+[example%collapsible.result]
+--
+====
+Here's a sample AsciiDoc document:
+
+----
+= Title of Document
+Doc Writer
+:toc:
+
+This guide provides...
+----
+
+The document header is useful, but not required.
+====
+--
+
+.Blockquotes
+[#ex-quotes]
+----
+[quote,Abraham Lincoln,Address delivered at the dedication of the Cemetery at Gettysburg]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation...
+____
+
+[quote,Albert Einstein]
+A person who never made a mistake never tried anything new.
+
+____
+A person who never made a mistake never tried anything new.
+____
+
+[quote,Charles Lutwidge Dodgson,'Mathematician and author, also known as https://en.wikipedia.org/wiki/Lewis_Carroll[Lewis Carroll]']
+____
+If you don't know where you are going, any road will get you there.
+____
+
+"I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical."
+-- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11
+----
+
+.View result of <<ex-quotes>>
+[%collapsible.result]
+====
+[quote,Abraham Lincoln,Address delivered at the dedication of the Cemetery at Gettysburg]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation...
+____
+
+[quote,Albert Einstein]
+A person who never made a mistake never tried anything new.
+
+____
+A person who never made a mistake never tried anything new.
+____
+
+[quote,Charles Lutwidge Dodgson,'Mathematician and author, also known as https://en.wikipedia.org/wiki/Lewis_Carroll[Lewis Carroll]']
+____
+If you don't know where you are going, any road will get you there.
+____
+
+"I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical."
+-- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11
+====
+
+.Open blocks
+[#ex-open]
+----
+--
+An open block can be an anonymous container,
+or it can masquerade as any other block.
+--
+
+[source]
+--
+puts "I'm a source block!"
+--
+----
+
+.View result of <<ex-open>>
+[%collapsible.result]
+====
+--
+An open block can be an anonymous container,
+or it can masquerade as any other block.
+--
+
+[source]
+--
+puts "I'm a source block!"
+--
+====
+
+.Passthrough block
+[#ex-pass-block]
+----
+++++
+<p>
+Content in a passthrough block is passed to the output unprocessed.
+That means you can include raw HTML, like this embedded Gist:
+</p>
+
+<script src="https://gist.github.com/mojavelinux/5333524.js">
+</script>
+++++
+----
+
+.View result of <<ex-pass-block>>
+[%collapsible.result]
+====
+++++
+<p>
+Content in a passthrough block is passed to the output unprocessed.
+That means you can include raw HTML, like this embedded Gist:
+</p>
+
+<script src="https://gist.github.com/mojavelinux/5333524.js">
+</script>
+++++
+====
+
+.Customize block substitutions
+[#ex-block-subs,subs=+macros]
+------
+:release-version: pass:a[{release-version}]
+
+[source,xml,subs=attributes+]
+----
+<dependency>
+  <groupId>org.asciidoctor</groupId>
+  <artifactId>asciidoctorj</artifactId>
+  <version>{release-version}</version>
+</dependency>
+----
+------
+
+.View result of <<ex-block-subs>>
+[%collapsible.result]
+====
+[source,xml,subs=attributes+]
+----
+<dependency>
+  <groupId>org.asciidoctor</groupId>
+  <artifactId>asciidoctorj</artifactId>
+  <version>{release-version}</version>
+</dependency>
+----
+====
+
+== Tables
+
+.Table with a title, two columns, a header row, and two rows of content
+[#ex-header-row]
+----
+.Table Title
+|===
+|Column 1, Header Row |Column 2, Header Row <.>
+<.>
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+----
+<.> Unless the `cols` attribute is specified, the number of columns is equal to the number of cell separators on the first (non-empty) line.
+<.> When an empty line immediately follows a non-empty line at the start of the table, the cells in the first line get promoted to the table header.
+
+.View result of <<ex-header-row>>
+[%collapsible.result]
+====
+[caption="Table 1. "]
+.Table Title
+|===
+|Column 1, Header Row |Column 2, Header Row
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+====
+
+.Table with two columns, a header row, and two rows of content
+[#ex-cols]
+----
+[%header,cols=2*] <.>
+|===
+|Name of Column 1
+|Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+----
+<.> The `+*+` in the `cols` attribute is the repeat operator.
+It means repeat the column specification across the remaining columns.
+In this case, we are repeating the default formatting across 2 columns.
+When the cells in the header are not defined on a single line, you must use the `cols` attribute to set the number of columns in the table and the `%header` option (or `options=header` attribute) to promote the first row to the table header.
+
+.View result of <<ex-cols>>
+[%collapsible.result]
+====
+[%header,cols=2*]
+|===
+|Name of Column 1
+|Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===
+====
+
+.Table with three columns, a header row, and two rows of content
+[#ex-cols-widths]
+----
+.Applications
+[cols="1,1,2"] <.>
+|===
+|Name |Category |Description
+
+|Firefox
+|Browser
+|Mozilla Firefox is an open source web browser.
+It's designed for standards compliance,
+performance, portability.
+
+|Arquillian
+|Testing
+|An innovative and highly extensible testing platform.
+Empowers developers to easily create real, automated tests.
+|===
+----
+<.> In this example, the `cols` attribute has two functions.
+It specifies that this table has three columns, and it sets their relative widths.
+
+.View result of <<ex-cols-widths>>
+[%collapsible.result]
+====
+[caption="Table 1. "]
+.Applications
+[cols="1,1,2"]
+|===
+|Name |Category |Description
+
+|Firefox
+|Browser
+|Mozilla Firefox is an open source web browser.
+It's designed for standards compliance,
+performance, portability.
+
+|Arquillian
+|Testing
+|An innovative and highly extensible testing platform.
+Empowers developers to easily create real, automated tests.
+|===
+====
+
+.Table with column containing AsciiDoc content
+[#ex-table-adoc]
+----
+[cols="2,2,5a"]
+|===
+|Firefox
+|Browser
+|Mozilla Firefox is an open source web browser.
+
+It's designed for:
+
+* standards compliance
+* performance
+* portability
+
+https://getfirefox.com[Get Firefox]!
+|===
+----
+
+.View result of <<ex-table-adoc>>
+[%collapsible.result]
+====
+[cols="2,2,5a"]
+|===
+|Firefox
+|Browser
+|Mozilla Firefox is an open source web browser.
+
+It's designed for:
+
+* standards compliance
+* performance
+* portability
+
+https://getfirefox.com[Get Firefox]!
+|===
+====
+
+.Table from CSV data using shorthand
+[#ex-csv]
+----
+,===
+Artist,Track,Genre
+
+Baauer,Harlem Shake,Hip Hop
+,===
+----
+
+.View result of <<ex-csv>>
+[%collapsible.result]
+====
+,===
+Artist,Track,Genre
+
+Baauer,Harlem Shake,Hip Hop
+,===
+====
+
+.Table from CSV data
+[#ex-csv-formal]
+----
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+----
+
+.View result of <<ex-csv-formal>>
+[%collapsible.result]
+====
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+====
+
+.Table from CSV data in file
+[#ex-csv-include]
+----
+|===
+\include::customers.csv[]
+|===
+----
+
+.Table from DSV data using shorthand
+[#ex-dsv]
+----
+:===
+Artist:Track:Genre
+
+Robyn:Indestructable:Dance
+:===
+----
+
+.View result of <<ex-dsv>>
+[%collapsible.result]
+====
+:===
+Artist:Track:Genre
+
+Robyn:Indestructable:Dance
+:===
+====
+
+.Table with formatted, aligned and merged cells
+[#ex-cell-format]
+----
+[cols="e,m,^,>s",width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
+----
+
+.View result of <<ex-cell-format>>
+[%collapsible.result]
+====
+[cols="e,m,^,>s",width="25%"]
+|===
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|===
+====
+
+== IDs, roles, and options
+
+.Shorthand method for assigning block ID (anchor) and role
+----
+[#goals.incremental]
+* Goal 1
+* Goal 2
+----
+
+[TIP]
+====
+* To specify multiple roles using the shorthand syntax, delimit them by dots.
+* The order of `id` and `role` values in the shorthand syntax does not matter.
+====
+
+.Formal method for assigning block ID (anchor) and role
+----
+[id="goals",role="incremental"]
+* Goal 1
+* Goal 2
+----
+
+.Explicit section ID (anchor)
+----
+[#null-values]
+== Primitive types and null values
+----
+
+.Assign ID (anchor) and role to inline formatted text
+----
+[#id-name.role-name]`monospace text`
+
+[#free-world.goals]*free the world*
+----
+
+.Shorthand method for assigning block options
+----
+[%header%footer%autowidth]
+|===
+|Header A |Header B
+|Footer A |Footer B
+|===
+----
+
+.Formal method for assigning block options
+----
+[options="header,footer,autowidth"]
+|===
+|Header A |Header B
+|Footer A |Footer B
+|===
+
+// options can be shorted to opts
+[opts="header,footer,autowidth"]
+|===
+|Header A |Header B
+|Footer A |Footer B
+|===
+----
+
+== Comments
+
+.Line and block comments
+----
+// A single-line comment
+
+////
+A multi-line comment.
+
+Notice it's a delimited block.
+////
+----
+
+== Breaks
+
+.Thematic break (aka horizontal rule)
+[#ex-thematic]
+----
+before
+
+'''
+
+after
+----
+
+.View result of <<ex-thematic>>
+[%collapsible.result]
+====
+before
+
+'''
+
+after
+====
+
+.Page break
+----
+<<<
+----
+
+== Attributes and substitutions
+
+.Attribute declaration and usage
+[#ex-attributes]
+----
+:url-home: https://asciidoctor.org
+:link-docs: https://asciidoctor.org/docs[documentation]
+:summary: AsciiDoc is a mature, plain-text document format for \
+       writing notes, articles, documentation, books, and more. \
+       It's also a text processor & toolchain for translating \
+       documents into various output formats (i.e., backends), \
+       including HTML, DocBook, PDF and ePub.
+:checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+
+Check out {url-home}[Asciidoctor]!
+
+{summary}
+
+Be sure to read the {link-docs} too!
+
+{checkedbox} That's done!
+----
+
+.View result of <<ex-attributes>>
+[%collapsible.result]
+====
+// I have to use a nested doc hack here, otherwise the attributes won't resolve
+[.unstyled]
+|===
+a|
+:url-home: https://asciidoctor.org
+:link-docs: https://asciidoctor.org/docs[documentation]
+:summary: AsciiDoc is a mature, plain-text document format for \
+       writing notes, articles, documentation, books, and more. \
+       It's also a text processor & toolchain for translating \
+       documents into various output formats (i.e., backends), \
+       including HTML, DocBook, PDF and ePub.
+:checkedbox: pass:normal[{startsb}&#10004;{endsb}]
+
+Check out {url-home}[Asciidoctor]!
+
+{summary}
+
+Be sure to read the {link-docs} too!
+
+{checkedbox} That's done!
+|===
+====
+
+To learn more about the available attributes and substitution groups see:
+
+* xref:attributes:document-attributes-ref.adoc[]
+* xref:attributes:character-replacement-ref.adoc[]
+* xref:subs:apply-subs-to-blocks.adoc#subs-groups[Substitution Groups]
+
+.Counter attributes
+[#ex-counter]
+----
+.Parts{counter2:index:0}
+|===
+|Part Id |Description
+
+|PX-{counter:index}
+|Description of PX-{index}
+
+|PX-{counter:index}
+|Description of PX-{index}
+|===
+----
+
+.View result of <<ex-counter>>
+[%collapsible.result]
+====
+[caption="Table 1. "]
+.Parts{counter2:index:0}
+|===
+|Part Id |Description
+
+|PX-{counter:index}
+|Description of PX-{index}
+
+|PX-{counter:index}
+|Description of PX-{index}
+|===
+====
+
+== Text replacements
+
+[frame=none,grid=rows]
+[%autowidth,cols="~,^~,^~,^~,~"]
+.Textual symbol replacements
+|===
+|Name |Syntax |Unicode Replacement |Rendered |Notes
+
+|Copyright
+|+(C)+
+|+&#169;+
+|(C)
+|
+
+|Registered
+|+(R)+
+|+&#174;+
+|(R)
+|
+
+|Trademark
+|+(TM)+
+|+&#8482;+
+|(TM)
+|
+
+|Em dash
+|+--+
+|+&#8212;+
+|{empty}--{empty}
+|Only replaced if between two word characters, between a word character and a line boundary, or flanked by spaces.
+
+When flanked by space characters (e.g., `+a -- b+`), the normal spaces are replaced by thin spaces (\&#8201;).
+
+|Ellipses
+|+...+
+|+&#8230;+
+|...
+|
+
+|Single right arrow
+|+->+
+|+&#8594;+
+|->
+|
+
+|Double right arrow
+|+=>+
+|+&#8658;+
+|=>
+|
+
+|Single left arrow
+|+<-+
+|+&#8592;+
+|<-
+|
+
+|Double left arrow
+|+<=+
+|+&#8656;+
+|<=
+|
+
+|Typographic apostrophe
+|Sam\'s
+|+Sam&#8217;s+
+|Sam's
+|The typewriter apostrophe is replaced with the typographic (aka curly or smart) apostrophe.
+|===
+
+Any named, numeric or hexadecimal {url-char-xml}[XML character reference^] is supported.
+
+== Escaping substitutions
+
+.Backslash
+[#ex-slash]
+----
+In /items/\{id}, the id attribute isn't replaced.
+The curly braces around it are preserved.
+
+\*Stars* isn't displayed as bold text.
+The asterisks around it are preserved.
+
+\&sect; appears as an entity reference.
+It's not converted into the section symbol (&sect;).
+
+\=> The backslash prevents the equals sign followed by a greater
+than sign from combining to form a double arrow character (=>).
+
+\[[Word]] is not interpreted as an anchor.
+The double brackets around it are preserved.
+
+[\[[Word]]] is not interpreted as a bibliography anchor.
+The triple brackets around it are preserved.
+
+The URL \https://example.org isn't converted into an active link.
+----
+
+.View result of <<ex-slash>>
+[%collapsible.result]
+====
+In /items/\{id}, the id attribute isn't replaced.
+The curly braces around it are preserved.
+
+\*Stars* isn't displayed as bold text.
+The asterisks around it are preserved.
+
+\&sect; appears as an entity reference.
+It's not converted into the section symbol (&sect;).
+
+\=> The backslash prevents the equals sign followed by a greater
+than sign from combining to form a double arrow character (=>).
+
+\[[Word]] is not interpreted as an anchor.
+The double brackets around it are preserved.
+
+[\[[Word]]] is not interpreted as a bibliography anchor.
+The triple brackets around it are preserved.
+
+The URL \https://example.org isn't converted into an active link.
+====
+
+.Single and double plus inline passthroughs
+[#ex-single-plus]
+----
+A word or phrase between single pluses, such as +/user/{id}+,
+is not substituted.
+However, the special characters like +<+ and +>+ are still
+escaped in the output.
+
+An attribute reference within a word, such as dev++{conf}++,
+is not replaced.
+
+A plus passthrough will escape standalone formatting marks,
+like +``+, or formatting marks within a word, like all-natural++*++.
+----
+
+.View result of <<ex-single-plus>>
+[%collapsible.result]
+====
+A word or phrase between single pluses, such as +/user/{id}+,
+is not substituted.
+However, the special characters like +<+ and +>+ are still
+escaped in the output.
+
+An attribute reference within a word, such as dev++{conf}++,
+is not replaced.
+
+A plus passthrough will escape standalone formatting marks,
+like +``+, or formatting marks within a word, like all-natural++*++.
+====
+
+.Triple plus inline passthrough and inline pass macro
+[#ex-inline-pass]
+----
++++<u>underline me</u>+++ is underlined.
+
+pass:[<u>underline me</u>] is also underlined.
+----
+
+.View result of <<ex-inline-pass>>
+[%collapsible.result]
+====
++++<u>underline me</u>+++ is underlined.
+
+pass:[<u>underline me</u>] is also underlined.
+====
+
+== Bibliography
+
+.Bibliography with inbound references
+[#ex-biblio]
+----
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+
+[bibliography]
+== References
+
+* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+From Journeyman to Master. Addison-Wesley. 1999.
+* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
+Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
+----
+
+.View result of <<ex-biblio>>
+[%collapsible.result]
+====
+|===
+a|
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+
+[bibliography]
+== References
+
+* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+From Journeyman to Master. Addison-Wesley. 1999.
+* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
+Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
+|===
+====
+
+[#section-footnotes]
+== Footnotes
+
+.Normal and reusable footnotes
+[#ex-footnotes]
+----
+A statement.footnote:[Clarification about this statement.]
+
+A bold statement!footnote:disclaimer[Opinions are my own.]
+
+Another bold statement.footnote:disclaimer[]
+----
+
+.View result of <<ex-footnotes>>
+[%collapsible.result]
+====
+[.unstyled]
+|===
+a|
+A statement.footnote:[Clarification about this statement.]
+
+A bold statement!footnote:disclaimer[Opinions are my own.]
+
+Another bold statement.footnote:disclaimer[]
+|===
+====
+
+[#markdown-compatibility]
+== Markdown compatibility
+
+Markdown compatible syntax is an optional feature of the AsciiDoc language and is currently only available when using Asciidoctor.
+
+.Markdown-style headings
+[#ex-md-headings]
+----
+# Document Title (Level 0)
+
+## Section Level 1
+
+### Section Level 2
+
+#### Section Level 3
+
+##### Section Level 4
+
+###### Section Level 5
+----
+
+.View result of <<ex-md-headings>>
+[%collapsible.result]
+====
+[float]
+# Document Title (Level 0)
+
+[float]
+## Section Level 1
+
+[float]
+### Section Level 2
+
+[float]
+#### Section Level 3
+
+[float]
+##### Section Level 4
+
+[float]
+###### Section Level 5
+====
+
+.Fenced code block with syntax highlighting
+[#ex-fenced]
+----
+```ruby
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+```
+----
+
+.View result of <<ex-fenced>>
+[%collapsible.result]
+====
+```ruby
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+```
+====
+
+.Markdown-style blockquote
+[#ex-md-quote]
+----
+> I hold it that a little rebellion now and then is a good thing,
+> and as necessary in the political world as storms in the physical.
+> -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11
+----
+
+.View result of <<ex-md-quote>>
+[%collapsible.result]
+====
+> I hold it that a little rebellion now and then is a good thing,
+> and as necessary in the political world as storms in the physical.
+> -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11
+====
+
+.Markdown-style blockquote with block content
+[#ex-md-blockquote]
+----
+> > What's new?
+>
+> I've got Markdown in my AsciiDoc!
+>
+> > Like what?
+>
+> * Blockquotes
+> * Headings
+> * Fenced code blocks
+>
+> > Is there more?
+>
+> Yep. AsciiDoc and Markdown share a lot of common syntax already.
+----
+
+.View result of <<ex-md-blockquote>>
+[%collapsible.result]
+====
+> > What's new?
+>
+> I've got Markdown in my AsciiDoc!
+>
+> > Like what?
+>
+> * Blockquotes
+> * Headings
+> * Fenced code blocks
+>
+> > Is there more?
+>
+> Yep. AsciiDoc and Markdown share a lot of common syntax already.
+====
+
+.Markdown-style thematic breaks
+[#ex-md-breaks]
+----
+---
+
+- - -
+
+***
+
+* * *
+----
+
+.View result of <<ex-md-breaks>>
+[%collapsible.result]
+====
+---
+
+- - -
+
+***
+
+* * *
+====
+
+
+////
+Possible change for future to `%collapsible` blocks
+
+.Normal
+----
+Paragraphs don't require any special markup in AsciiDoc.
+A paragraph is just one or more lines of consecutive text.
+
+To begin a new paragraph, separate it by at least one empty line.
+Line breaks within a paragraph are not displayed.
+----
+
+.View Result (Normal)
+[%collapsible.result]
+====
+Paragraphs don't require any special markup in AsciiDoc.
+A paragraph is just one or more lines of consecutive text.
+
+To begin a new paragraph, separate it by at least one empty line.
+Line breaks within a paragraph are not displayed.
+====
+
+'''
+
+.Normal
+[tabs]
+====
+Source::
++
+----
+Paragraphs don't require any special markup in AsciiDoc.
+A paragraph is just one or more lines of consecutive text.
+
+To begin a new paragraph, separate it by at least one empty line.
+Line breaks within a paragraph are not displayed.
+----
+
+Output::
++
+--
+Paragraphs don't require any special markup in AsciiDoc.
+A paragraph is just one or more lines of consecutive text.
+
+To begin a new paragraph, separate it by at least one empty line.
+Line breaks within a paragraph are not displayed.
+--
+====
+////

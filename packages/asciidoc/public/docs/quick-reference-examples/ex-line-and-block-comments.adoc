@@ -1,0 +1,9 @@
+// A single-line comment
+
+////
+A multi-line comment.
+
+Notice it's a delimited block.
+////
+
+This paragraph is visible; the comments above are omitted from the result.

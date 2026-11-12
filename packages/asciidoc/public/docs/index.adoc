@@ -1,15 +1,7 @@
 = Introduction
 :showtitle:
 
-This is the new home for the TP AsciiDoc documentation. Migration of the full guide is in progress; the original repository remains the reference.
+*tp-asciidoc* adapts https://github.com/asciidoctor/asciidoctor.js[Asciidoctor.js] for the web, with convenient support for TP components and standard HTML elements.
 
-== Shared components
-
-This documentation uses `tp-asciidoc-multi-pages`. Its `.adoc` pages are rendered by `tp-asciidoc` and can use the same TP web components as the other documentation spaces.
-
-Use the sidebar to choose a page and the TP logo to return to the documentation portal.
-
-== Source
-
-* https://github.com/tp-web-lab/tp-docs[Documentation workspace]
-* https://github.com/tp-web-lab/tp-asciidoc[Library repository]
+* link:base.adoc[Base] presents the AsciiDoc Syntax Quick Reference through editable examples.
+* link:extensions.adoc[Extensions] is dedicated to the additional component and HTML syntax.
