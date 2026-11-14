@@ -1,0 +1,395 @@
+{
+  "version": "0.31.2",
+  "specification": "https://spec.commonmark.org/0.31.2/",
+  "sections": [
+    {
+      "title": "Paragraphs and blank lines",
+      "anchor": "paragraphs",
+      "intro": "A paragraph contains one or more lines of text. Separate paragraphs with a blank line. Several blank lines still separate blocks; they do not create empty paragraphs.",
+      "examples": [
+        {
+          "id": "paragraphs",
+          "title": "Separate paragraphs",
+          "description": "Remove the blank line to join the two paragraphs.",
+          "source": "The workshop starts on Monday.\nBring a notebook.\n\nThe afternoon session is optional.\n"
+        },
+        {
+          "id": "soft-breaks",
+          "title": "A soft line break",
+          "description": "An ordinary newline inside a paragraph is a soft break. In normal HTML layout, it is displayed like a space.",
+          "source": "These words are on\ntwo source lines but belong to one paragraph.\n"
+        }
+      ]
+    },
+    {
+      "title": "Hard line breaks",
+      "anchor": "hard-line-breaks",
+      "intro": "End a line with two or more spaces, or with a backslash, to request a line break within the same paragraph. The backslash is easier to see when editing. These markers must be followed by another line in the paragraph.",
+      "examples": [
+        {
+          "id": "hard-breaks",
+          "title": "Two ways to force a line break",
+          "description": "The first line ends with two spaces; the second ends with a backslash. Both produce a line break.",
+          "source": "First line: two trailing spaces.  \nSecond line: a backslash.\\\nThird line.\n"
+        }
+      ]
+    },
+    {
+      "title": "ATX headings",
+      "anchor": "atx-headings",
+      "intro": "Start a heading with one to six hash characters followed by a space. The number of hashes sets its level. Optional closing hashes must be separated from the heading text by a space. Heading numbering and generated link IDs are not specified by CommonMark.",
+      "examples": [
+        {
+          "id": "headings",
+          "title": "Six heading levels",
+          "description": "Change the number of opening hashes to change the heading level.",
+          "source": "# Workshop\n\n## Preparation\n\n### Equipment\n\n#### Notebook\n\n##### Paper\n\n###### Recycled paper\n"
+        },
+        {
+          "id": "heading-markers",
+          "title": "Opening and closing markers",
+          "description": "The first line is a heading; the second is ordinary text because there is no space after its opening hashes.",
+          "source": "## A heading ##\n\n##Not a heading\n"
+        }
+      ]
+    },
+    {
+      "title": "Setext headings",
+      "anchor": "setext-headings",
+      "intro": "Underline text with equals signs for a level-one heading or hyphens for a level-two heading. The underline belongs to the preceding paragraph; insert a blank line if you intend a thematic break instead.",
+      "examples": [
+        {
+          "id": "setext-headings",
+          "title": "Underlined headings",
+          "description": "Compare the heading underlines with the separate thematic break at the end.",
+          "source": "Workshop\n========\n\nPreparation\n-----------\n\nText before a thematic break.\n\n---\n"
+        }
+      ]
+    },
+    {
+      "title": "Thematic breaks",
+      "anchor": "thematic-breaks",
+      "intro": "A line containing at least three matching asterisks, hyphens or underscores forms a thematic break. Spaces between the markers are allowed. Use blank lines around the break to avoid ambiguity with headings or lists.",
+      "examples": [
+        {
+          "id": "thematic-breaks",
+          "title": "Three marker styles",
+          "description": "All three marker styles produce the same kind of HTML separator.",
+          "source": "Morning session\n\n***\n\nAfternoon session\n\n- - -\n\nEvening session\n\n___\n\nEnd of the day.\n"
+        }
+      ]
+    },
+    {
+      "title": "Emphasis and strong emphasis",
+      "anchor": "emphasis-and-strong-emphasis",
+      "intro": "Use matching asterisks or underscores around text for emphasis, and double markers for strong emphasis. Markers must touch the text they enclose. Underscores inside a word do not create emphasis.",
+      "examples": [
+        {
+          "id": "emphasis",
+          "title": "Emphasis, strong emphasis and nesting",
+          "description": "Try single, double and triple markers.",
+          "source": "*Emphasis* and _also emphasis_.\n\n**Strong emphasis** and __also strong emphasis__.\n\n***Both together*** and **strong with *emphasis* inside**.\n"
+        },
+        {
+          "id": "emphasis-boundaries",
+          "title": "Word boundaries and spaces",
+          "description": "Compare markers around words with underscores inside an identifier.",
+          "source": "An identifier: workshop_notes.\n\n*These words are emphasized.*\n\nWith spaces: * these words are not emphasized *\n"
+        }
+      ]
+    },
+    {
+      "title": "Code spans",
+      "anchor": "code-spans",
+      "intro": "Surround inline code with backticks. If the code contains a backtick, use a longer matching delimiter. Code spans treat Markdown punctuation literally; line endings become spaces, and one surrounding space is removed when both ends have a space and the content is not entirely spaces.",
+      "examples": [
+        {
+          "id": "code-spans",
+          "title": "Literal inline code",
+          "description": "The asterisks inside the code span do not create emphasis.",
+          "source": "Call `print(value)` and enter `*literal asterisks*`.\n"
+        },
+        {
+          "id": "backticks",
+          "title": "Backticks inside code",
+          "description": "The outer delimiter has two backticks, so the single backticks belong to the code.",
+          "source": "Write `` `name` `` to show a name surrounded by backticks.\n\nA multiline span: `first\nsecond`.\n"
+        }
+      ]
+    },
+    {
+      "title": "Escapes",
+      "anchor": "backslash-escapes",
+      "intro": "A backslash before ASCII punctuation makes that punctuation literal. It does not escape ordinary letters. Escapes are not processed inside code spans or code blocks.",
+      "examples": [
+        {
+          "id": "escapes",
+          "title": "Literal punctuation",
+          "description": "Remove a backslash to see whether the punctuation becomes markup.",
+          "source": "\\*Not emphasized\\*.\n\n\\# Not a heading\n\n\\[Not a link\\](destination.html)\n\nInside code: `\\*literal\\*`.\n"
+        }
+      ]
+    },
+    {
+      "title": "Character references",
+      "anchor": "entity-and-numeric-character-references",
+      "intro": "HTML named and numeric character references can represent characters in text and attributes. They remain literal inside code. Characters produced by a reference are not reinterpreted as Markdown markers.",
+      "examples": [
+        {
+          "id": "entities",
+          "title": "Named and numeric references",
+          "description": "Compare the rendered references with their literal form inside code.",
+          "source": "Fish &amp; chips. Copyright &copy; 2026.\n\nA decimal reference: &#169;. A hexadecimal reference: &#xA9;.\n\n&ast;Not emphasized&ast;.\n\nLiteral code: `&copy;`.\n"
+        }
+      ]
+    },
+    {
+      "title": "Fenced code blocks",
+      "anchor": "fenced-code-blocks",
+      "intro": "Open a code block with at least three backticks or tildes. Close it with the same character and at least as many markers. Content is literal. An optional information string can name the language; CommonMark does not prescribe syntax highlighting or line numbering.",
+      "examples": [
+        {
+          "id": "fenced-code",
+          "title": "A code block with a language hint",
+          "description": "The language hint is javascript. The Markdown markers inside the string remain code.",
+          "source": "```javascript\nconst message = \"**Hello**\";\nconsole.log(message);\n```\n"
+        },
+        {
+          "id": "nested-fences",
+          "title": "Showing a code fence as text",
+          "description": "Use a longer outer fence when the example itself contains a shorter fence.",
+          "source": "````markdown\n```javascript\nconsole.log(\"Hello\");\n```\n````\n"
+        },
+        {
+          "id": "tilde-code",
+          "title": "Tilde fences",
+          "description": "Tildes are another way to delimit code without conflicting with backticks.",
+          "source": "~~~text\n# This is code, not a heading.\n* This is code, not a list.\n~~~\n"
+        }
+      ]
+    },
+    {
+      "title": "Indented code blocks",
+      "anchor": "indented-code-blocks",
+      "intro": "Indent a block by at least four spaces to make it code. A code block cannot interrupt a paragraph, so leave a blank line before it. Inside lists, indentation is relative to the list item content.",
+      "examples": [
+        {
+          "id": "indented-code",
+          "title": "Code indented by four spaces",
+          "description": "The four leading spaces are removed from the rendered code.",
+          "source": "Run the following commands:\n\n    mkdir workshop\n    cd workshop\n\nThen open the folder.\n"
+        }
+      ]
+    },
+    {
+      "title": "Block quotations",
+      "anchor": "block-quotes",
+      "intro": "Prefix a quotation with >. Quotes can contain paragraphs, lists, headings and other quotes. A line containing only > keeps a blank line inside the quotation. Prefix every line for clarity; ordinary paragraph continuation lines may omit the marker.",
+      "examples": [
+        {
+          "id": "blockquotes",
+          "title": "A quotation with several blocks",
+          "description": "The empty quoted line separates the paragraphs.",
+          "source": "> ## Workshop reminder\n>\n> Bring your notes.\n>\n> - Read the introduction.\n> - Prepare one question.\n\nThis paragraph is outside the quotation.\n"
+        },
+        {
+          "id": "nested-quotes",
+          "title": "Nested quotations",
+          "description": "A second marker creates a quote inside the first quote.",
+          "source": "> First quotation.\n>\n> > A quotation inside it.\n>\n> Back to the first quotation.\n"
+        },
+        {
+          "id": "lazy-quotes",
+          "title": "Paragraph continuation",
+          "description": "The unmarked second line continues the quoted paragraph; the blank line ends it.",
+          "source": "> This quotation starts here\nand continues on the next source line.\n\nOutside the quotation.\n"
+        }
+      ]
+    },
+    {
+      "title": "Bullet lists",
+      "anchor": "lists",
+      "intro": "Start list items with a hyphen, plus sign or asterisk followed by a space. Keep the same marker for one list. Changing the marker starts a separate list.",
+      "examples": [
+        {
+          "id": "bullet-lists",
+          "title": "A bullet list",
+          "description": "Add an item by repeating the same marker.",
+          "source": "- Notebook\n- Pencil\n- Ruler\n"
+        },
+        {
+          "id": "list-markers",
+          "title": "Different markers, separate lists",
+          "description": "Each change of marker begins a new list, even without a blank line.",
+          "source": "- First list\n- Another item\n+ Second list\n+ Another item\n* Third list\n* Another item\n"
+        }
+      ]
+    },
+    {
+      "title": "Ordered lists",
+      "anchor": "list-items",
+      "intro": "An ordered marker contains one to nine digits followed by a period or a closing parenthesis, then a space. The first marker determines the starting number; later source numbers do not set individual item values. Use consistent delimiters. A list interrupting a paragraph must start at 1.",
+      "examples": [
+        {
+          "id": "ordered-lists",
+          "title": "Starting number and consecutive numbering",
+          "description": "The rendered sequence starts at 3; the source number 8 does not skip items.",
+          "source": "3. Prepare the room\n8. Welcome participants\n1. Start the workshop\n"
+        },
+        {
+          "id": "parenthesized-lists",
+          "title": "Closing-parenthesis markers",
+          "description": "The closing parenthesis is part of the Markdown marker; the browser chooses how to display the resulting ordered list.",
+          "source": "1) Introduction\n2) Demonstration\n3) Practice\n"
+        }
+      ]
+    },
+    {
+      "title": "Nested lists and item contents",
+      "anchor": "list-items",
+      "intro": "Indent nested blocks to the content column of their parent item. For ordinary markers such as - or 1., using four spaces is a clear way to nest a list. A list item can contain several paragraphs, quotations or code blocks.",
+      "examples": [
+        {
+          "id": "nested-lists",
+          "title": "A list inside a list",
+          "description": "The nested items belong to Preparation, not to the outer list.",
+          "source": "- Preparation\n    - Read the guide\n    - Install the tools\n- Practice\n    1. Open the example\n    2. Change one line\n"
+        },
+        {
+          "id": "item-blocks",
+          "title": "Several blocks in one item",
+          "description": "The second paragraph and the code fence remain inside the first item because they are indented.",
+          "source": "1. Open the workshop folder.\n\n   Keep your examples in this folder.\n\n   ```text\n   workshop/\n     notes.md\n   ```\n\n2. Start writing.\n"
+        }
+      ]
+    },
+    {
+      "title": "Tight and loose lists",
+      "anchor": "lists",
+      "intro": "Blank lines between items or between blocks inside an item can make a list loose. In HTML, loose list items retain paragraph elements; tight items omit those wrappers. TP styles determine the visible spacing.",
+      "examples": [
+        {
+          "id": "tight-loose",
+          "title": "Compare list spacing",
+          "description": "The first list is tight. The second is loose because its items are separated by blank lines.",
+          "source": "- Notebook\n- Pencil\n\nA separate, loose list:\n\n- Notebook\n\n- Pencil\n"
+        }
+      ]
+    },
+    {
+      "title": "Inline links",
+      "anchor": "links",
+      "intro": "Write the link text in square brackets and the destination in parentheses. An optional title follows the destination. Angle brackets around the destination allow spaces. Links can contain emphasis or code, but cannot contain another link.",
+      "examples": [
+        {
+          "id": "inline-links",
+          "title": "Links and optional titles",
+          "description": "The second link has a title that browsers may display on hover.",
+          "source": "Visit [CommonMark](https://commonmark.org/).\n\nRead the [**full specification**](https://spec.commonmark.org/0.31.2/ \"CommonMark 0.31.2\").\n"
+        },
+        {
+          "id": "local-links",
+          "title": "A local destination and a fragment",
+          "description": "These links open a bundled example page; the second targets a section in that page.",
+          "source": "Open the [sample page](docs/commonmark-examples/destination.html).\n\nJump to its [Practice section](docs/commonmark-examples/destination.html#practice).\n"
+        }
+      ]
+    },
+    {
+      "title": "Reference links",
+      "anchor": "link-reference-definitions",
+      "intro": "A reference definition associates a label with a destination and optional title. Definitions can appear before or after their uses and are not displayed. Labels are case-insensitive and normalize whitespace. Full, collapsed and shortcut references share this mechanism.",
+      "examples": [
+        {
+          "id": "reference-links",
+          "title": "Three forms of reference links",
+          "description": "All three links use the same definition.",
+          "source": "Read [the guide][CommonMark], [CommonMark][], or [CommonMark].\n\n[CommonMark]: https://commonmark.org/ \"CommonMark guide\"\n"
+        }
+      ]
+    },
+    {
+      "title": "Images",
+      "anchor": "images",
+      "intro": "Image syntax resembles link syntax with an exclamation mark before the opening bracket. The bracketed text provides the text alternative; an optional title is separate. CommonMark does not define image sizing attributes, automatic figures or captions.",
+      "examples": [
+        {
+          "id": "images",
+          "title": "An image with alternative text",
+          "description": "The image is bundled with this documentation. Its title is not a caption.",
+          "source": "![A green circle and a triangle](docs/commonmark-examples/images/shapes.svg \"Two geometric shapes\")\n"
+        },
+        {
+          "id": "inline-image",
+          "title": "An image within a paragraph",
+          "description": "The image belongs to the surrounding paragraph. Its small intrinsic dimensions keep it suitable for inline use.",
+          "source": "A small symbol ![green circle](docs/commonmark-examples/images/dot.svg) appears inside this sentence.\n"
+        },
+        {
+          "id": "reference-images",
+          "title": "An image using a reference",
+          "description": "The destination and title are written separately from the image.",
+          "source": "![A green circle and a triangle][shapes]\n\n[shapes]: docs/commonmark-examples/images/shapes.svg \"Two geometric shapes\"\n"
+        }
+      ]
+    },
+    {
+      "title": "Autolinks",
+      "anchor": "autolinks",
+      "intro": "Put an absolute URI or an email address inside angle brackets to create an autolink. Bare URL recognition is an extension, not a CommonMark rule. TP also recognizes bare URLs by default.",
+      "examples": [
+        {
+          "id": "autolinks",
+          "title": "URI and email autolinks",
+          "description": "The displayed address is also the link destination. The email link uses mailto.",
+          "source": "<https://commonmark.org/>\n\n<reader@example.org>\n"
+        }
+      ]
+    },
+    {
+      "title": "Inline HTML",
+      "anchor": "raw-html",
+      "intro": "CommonMark can pass HTML tags through to the output. Markdown between inline HTML tags is still parsed. HTML is useful when the basic syntax has no equivalent, but what a host application permits may vary.",
+      "examples": [
+        {
+          "id": "inline-html",
+          "title": "Standard HTML inside text",
+          "description": "The subscript and superscript use HTML. Emphasis inside the span uses Markdown.",
+          "source": "Water is H<sub>2</sub>O and a square has area r<sup>2</sup>.\n\n<span title=\"A standard HTML span\">*Emphasis inside a span*</span>.\n"
+        }
+      ]
+    },
+    {
+      "title": "HTML blocks",
+      "anchor": "html-blocks",
+      "intro": "An HTML block is passed through as HTML, without interpreting Markdown inside it. Depending on the HTML construct, the block ends at a matching terminator or at a blank line. Use ordinary HTML content inside the block. TP element directives, which can contain Markdown, are covered in Extensions.",
+      "examples": [
+        {
+          "id": "html-blocks",
+          "title": "HTML content inside an HTML block",
+          "description": "The strong element renders as HTML. The asterisks remain literal inside this block.",
+          "source": "<div>\n<strong>This is HTML emphasis.</strong>\n<p>*These asterisks stay literal.*</p>\n</div>\n\nThis **Markdown** paragraph is outside the block.\n"
+        },
+        {
+          "id": "html-comments",
+          "title": "An HTML comment",
+          "description": "The comment is present in the source but is not displayed.",
+          "source": "Before the comment.\n\n<!-- This note is not displayed. -->\n\nAfter the comment.\n"
+        }
+      ]
+    },
+    {
+      "title": "Spaces, tabs and indentation",
+      "anchor": "tabs",
+      "intro": "Indentation affects block structure. Tabs advance to four-column tab stops where indentation is significant; they are not simply four spaces in every position. Prefer spaces in examples so the content column is easy to inspect. Trailing spaces can be meaningful, as the hard-break example shows.",
+      "examples": [
+        {
+          "id": "tabs",
+          "title": "A tab-indented code block",
+          "description": "The code line starts with a literal tab character. Replace it with four spaces to obtain the same block here.",
+          "source": "A tab can indent a code block:\n\n\tconst value = 42;\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1938 @@
+{
+  "sourceUrl": "https://github.com/jgm/pandoc/blob/main/MANUAL.txt",
+  "section": "Pandoc’s Markdown",
+  "manualDate": "2026-10-25",
+  "sourceSha256": "2648b5187af71666bc29016b3eddbade38c105230d2ef32b63413338a095021a",
+  "pandocVersion": "3.9",
+  "testedOn": "2026-11-13",
+  "examples": [
+    {
+      "id": "example-001",
+      "section": "Setext-style headings",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "A level-one heading\n===================\n\nA level-two heading\n-------------------\n",
+      "source": "A level-one heading\n===================\n\nA level-two heading\n-------------------\n"
+    },
+    {
+      "id": "example-002",
+      "section": "ATX-style headings",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "## A level-two heading\n\n### A level-three heading ###\n",
+      "source": "## A level-two heading\n\n### A level-three heading ###\n"
+    },
+    {
+      "id": "example-003",
+      "section": "ATX-style headings",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "# A level-one heading with a [link](/url) and *emphasis*\n",
+      "source": "# A level-one heading with a [link](docs/pandoc-markdown-examples/example-target.html) and *emphasis*\n"
+    },
+    {
+      "id": "example-004",
+      "section": "Extension: blank_before_header",
+      "status": "compatible",
+      "explanation": "The hash characters remain literal; neither a heading nor deletion markup is created.",
+      "adaptations": [],
+      "originalSource": "I like several of their flavors of ice cream:\n#22, for example, and #5.\n",
+      "source": "I like several of their flavors of ice cream:\n#22, for example, and #5.\n"
+    },
+    {
+      "id": "example-005",
+      "section": "Extension: header_attributes",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "The three alternative heading forms are isolated so that the repeated foo ID does not cause a duplicate-ID error."
+      ],
+      "originalSource": "# My heading {#foo}\n\n## My heading ##    {#foo}\n\nMy other heading   {#foo}\n---------------\n",
+      "source": "# My heading {#foo}\n"
+    },
+    {
+      "id": "example-006",
+      "section": "Extension: header_attributes",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "The three alternative heading forms are isolated so that the repeated foo ID does not cause a duplicate-ID error."
+      ],
+      "originalSource": "# My heading {#foo}\n\n## My heading ##    {#foo}\n\nMy other heading   {#foo}\n---------------\n",
+      "source": "## My heading ##    {#foo}\n"
+    },
+    {
+      "id": "example-007",
+      "section": "Extension: header_attributes",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "The three alternative heading forms are isolated so that the repeated foo ID does not cause a duplicate-ID error."
+      ],
+      "originalSource": "# My heading {#foo}\n\n## My heading ##    {#foo}\n\nMy other heading   {#foo}\n---------------\n",
+      "source": "My other heading   {#foo}\n---------------\n"
+    },
+    {
+      "id": "example-008",
+      "section": "Extension: header_attributes",
+      "status": "compatible",
+      "explanation": "This heading remains in the table of contents but is excluded when sectionNumbering.enabled is true. The marker works in standard TP Markdown without Pandoc mode.",
+      "adaptations": [],
+      "originalSource": "# My heading {-}\n",
+      "source": "# My heading {-}\n"
+    },
+    {
+      "id": "example-009",
+      "section": "Extension: header_attributes",
+      "status": "compatible",
+      "explanation": "This heading remains in the table of contents but is excluded when sectionNumbering.enabled is true. The marker works in standard TP Markdown without Pandoc mode.",
+      "adaptations": [],
+      "originalSource": "# My heading {.unnumbered}\n",
+      "source": "# My heading {.unnumbered}\n"
+    },
+    {
+      "id": "example-010",
+      "section": "Extension: implicit_header_references",
+      "status": "compatible",
+      "explanation": "An automatic heading ID is generated; this tests the heading alone, not implicit reference resolution.",
+      "adaptations": [],
+      "originalSource": "# Heading identifiers in HTML\n",
+      "source": "# Heading identifiers in HTML\n"
+    },
+    {
+      "id": "example-011",
+      "section": "Extension: implicit_header_references",
+      "status": "unsupported",
+      "explanation": "Pandoc’s implicit heading-reference lookup is not implemented, even with the heading supplied in this example.",
+      "adaptations": [
+        "The heading referenced by this isolated example is included."
+      ],
+      "originalSource": "[Heading identifiers in HTML]\n",
+      "source": "# Heading identifiers in HTML\n\n[Heading identifiers in HTML]\n",
+      "workaround": {
+        "explanation": "Write an explicit fragment link. Giving the heading an explicit ID keeps the link stable if its wording changes.",
+        "source": "# Heading identifiers in HTML {#heading-identifiers}\n\n[Heading identifiers in HTML](#heading-identifiers)"
+      }
+    },
+    {
+      "id": "example-012",
+      "section": "Extension: implicit_header_references",
+      "status": "unsupported",
+      "explanation": "Pandoc’s implicit heading-reference lookup is not implemented, even with the heading supplied in this example.",
+      "adaptations": [
+        "The heading referenced by this isolated example is included."
+      ],
+      "originalSource": "[Heading identifiers in HTML][]\n",
+      "source": "# Heading identifiers in HTML\n\n[Heading identifiers in HTML][]\n",
+      "workaround": {
+        "explanation": "Write an explicit fragment link. Giving the heading an explicit ID keeps the link stable if its wording changes.",
+        "source": "# Heading identifiers in HTML {#heading-identifiers}\n\n[Heading identifiers in HTML](#heading-identifiers)"
+      }
+    },
+    {
+      "id": "example-013",
+      "section": "Extension: implicit_header_references",
+      "status": "unsupported",
+      "explanation": "Pandoc’s implicit heading-reference lookup is not implemented, even with the heading supplied in this example.",
+      "adaptations": [
+        "The heading referenced by this isolated example is included."
+      ],
+      "originalSource": "[the section on heading identifiers][heading identifiers in\nHTML]\n",
+      "source": "# Heading identifiers in HTML\n\n[the section on heading identifiers][heading identifiers in\nHTML]\n",
+      "workaround": {
+        "explanation": "Write an explicit fragment link. Giving the heading an explicit ID keeps the link stable if its wording changes.",
+        "source": "# Heading identifiers in HTML {#heading-identifiers}\n\n[the section on heading identifiers](#heading-identifiers)"
+      }
+    },
+    {
+      "id": "example-014",
+      "section": "Extension: implicit_header_references",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "The heading referenced by this isolated example is included."
+      ],
+      "originalSource": "[Heading identifiers in HTML](#heading-identifiers-in-html)\n",
+      "source": "# Heading identifiers in HTML\n\n[Heading identifiers in HTML](#heading-identifiers-in-html)\n"
+    },
+    {
+      "id": "example-015",
+      "section": "Extension: implicit_header_references",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "# Foo\n\n[foo]: bar\n\nSee [foo]\n",
+      "source": "# Foo\n\n[foo]: docs/pandoc-markdown-examples/example-target.html\n\nSee [foo]\n"
+    },
+    {
+      "id": "example-016",
+      "section": "Block quotations",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "> This is a block quote. This\n> paragraph has two lines.\n>\n> 1. This is a list inside a block quote.\n> 2. Second item.\n",
+      "source": "> This is a block quote. This\n> paragraph has two lines.\n>\n> 1. This is a list inside a block quote.\n> 2. Second item.\n"
+    },
+    {
+      "id": "example-017",
+      "section": "Block quotations",
+      "status": "partial",
+      "explanation": "The lazy continuation produces different blockquote/list boundaries.",
+      "adaptations": [],
+      "originalSource": "> This is a block quote. This\nparagraph has two lines.\n\n> 1. This is a list inside a block quote.\n2. Second item.\n",
+      "source": "> This is a block quote. This\nparagraph has two lines.\n\n> 1. This is a list inside a block quote.\n2. Second item.\n",
+      "workaround": {
+        "explanation": "Prefix every quoted line with > instead of relying on lazy continuation. Separate the two quotations with an HTML comment so they remain distinct blockquotes. The ordered list stays entirely inside the second quotation.",
+        "source": "> This is a block quote. This\n> paragraph has two lines.\n\n<!-- -->\n\n> 1. This is a list inside a block quote.\n> 2. Second item."
+      },
+      "pandocMode": {
+        "explanation": "Lazy continuation stays inside each quotation, including its list.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-018",
+      "section": "Block quotations",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "> This is a block quote.\n>\n> > A block quote within a block quote.\n",
+      "source": "> This is a block quote.\n>\n> > A block quote within a block quote.\n"
+    },
+    {
+      "id": "example-019",
+      "section": "Block quotations",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": ">     code\n",
+      "source": ">     code\n"
+    },
+    {
+      "id": "example-020",
+      "section": "Extension: blank_before_blockquote",
+      "status": "partial",
+      "explanation": "TP creates a nested blockquote where Pandoc’s blank-before-blockquote rule prevents it.",
+      "adaptations": [],
+      "originalSource": "> This is a block quote.\n>> Not nested, since `blank_before_blockquote` is enabled by default\n",
+      "source": "> This is a block quote.\n>> Not nested, since `blank_before_blockquote` is enabled by default\n",
+      "workaround": {
+        "explanation": "Escape the second > so that it is text inside the existing quotation, rather than the start of a nested quotation.",
+        "source": "> This is a block quote.\n> \\> Not nested, since `blank_before_blockquote` is enabled by default"
+      },
+      "pandocMode": {
+        "explanation": "A nested block quotation requires a blank line.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-021",
+      "section": "Indented code blocks",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "    if (a > 3) {\n      moveShip(5 * gravity, DOWN);\n    }\n",
+      "source": "    if (a > 3) {\n      moveShip(5 * gravity, DOWN);\n    }\n"
+    },
+    {
+      "id": "example-022",
+      "section": "Extension: fenced_code_blocks",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "~~~~~~~\nif (a > 3) {\n  moveShip(5 * gravity, DOWN);\n}\n~~~~~~~\n",
+      "source": "~~~~~~~\nif (a > 3) {\n  moveShip(5 * gravity, DOWN);\n}\n~~~~~~~\n"
+    },
+    {
+      "id": "example-023",
+      "section": "Extension: fenced_code_blocks",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "~~~~~~~~~~~~~~~~\n~~~~~~~~~~\ncode including tildes\n~~~~~~~~~~\n~~~~~~~~~~~~~~~~\n",
+      "source": "~~~~~~~~~~~~~~~~\n~~~~~~~~~~\ncode including tildes\n~~~~~~~~~~\n~~~~~~~~~~~~~~~~\n"
+    },
+    {
+      "id": "example-024",
+      "section": "Extension: fenced_code_attributes",
+      "status": "partial",
+      "explanation": "Code and attributes survive, but attributes attach differently and Pandoc line numbering is not implemented.",
+      "adaptations": [],
+      "originalSource": "~~~~ {#mycode .haskell .numberLines startFrom=\"100\"}\nqsort []     = []\nqsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++\n               qsort (filter (>= x) xs)\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
+      "source": "~~~~ {#mycode .haskell .numberLines startFrom=\"100\"}\nqsort []     = []\nqsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++\n               qsort (filter (>= x) xs)\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
+      "workaround": {
+        "explanation": "Use tp-code-editor in read-only mode with line-numbers. Haskell syntax highlighting loads on demand. Set line-number-start=100 to display 100, 101 and 102, matching Pandoc’s startFrom; id=mycode preserves the target ID. This provides a web editor presentation rather than a static pre/code block.",
+        "source": ":::: tp-code-editor {readonly line-numbers line-number-start=100 id=mycode}\n::: script {type=\"tp/haskell\"}\nqsort []     = []\nqsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++\n               qsort (filter (>= x) xs)\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "A readonly code editor shows Haskell with line numbers starting at 100.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-025",
+      "section": "Extension: fenced_code_attributes",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "```haskell\nqsort [] = []\n```\n",
+      "source": "```haskell\nqsort [] = []\n```\n"
+    },
+    {
+      "id": "example-026",
+      "section": "Extension: fenced_code_attributes",
+      "status": "partial",
+      "explanation": "The class is preserved, but this form does not declare a language-* class for the TP highlighter.",
+      "adaptations": [],
+      "originalSource": "``` {.haskell}\nqsort [] = []\n```\n",
+      "source": "``` {.haskell}\nqsort [] = []\n```\n",
+      "workaround": {
+        "explanation": "Declare the language directly after the opening fence. This produces the language-haskell class used by the highlighter.",
+        "source": "```haskell\nqsort [] = []\n```"
+      },
+      "pandocMode": {
+        "explanation": "The Haskell class selects the code language.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-027",
+      "section": "Extension: fenced_code_attributes",
+      "status": "partial",
+      "explanation": "The code language is recognized, but the numberLines class does not enable Pandoc-style line numbering.",
+      "adaptations": [],
+      "originalSource": "```haskell {.numberLines}\nqsort [] = []\n```\n",
+      "source": "```haskell {.numberLines}\nqsort [] = []\n```\n",
+      "workaround": {
+        "explanation": "Use tp-code-editor in read-only mode with line-numbers. Haskell syntax highlighting loads on demand. The gutter starts at 1 by default. This provides a web editor presentation rather than a static pre/code block.",
+        "source": ":::: tp-code-editor {readonly line-numbers}\n::: script {type=\"tp/haskell\"}\nqsort [] = []\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "A readonly Haskell editor displays line numbers.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-028",
+      "section": "Extension: fenced_code_attributes",
+      "status": "partial",
+      "explanation": "Classes survive, but the language declaration and line-numbering behavior differ.",
+      "adaptations": [],
+      "originalSource": "``` {.haskell .numberLines}\nqsort [] = []\n```\n",
+      "source": "``` {.haskell .numberLines}\nqsort [] = []\n```\n",
+      "workaround": {
+        "explanation": "Use tp-code-editor in read-only mode with line-numbers. Haskell syntax highlighting loads on demand. The gutter starts at 1 by default. This provides a web editor presentation rather than a static pre/code block.",
+        "source": ":::: tp-code-editor {readonly line-numbers}\n::: script {type=\"tp/haskell\"}\nqsort [] = []\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "The language class and numbered-code class configure the editor.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-029",
+      "section": "Extension: line_blocks",
+      "status": "compatible",
+      "explanation": "Standard TP Markdown preserves the marked line breaks and leading spaces. Inline Markdown remains available; no Pandoc mode is needed.",
+      "adaptations": [],
+      "originalSource": "| The limerick packs laughs anatomical\n| In space that is quite economical.\n|    But the good ones I've seen\n|    So seldom are clean\n| And the clean ones so seldom are comical\n\n| 200 Main St.\n| Berkeley, CA 94718\n",
+      "source": "| The limerick packs laughs anatomical\n| In space that is quite economical.\n|    But the good ones I've seen\n|    So seldom are clean\n| And the clean ones so seldom are comical\n\n| 200 Main St.\n| Berkeley, CA 94718\n",
+      "workaround": {
+        "explanation": "Remove the leading | markers and use explicit line breaks. Nonbreaking spaces preserve the indentation of the two indented lines; this reproduces the displayed lines, rather than a Pandoc line-block node.",
+        "source": "The limerick packs laughs anatomical  \nIn space that is quite economical.  \n&nbsp;&nbsp;&nbsp;But the good ones I've seen  \n&nbsp;&nbsp;&nbsp;So seldom are clean  \nAnd the clean ones so seldom are comical\n\n200 Main St.  \nBerkeley, CA 94718"
+      }
+    },
+    {
+      "id": "example-030",
+      "section": "Extension: line_blocks",
+      "status": "compatible",
+      "explanation": "The indented continuation is joined to the preceding logical line; the marked address lines retain their line breaks. No Pandoc mode is needed.",
+      "adaptations": [],
+      "originalSource": "| The Right Honorable Most Venerable and Righteous Samuel L.\n  Constable, Jr.\n| 200 Main St.\n| Berkeley, CA 94718\n",
+      "source": "| The Right Honorable Most Venerable and Righteous Samuel L.\n  Constable, Jr.\n| 200 Main St.\n| Berkeley, CA 94718\n",
+      "workaround": {
+        "explanation": "Join the continuation to its first line, remove |, and insert Markdown hard breaks between the address lines.",
+        "source": "The Right Honorable Most Venerable and Righteous Samuel L. Constable, Jr.  \n200 Main St.  \nBerkeley, CA 94718"
+      }
+    },
+    {
+      "id": "example-031",
+      "section": "Bullet lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "* one\n* two\n* three\n",
+      "source": "* one\n* two\n* three\n"
+    },
+    {
+      "id": "example-032",
+      "section": "Bullet lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "* one\n\n* two\n\n* three\n",
+      "source": "* one\n\n* two\n\n* three\n"
+    },
+    {
+      "id": "example-033",
+      "section": "Bullet lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "* here is my first\n  list item.\n* and my second.\n",
+      "source": "* here is my first\n  list item.\n* and my second.\n"
+    },
+    {
+      "id": "example-034",
+      "section": "Bullet lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "* here is my first\nlist item.\n* and my second.\n",
+      "source": "* here is my first\nlist item.\n* and my second.\n"
+    },
+    {
+      "id": "example-035",
+      "section": "Block content in list items",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "  * First paragraph.\n\n    Continued.\n\n  * Second paragraph. With a code block, which must be indented\n    eight spaces:\n\n        { code }\n",
+      "source": "  * First paragraph.\n\n    Continued.\n\n  * Second paragraph. With a code block, which must be indented\n    eight spaces:\n\n        { code }\n"
+    },
+    {
+      "id": "example-036",
+      "section": "Block content in list items",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "*     code\n\n  continuation paragraph\n",
+      "source": "*     code\n\n  continuation paragraph\n"
+    },
+    {
+      "id": "example-037",
+      "section": "Block content in list items",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "* fruits\n  + apples\n    - macintosh\n    - red delicious\n  + pears\n  + peaches\n* vegetables\n  + broccoli\n  + chard\n",
+      "source": "* fruits\n  + apples\n    - macintosh\n    - red delicious\n  + pears\n  + peaches\n* vegetables\n  + broccoli\n  + chard\n"
+    },
+    {
+      "id": "example-038",
+      "section": "Block content in list items",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "+ A lazy, lazy, list\nitem.\n\n+ Another one; this looks\nbad but is legal.\n\n    Second paragraph of second\nlist item.\n",
+      "source": "+ A lazy, lazy, list\nitem.\n\n+ Another one; this looks\nbad but is legal.\n\n    Second paragraph of second\nlist item.\n"
+    },
+    {
+      "id": "example-039",
+      "section": "Ordered lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "1.  one\n2.  two\n3.  three\n",
+      "source": "1.  one\n2.  two\n3.  three\n"
+    },
+    {
+      "id": "example-040",
+      "section": "Ordered lists",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "5.  one\n7.  two\n1.  three\n",
+      "source": "5.  one\n7.  two\n1.  three\n"
+    },
+    {
+      "id": "example-041",
+      "section": "Extension: fancy_lists",
+      "status": "partial",
+      "explanation": "TP recognizes an alphabetic list where Pandoc deliberately keeps ordinary text: the two-space rule after a capital-letter marker differs.",
+      "adaptations": [],
+      "originalSource": "B. Russell won a Nobel Prize (but not for \"On Denoting\").\n",
+      "source": "B. Russell won a Nobel Prize (but not for \"On Denoting\").\n",
+      "workaround": {
+        "explanation": "Escape the period so TP does not recognize an alphabetic list marker.",
+        "source": "B\\. Russell won a Nobel Prize (but not for \"On Denoting\")."
+      },
+      "pandocMode": {
+        "explanation": "A capital initial followed by only one space remains prose.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-042",
+      "section": "Extension: fancy_lists",
+      "status": "unsupported",
+      "explanation": "Pandoc recognizes the parenthesized letter as a list marker; TP instead turns (C) into a copyright symbol.",
+      "adaptations": [],
+      "originalSource": "(C) 2007 Joe Smith\n",
+      "source": "(C) 2007 Joe Smith\n",
+      "workaround": {
+        "explanation": "Use an ordinary Markdown ordered list, followed by an attribute block on a separate paragraph. type=A selects uppercase letters and start=3 starts at C. No element directives are needed. The second item below illustrates progression to D. The browser normally displays C. and D.; matching Pandoc’s parenthesized markers would additionally require CSS.",
+        "source": "1. 2007 Joe Smith\n2. 2008 Helen Doe\n\n{type=A start=3}"
+      }
+    },
+    {
+      "id": "example-043",
+      "section": "Extension: fancy_lists",
+      "status": "compatible",
+      "explanation": "This counterexample remains ordinary text rather than becoming a list item.",
+      "adaptations": [],
+      "originalSource": "(C\\) 2007 Joe Smith\n",
+      "source": "(C\\) 2007 Joe Smith\n"
+    },
+    {
+      "id": "example-044",
+      "section": "Extension: fancy_lists",
+      "status": "unsupported",
+      "explanation": "The #. ordered-list marker is not recognized and conflicts with TP formatting.",
+      "adaptations": [],
+      "originalSource": "#. one\n#. two\n",
+      "source": "#. one\n#. two\n",
+      "workaround": {
+        "explanation": "Replace #. with ordinary decimal list markers. Repeating 1. still lets the browser number the items automatically.",
+        "source": "1. one\n1. two\n1. three"
+      }
+    },
+    {
+      "id": "example-045",
+      "section": "Extension: startnum",
+      "status": "partial",
+      "explanation": "TP supports alphabetic and Roman-numeral lists, but this example’s Roman sublist remains part of the parent paragraph because it has no separating blank line and uses varying indentation.",
+      "adaptations": [],
+      "originalSource": " 9)  Ninth\n10)  Tenth\n11)  Eleventh\n       i. subone\n      ii. subtwo\n     iii. subthree\n",
+      "source": " 9)  Ninth\n10)  Tenth\n11)  Eleventh\n       i. subone\n      ii. subtwo\n     iii. subthree\n",
+      "workaround": {
+        "explanation": "Keep native Markdown lists, including the 9), 10) and 11) markers. Insert a blank line before the Roman sublist and align its markers with a consistent four-space indentation under the decimal list item. TP recognizes a./b., A./B., i./ii. and I./II. lists; no element directives are needed here. The closing parenthesis is accepted as source syntax; the browser normally displays decimal markers with a period.",
+        "source": "9) Ninth\n10) Tenth\n11) Eleventh\n\n    i. subone\n    ii. subtwo\n    iii. subthree"
+      },
+      "pandocMode": {
+        "explanation": "The outer list starts at 9 and its nested list uses Roman numerals.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-046",
+      "section": "Extension: startnum",
+      "status": "partial",
+      "explanation": "Decimal and bullet lists work; parenthesized numeric markers remain ordinary text.",
+      "adaptations": [],
+      "originalSource": "(2) Two\n(5) Three\n1.  Four\n*   Five\n",
+      "source": "(2) Two\n(5) Three\n1.  Four\n*   Five\n",
+      "workaround": {
+        "explanation": "Use ordinary decimal markers and an empty HTML comment to separate the two ordered lists. The first list starts at 2 and displays 2, 3: the later source marker 5 does not reset its counter. The comment ends that list so Four starts a new list at 1; Five belongs to a separate bullet list. This reproduces Pandoc’s HTML list structure without element directives.",
+        "source": "2. Two\n5. Three\n<!-- -->\n1. Four\n* Five"
+      },
+      "pandocMode": {
+        "explanation": "Parenthesized markers form one ordered list; changing delimiters starts a separate list.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-047",
+      "section": "Extension: startnum",
+      "status": "unsupported",
+      "explanation": "The #. ordered-list marker is not recognized.",
+      "adaptations": [],
+      "originalSource": "#.  one\n#.  two\n#.  three\n",
+      "source": "#.  one\n#.  two\n#.  three\n",
+      "workaround": {
+        "explanation": "Replace #. with ordinary decimal list markers. Repeating 1. still lets the browser number the items automatically.",
+        "source": "1. one\n1. two\n1. three"
+      }
+    },
+    {
+      "id": "example-048",
+      "section": "Extension: task_lists",
+      "status": "partial",
+      "explanation": "Task states are represented by TP interactive checkboxes rather than Pandoc’s list markers.",
+      "adaptations": [],
+      "originalSource": "- [ ] an unchecked task list item\n- [x] checked item\n",
+      "source": "- [ ] an unchecked task list item\n- [x] checked item\n",
+      "workaround": {
+        "explanation": "Keep the source unchanged if interactive TP checkboxes are desired. For a read-only display, use explicit disabled input elements. Their appearance follows the browser rather than Pandoc’s static task markers.",
+        "source": "- :input:{type=checkbox disabled} an unchecked task list item\n- :input:{type=checkbox checked disabled} checked item"
+      }
+    },
+    {
+      "id": "example-049",
+      "section": "Extension: definition_lists",
+      "status": "compatible",
+      "explanation": "The definition list is supported. In TP Markdown, the blank line between a term and its definition is optional. Without it, the definition is compact; with it, its first paragraph is wrapped in a p element, which may add spacing. The original Pandoc source below keeps the blank line.\n\nThe compact TP syntax is:\n\n```markdown\nTerm\n: Definition\n```",
+      "adaptations": [],
+      "originalSource": "Term 1\n\n:   Definition 1\n\nTerm 2 with *inline markup*\n\n:   Definition 2\n\n        { some code, part of Definition 2 }\n\n    Third paragraph of definition 2.\n",
+      "source": "Term 1\n\n:   Definition 1\n\nTerm 2 with *inline markup*\n\n:   Definition 2\n\n        { some code, part of Definition 2 }\n\n    Third paragraph of definition 2.\n"
+    },
+    {
+      "id": "example-050",
+      "section": "Extension: definition_lists",
+      "status": "compatible",
+      "explanation": "The definition list is supported. In TP Markdown, the blank line between a term and its definition is optional. Without it, the definition is compact; with it, its first paragraph is wrapped in a p element, which may add spacing. The original Pandoc source below keeps the blank line.\n\nThe compact TP syntax is:\n\n```markdown\nTerm\n: Definition\n```",
+      "adaptations": [],
+      "originalSource": "Term 1\n\n: Definition\nwith lazy continuation.\n\n  Second paragraph of the definition.\n",
+      "source": "Term 1\n\n: Definition\nwith lazy continuation.\n\n  Second paragraph of the definition.\n"
+    },
+    {
+      "id": "example-051",
+      "section": "Extension: definition_lists",
+      "status": "compatible",
+      "explanation": "The definition list is supported. In TP Markdown, the ~ marker does not need indentation: it can start at the beginning of the line. Multiple definitions for the same term work the same way. The original Pandoc source below keeps its indentation.\n\nThe unindented TP syntax is:\n\n```markdown\nTerm 1\n~ Definition 1\n\nTerm 2\n~ Definition 2a\n~ Definition 2b\n```",
+      "adaptations": [],
+      "originalSource": "Term 1\n  ~ Definition 1\n\nTerm 2\n  ~ Definition 2a\n  ~ Definition 2b\n",
+      "source": "Term 1\n  ~ Definition 1\n\nTerm 2\n  ~ Definition 2a\n  ~ Definition 2b\n"
+    },
+    {
+      "id": "example-052",
+      "section": "Extension: example_lists",
+      "status": "unsupported",
+      "explanation": "The (@) example-list sequence is not recognized.",
+      "adaptations": [],
+      "originalSource": "(@)  My first example will be numbered (1).\n(@)  My second example will be numbered (2).\n\nExplanation of examples.\n\n(@)  My third example will be numbered (3).\n",
+      "source": "(@)  My first example will be numbered (1).\n(@)  My second example will be numbered (2).\n\nExplanation of examples.\n\n(@)  My third example will be numbered (3).\n",
+      "workaround": {
+        "explanation": "Use ordinary numbered lists and explicitly start the later list at 3. TP does not maintain Pandoc’s global example counter across intervening paragraphs.",
+        "source": "1. My first example will be numbered (1).\n2. My second example will be numbered (2).\n\nExplanation of examples.\n\n3. My third example will be numbered (3)."
+      }
+    },
+    {
+      "id": "example-053",
+      "section": "Extension: example_lists",
+      "status": "unsupported",
+      "explanation": "Labeled example lists and their references are not resolved.",
+      "adaptations": [],
+      "originalSource": "(@good)  This is a good example.\n\nAs (@good) illustrates, ...\n",
+      "source": "(@good)  This is a good example.\n\nAs (@good) illustrates, ...\n",
+      "workaround": {
+        "explanation": "Assign an ID directly to the paragraph, then use an ordinary fragment link. Put {#good} on the next line without a blank line before it, so the ID belongs to the example paragraph. A blank line before the attribute block would instead create a separate empty paragraph with that ID. Maintain the visible example number yourself; Pandoc’s (@good) lookup is not available.",
+        "source": "(1) This is a good example.\n{#good}\n\nAs [(1)](#good) illustrates, ..."
+      }
+    },
+    {
+      "id": "example-054",
+      "section": "Extension: example_lists",
+      "status": "unsupported",
+      "explanation": "Repeated example-list labels are not resolved.",
+      "adaptations": [],
+      "originalSource": "(@foo) Sample sentence.\n\nIntervening text...\n\nThis theory can explain the case we saw earlier (repeated):\n\n(@foo) Sample sentence.\n",
+      "source": "(@foo) Sample sentence.\n\nIntervening text...\n\nThis theory can explain the case we saw earlier (repeated):\n\n(@foo) Sample sentence.\n",
+      "workaround": {
+        "explanation": "Write the repeated number explicitly and give the original occurrence a unique ID. Do not reuse an HTML ID for the repeated example; link back to the first occurrence instead.",
+        "source": "(1) Sample sentence.\n{#foo}\n\nIntervening text...\n\nThis theory can explain the case we saw earlier (repeated):\n\n[(1)](#foo) Sample sentence."
+      }
+    },
+    {
+      "id": "example-055",
+      "section": "Extension: example_lists",
+      "status": "unsupported",
+      "explanation": "Explicit example-list numbering is not recognized.",
+      "adaptations": [],
+      "originalSource": "(1@foo) This item will be numbered 1, and subsequent example\n    list items will be numbered 2, 3, etc.\n",
+      "source": "(1@foo) This item will be numbered 1, and subsequent example\n    list items will be numbered 2, 3, etc.\n",
+      "workaround": {
+        "explanation": "Use an ordinary ordered list with an explicit starting number. Add a separate stable ID and an explicit link if the item must be referenced; automatic (@foo) references are unavailable.",
+        "source": "1. This item will be numbered 1.\n2. The next item will be numbered 2.\n3. The next item will be numbered 3."
+      }
+    },
+    {
+      "id": "example-056",
+      "section": "Ending a list",
+      "status": "partial",
+      "explanation": "The list is recognized, but its following brace-delimited content becomes attributes instead of literal list-item content.",
+      "adaptations": [],
+      "originalSource": "-   item one\n-   item two\n\n    { my code block }\n",
+      "source": "-   item one\n-   item two\n\n    { my code block }\n",
+      "workaround": {
+        "explanation": "Escape braces when they should be literal text in the list item, as in this example. If code formatting is intended instead, use a fenced code block indented under the item; braces alone are interpreted as attributes by TP.",
+        "source": "- item one\n- item two\n\n  \\{ my code block \\}"
+      },
+      "pandocMode": {
+        "explanation": "The brace-delimited paragraph remains literal text inside the list.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-057",
+      "section": "Ending a list",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "-   item one\n-   item two\n\n<!-- end of list -->\n\n    { my code block }\n",
+      "source": "-   item one\n-   item two\n\n<!-- end of list -->\n\n    { my code block }\n"
+    },
+    {
+      "id": "example-058",
+      "section": "Ending a list",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "1.  one\n2.  two\n3.  three\n\n<!-- -->\n\n1.  uno\n2.  dos\n3.  tres\n",
+      "source": "1.  one\n2.  two\n3.  three\n\n<!-- -->\n\n1.  uno\n2.  dos\n3.  tres\n"
+    },
+    {
+      "id": "example-059",
+      "section": "Horizontal rules",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "*  *  *  *\n\n---------------\n",
+      "source": "*  *  *  *\n\n---------------\n"
+    },
+    {
+      "id": "example-060",
+      "section": "Extension: simple_tables",
+      "status": "unsupported",
+      "explanation": "Pandoc simple tables are not parsed as tables.",
+      "adaptations": [],
+      "originalSource": "  Right     Left     Center     Default\n-------     ------ ----------   -------\n     12     12        12            12\n    123     123       123          123\n      1     1          1             1\n\nTable:  Demonstration of simple table syntax.\n",
+      "source": "  Right     Left     Center     Default\n-------     ------ ----------   -------\n     12     12        12            12\n    123     123       123          123\n      1     1          1             1\n\nTable:  Demonstration of simple table syntax.\n",
+      "workaround": {
+        "explanation": "Use a pipe table and put its caption in square brackets below it. TP Markdown renders a native table caption; no figure or custom element is needed.",
+        "source": "| Right | Left | Center | Default |\n| ---: | :--- | :---: | --- |\n| 12 | 12 | 12 | 12 |\n| 123 | 123 | 123 | 123 |\n| 1 | 1 | 1 | 1 |\n\n[Demonstration of simple table syntax.]"
+      }
+    },
+    {
+      "id": "example-061",
+      "section": "Extension: simple_tables",
+      "status": "unsupported",
+      "explanation": "Headerless simple tables are not parsed as tables.",
+      "adaptations": [],
+      "originalSource": "-------     ------ ----------   -------\n     12     12        12             12\n    123     123       123           123\n      1     1          1              1\n-------     ------ ----------   -------\n",
+      "source": "-------     ------ ----------   -------\n     12     12        12             12\n    123     123       123           123\n      1     1          1              1\n-------     ------ ----------   -------\n",
+      "workaround": {
+        "explanation": "Start a pipe table with its separator row to omit the header entirely. Alignment markers retain the alignment of each column.",
+        "source": "| ---: | :--- | :---: | ---: |\n| 12 | 12 | 12 | 12 |\n| 123 | 123 | 123 | 123 |\n| 1 | 1 | 1 | 1 |"
+      }
+    },
+    {
+      "id": "example-062",
+      "section": "Extension: multiline_tables",
+      "status": "unsupported",
+      "explanation": "Pandoc fixed-width multiline tables are not supported. The final line of hyphens is interpreted as a Setext level-two heading underline, turning the preceding paragraph (the second row) into a heading instead of a table row.",
+      "adaptations": [],
+      "originalSource": "-------------------------------------------------------------\n Centered   Default           Right Left\n  Header    Aligned         Aligned Aligned\n----------- ------- --------------- -------------------------\n   First    row                12.0 Example of a row that\n                                    spans multiple lines.\n\n  Second    row                 5.0 Here's another one. Note\n                                    the blank line between\n                                    rows.\n-------------------------------------------------------------\n\nTable: Here's the caption. It, too, may span\nmultiple lines.\n",
+      "source": "-------------------------------------------------------------\n Centered   Default           Right Left\n  Header    Aligned         Aligned Aligned\n----------- ------- --------------- -------------------------\n   First    row                12.0 Example of a row that\n                                    spans multiple lines.\n\n  Second    row                 5.0 Here's another one. Note\n                                    the blank line between\n                                    rows.\n-------------------------------------------------------------\n\nTable: Here's the caption. It, too, may span\nmultiple lines.\n",
+      "workaround": {
+        "explanation": "Use a pipe table, join wrapped cell text onto one source line, and put the caption in square brackets below the table. The browser wraps cell text as needed; no element directives are required.",
+        "source": "| Centered Header | Default Aligned | Right Aligned | Left Aligned |\n| :---: | --- | ---: | :--- |\n| First | row | 12.0 | Example of a row that spans multiple lines. |\n| Second | row | 5.0 | Here's another one. Note the blank line between rows. |\n\n[Here's the caption. It, too, may span multiple lines.]"
+      }
+    },
+    {
+      "id": "example-063",
+      "section": "Extension: multiline_tables",
+      "status": "unsupported",
+      "explanation": "Headerless multiline tables are not parsed as tables.",
+      "adaptations": [],
+      "originalSource": "----------- ------- --------------- -------------------------\n   First    row                12.0 Example of a row that\n                                    spans multiple lines.\n\n  Second    row                 5.0 Here's another one. Note\n                                    the blank line between\n                                    rows.\n----------- ------- --------------- -------------------------\n\n: Here's a multiline table without a header.\n",
+      "source": "----------- ------- --------------- -------------------------\n   First    row                12.0 Example of a row that\n                                    spans multiple lines.\n\n  Second    row                 5.0 Here's another one. Note\n                                    the blank line between\n                                    rows.\n----------- ------- --------------- -------------------------\n\n: Here's a multiline table without a header.\n",
+      "workaround": {
+        "explanation": "Use a headerless pipe table and a caption in square brackets. Join the wrapped source lines inside each cell: the browser wraps their text according to the available width.",
+        "source": "| :---: | :--- | ---: | :--- |\n| First | row | 12.0 | Example of a row that spans multiple lines. |\n| Second | row | 5.0 | Here's another one. Note the blank line between rows. |\n\n[Here's a multiline table without a header.]"
+      }
+    },
+    {
+      "id": "example-064",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": ": Sample grid table.\n\n+---------------+---------------+--------------------+\n| Fruit         | Price         | Advantages         |\n+===============+===============+====================+\n| Bananas       | $1.34         | - built-in wrapper |\n|               |               | - bright color     |\n+---------------+---------------+--------------------+\n| Oranges       | $2.10         | - cures scurvy     |\n|               |               | - tasty            |\n+---------------+---------------+--------------------+\n",
+      "source": ": Sample grid table.\n\n+---------------+---------------+--------------------+\n| Fruit         | Price         | Advantages         |\n+===============+===============+====================+\n| Bananas       | $1.34         | - built-in wrapper |\n|               |               | - bright color     |\n+---------------+---------------+--------------------+\n| Oranges       | $2.10         | - cures scurvy     |\n|               |               | - tasty            |\n+---------------+---------------+--------------------+\n",
+      "workaround": {
+        "explanation": "Use the MultiMarkdown table syntax built into TP. A backslash at the end of a source row joins it to the next line, allowing Markdown lists inside cells. Put the caption in square brackets; no HTML or custom elements are needed.",
+        "source": "| Fruit | Price | Advantages |\n| --- | --- | --- |\n| Bananas | $1.34 | - built-in wrapper | \\\n| | | - bright color |\n| Oranges | $2.10 | - cures scurvy | \\\n| | | - tasty |\n\n[Sample grid table.]"
+      }
+    },
+    {
+      "id": "example-065",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": "+---------------------+----------+\n| Property            | Earth    |\n+=============+=======+==========+\n|             | min   | -89.2 °C |\n| Temperature +-------+----------+\n| 1961-1990   | mean  | 14 °C    |\n|             +-------+----------+\n|             | max   | 56.7 °C  |\n+-------------+-------+----------+\n",
+      "source": "+---------------------+----------+\n| Property            | Earth    |\n+=============+=======+==========+\n|             | min   | -89.2 °C |\n| Temperature +-------+----------+\n| 1961-1990   | mean  | 14 °C    |\n|             +-------+----------+\n|             | max   | 56.7 °C  |\n+-------------+-------+----------+\n",
+      "workaround": {
+        "explanation": "Use MultiMarkdown cell spans: adjacent pipes extend Property over two columns, and ^^ merges each following Temperature cell with the one above. This preserves the original structure without element directives.",
+        "source": "| Property || Earth |\n| --- | --- | --- |\n| Temperature 1961–1990 | min | -89.2 °C |\n| ^^ | mean | 14 °C |\n| ^^ | max | 56.7 °C |"
+      }
+    },
+    {
+      "id": "example-066",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": "+---------------------+-----------------------+\n| Location            | Temperature 1961-1990 |\n|                     | in degree Celsius     |\n|                     +-------+-------+-------+\n|                     | min   | mean  | max   |\n+=====================+=======+=======+=======+\n| Antarctica          | -89.2 | N/A   | 19.8  |\n+---------------------+-------+-------+-------+\n| Earth               | -89.2 | 14    | 56.7  |\n+---------------------+-------+-------+-------+\n",
+      "source": "+---------------------+-----------------------+\n| Location            | Temperature 1961-1990 |\n|                     | in degree Celsius     |\n|                     +-------+-------+-------+\n|                     | min   | mean  | max   |\n+=====================+=======+=======+=======+\n| Antarctica          | -89.2 | N/A   | 19.8  |\n+---------------------+-------+-------+-------+\n| Earth               | -89.2 | 14    | 56.7  |\n+---------------------+-------+-------+-------+\n",
+      "workaround": {
+        "explanation": "Use two MultiMarkdown header rows. Adjacent pipes extend the temperature heading over three columns; ^^ extends Location over both header rows. Alignment is set in the separator row.",
+        "source": "| Location | Temperature 1961–1990 in degree Celsius |||\n| ^^ | min | mean | max |\n| --- | ---: | ---: | ---: |\n| Antarctica | -89.2 | N/A | 19.8 |\n| Earth | -89.2 | 14 | 56.7 |"
+      }
+    },
+    {
+      "id": "example-067",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": "+---------------+---------------+--------------------+\n| Right         | Left          | Centered           |\n+==============:+:==============+:==================:+\n| Bananas       | $1.34         | built-in wrapper   |\n+---------------+---------------+--------------------+\n",
+      "source": "+---------------+---------------+--------------------+\n| Right         | Left          | Centered           |\n+==============:+:==============+:==================:+\n| Bananas       | $1.34         | built-in wrapper   |\n+---------------+---------------+--------------------+\n",
+      "workaround": {
+        "explanation": "Replace the grid borders with a pipe table and express alignment in its separator row.",
+        "source": "| Right | Left | Centered |\n| ---: | :--- | :---: |\n| Bananas | $1.34 | built-in wrapper |"
+      }
+    },
+    {
+      "id": "example-068",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": "+--------------:+:--------------+:------------------:+\n| Right         | Left          | Centered           |\n+---------------+---------------+--------------------+\n",
+      "source": "+--------------:+:--------------+:------------------:+\n| Right         | Left          | Centered           |\n+---------------+---------------+--------------------+\n",
+      "workaround": {
+        "explanation": "Start a pipe table with an alignment separator row. It remains headerless, with right-, left- and center-aligned cells.",
+        "source": "| ---: | :--- | :---: |\n| Right | Left | Centered |"
+      }
+    },
+    {
+      "id": "example-069",
+      "section": "Extension: grid_tables",
+      "status": "unsupported",
+      "explanation": "Grid tables are not recognized; their borders are interpreted as text or inline formatting.",
+      "adaptations": [],
+      "originalSource": " +---------------+---------------+\n | Fruit         | Price         |\n +===============+===============+\n | Bananas       | $1.34         |\n +---------------+---------------+\n | Oranges       | $2.10         |\n +===============+===============+\n | Sum           | $3.44         |\n +===============+===============+\n",
+      "source": " +---------------+---------------+\n | Fruit         | Price         |\n +===============+===============+\n | Bananas       | $1.34         |\n +---------------+---------------+\n | Oranges       | $2.10         |\n +===============+===============+\n | Sum           | $3.44         |\n +===============+===============+\n",
+      "workaround": {
+        "explanation": "A MultiMarkdown table can separate the totals into another tbody with a blank line, preserving the visible grouping. If a semantic tfoot is required, use explicit table/thead/tbody/tfoot directives; multibody sections are not footer elements.",
+        "source": "| Fruit | Price |\n| --- | ---: |\n| Bananas | $1.34 |\n| Oranges | $2.10 |\n\n| Sum | $3.44 |"
+      }
+    },
+    {
+      "id": "example-070",
+      "section": "Extension: pipe_tables",
+      "status": "partial",
+      "explanation": "The table and alignment work; the colon-prefixed caption remains a separate paragraph.",
+      "adaptations": [],
+      "originalSource": "| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|   12  |  12  |    12   |    12  |\n|  123  |  123 |   123   |   123  |\n|    1  |    1 |     1   |     1  |\n\n  : Demonstration of pipe table syntax.\n",
+      "source": "| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|   12  |  12  |    12   |    12  |\n|  123  |  123 |   123   |   123  |\n|    1  |    1 |     1   |     1  |\n\n  : Demonstration of pipe table syntax.\n",
+      "workaround": {
+        "explanation": "Use a pipe table and put its caption in square brackets below it. TP Markdown renders a native table caption; no figure or custom element is needed.",
+        "source": "| Right | Left | Default | Center |\n|------:|:-----|---------|:------:|\n|   12  |  12  |    12   |    12  |\n|  123  |  123 |   123   |   123  |\n|    1  |    1 |     1   |     1  |\n\n[Demonstration of pipe table syntax.]"
+      },
+      "pandocMode": {
+        "explanation": "The colon-prefixed text becomes a table caption.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-071",
+      "section": "Extension: pipe_tables",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "fruit| price\n-----|-----:\napple|2.05\npear|1.37\norange|3.09\n",
+      "source": "fruit| price\n-----|-----:\napple|2.05\npear|1.37\norange|3.09\n"
+    },
+    {
+      "id": "example-072",
+      "section": "Extension: pipe_tables",
+      "status": "unsupported",
+      "explanation": "The + separator variant of pipe tables is not recognized.",
+      "adaptations": [],
+      "originalSource": "| One | Two   |\n|-----+-------|\n| my  | table |\n| is  | nice  |\n",
+      "source": "| One | Two   |\n|-----+-------|\n| my  | table |\n| is  | nice  |\n",
+      "workaround": {
+        "explanation": "Replace the + inside the separator row with |.",
+        "source": "| One | Two |\n| --- | --- |\n| my | table |\n| is | nice |"
+      }
+    },
+    {
+      "id": "example-073",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% title\n% author(s) (separated by semicolons)\n% date\n",
+      "source": "% title\n% author(s) (separated by semicolons)\n% date\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter delimited by --- at both ends. Read its values in the Markdown body with {{ title }}, {{ author }} and {{ date }}; metadata is not displayed automatically. In JavaScript, TpMarkdownParser.parse(source).env.attributes contains the parsed metadata.",
+        "source": "---\ntitle: \"title\"\nauthor: \"author(s) (separated by semicolons)\"\ndate: \"date\"\n---\n\n# {{ title }}\n\n{{ author }}\n\n{{ date }}"
+      }
+    },
+    {
+      "id": "example-074",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "%\n% Author\n",
+      "source": "%\n% Author\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ author }}`. Omit the title field when there is no title.",
+        "source": "---\nauthor: \"Author\"\n---\n\n{{ author }}"
+      }
+    },
+    {
+      "id": "example-075",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% My title\n%\n% June 15, 2006\n",
+      "source": "% My title\n%\n% June 15, 2006\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}` and `{{ date }}`. Omit the author field when there is no author.",
+        "source": "---\ntitle: \"My title\"\ndate: \"June 15, 2006\"\n---\n\n# {{ title }}\n\n{{ date }}"
+      }
+    },
+    {
+      "id": "example-076",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% My title\n  on multiple lines\n",
+      "source": "% My title\n  on multiple lines\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. The YAML folded scalar >- joins the source lines with spaces without keeping a trailing newline.",
+        "source": "---\ntitle: >-\n  My title\n  on multiple lines\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-077",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% Author One\n  Author Two\n",
+      "source": "% Author One\n  Author Two\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. The YAML folded scalar >- joins the source lines with spaces without keeping a trailing newline. In this isolated Pandoc source, the first % line occupies the title slot, so this alternative preserves it as title metadata. If the names are intended as authors, use the YAML author field instead and display it with `{{ author }}`.",
+        "source": "---\ntitle: >-\n  Author One\n  Author Two\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-078",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% Author One; Author Two\n",
+      "source": "% Author One; Author Two\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. In this isolated Pandoc source, the first % line occupies the title slot, so this alternative preserves it as title metadata. If the names are intended as authors, use the YAML author field instead and display it with `{{ author }}`.",
+        "source": "---\ntitle: \"Author One; Author Two\"\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-079",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% Author One;\n  Author Two\n",
+      "source": "% Author One;\n  Author Two\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. The YAML folded scalar >- joins the source lines with spaces without keeping a trailing newline. In this isolated Pandoc source, the first % line occupies the title slot, so this alternative preserves it as title metadata. If the names are intended as authors, use the YAML author field instead and display it with `{{ author }}`.",
+        "source": "---\ntitle: >-\n  Author One;\n  Author Two\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-080",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% PANDOC(1)\n",
+      "source": "% PANDOC(1)\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. This displays the title as a web heading. Pandoc’s man-page section, header and footer conventions are not interpreted by the browser renderer.",
+        "source": "---\ntitle: \"PANDOC(1)\"\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-081",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% PANDOC(1) Pandoc User Manuals\n",
+      "source": "% PANDOC(1) Pandoc User Manuals\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. This displays the title as a web heading. Pandoc’s man-page section, header and footer conventions are not interpreted by the browser renderer.",
+        "source": "---\ntitle: \"PANDOC(1) Pandoc User Manuals\"\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-082",
+      "section": "Extension: pandoc_title_block",
+      "status": "unsupported",
+      "explanation": "Pandoc’s %-prefixed title/author/date metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "% PANDOC(1) Pandoc User Manuals | Version 4.0\n",
+      "source": "% PANDOC(1) Pandoc User Manuals | Version 4.0\n",
+      "workaround": {
+        "explanation": "Replace the %-prefixed block with YAML front matter. Metadata is not displayed automatically: insert its values in the body with `{{ title }}`. This displays the title as a web heading. Pandoc’s man-page section, header and footer conventions are not interpreted by the browser renderer.",
+        "source": "---\ntitle: \"PANDOC(1) Pandoc User Manuals | Version 4.0\"\n---\n\n# {{ title }}"
+      }
+    },
+    {
+      "id": "example-083",
+      "section": "Extension: yaml_metadata_block",
+      "status": "compatible",
+      "explanation": "The leading YAML block is parsed as metadata and accepts ... as its closing delimiter. Metadata does not automatically create visible content: use expressions such as `{{ title }}` in the Markdown body, or read `parser.parse(source).env.attributes` in JavaScript.",
+      "adaptations": [],
+      "originalSource": "---\ntitle:  'This is the title: it contains a colon'\nauthor:\n- Author One\n- Author Two\nkeywords: [nothing, nothingness]\nabstract: |\n  This is the abstract.\n\n  It consists of two paragraphs.\n...\n",
+      "source": "---\ntitle:  'This is the title: it contains a colon'\nauthor:\n- Author One\n- Author Two\nkeywords: [nothing, nothingness]\nabstract: |\n  This is the abstract.\n\n  It consists of two paragraphs.\n...\n"
+    },
+    {
+      "id": "example-084",
+      "section": "Extension: yaml_metadata_block",
+      "status": "compatible",
+      "explanation": "The leading YAML block is parsed as metadata and accepts ... as its closing delimiter. Metadata does not automatically create visible content: use expressions such as `{{ title }}` in the Markdown body, or read `parser.parse(source).env.attributes` in JavaScript.",
+      "adaptations": [],
+      "originalSource": "---\ntitle: The document title\nauthor:\n- name: Author One\n  affiliation: University of Somewhere\n- name: Author Two\n  affiliation: University of Nowhere\n...\n",
+      "source": "---\ntitle: The document title\nauthor:\n- name: Author One\n  affiliation: University of Somewhere\n- name: Author Two\n  affiliation: University of Nowhere\n...\n"
+    },
+    {
+      "id": "example-085",
+      "section": "Extension: all_symbols_escapable",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "*\\*hello\\**\n",
+      "source": "*\\*hello\\**\n"
+    },
+    {
+      "id": "example-086",
+      "section": "Emphasis",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This text is _emphasized with underscores_, and this\nis *emphasized with asterisks*.\n",
+      "source": "This text is _emphasized with underscores_, and this\nis *emphasized with asterisks*.\n"
+    },
+    {
+      "id": "example-087",
+      "section": "Emphasis",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This is **strong emphasis** and __with underscores__.\n",
+      "source": "This is **strong emphasis** and __with underscores__.\n"
+    },
+    {
+      "id": "example-088",
+      "section": "Emphasis",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This is * not emphasized *, and \\*neither is this\\*.\n",
+      "source": "This is * not emphasized *, and \\*neither is this\\*.\n"
+    },
+    {
+      "id": "example-089",
+      "section": "Extension: intraword_underscores",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "feas*ible*, not feas*able*.\n",
+      "source": "feas*ible*, not feas*able*.\n"
+    },
+    {
+      "id": "example-090",
+      "section": "Extension: strikeout",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This ~~is deleted text.~~\n",
+      "source": "This ~~is deleted text.~~\n"
+    },
+    {
+      "id": "example-091",
+      "section": "Extension: superscript, subscript",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "H~2~O is a liquid.  2^10^ is 1024.\n",
+      "source": "H~2~O is a liquid.  2^10^ is 1024.\n"
+    },
+    {
+      "id": "example-092",
+      "section": "Verbatim",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "What is the difference between `>>=` and `>>`?\n",
+      "source": "What is the difference between `>>=` and `>>`?\n"
+    },
+    {
+      "id": "example-093",
+      "section": "Verbatim",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "Here is a literal backtick `` ` ``.\n",
+      "source": "Here is a literal backtick `` ` ``.\n"
+    },
+    {
+      "id": "example-094",
+      "section": "Verbatim",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This is a backslash followed by an asterisk: `\\*`.\n",
+      "source": "This is a backslash followed by an asterisk: `\\*`.\n"
+    },
+    {
+      "id": "example-095",
+      "section": "Extension: inline_code_attributes",
+      "status": "compatible",
+      "explanation": "The code element retains its class; this does not guarantee Pandoc’s syntax-highlighting behavior.",
+      "adaptations": [],
+      "originalSource": "`<$>`{.haskell}\n",
+      "source": "`<$>`{.haskell}\n"
+    },
+    {
+      "id": "example-096",
+      "section": "Underline",
+      "status": "compatible",
+      "explanation": "Bracketed span syntax creates an inline span with its own attributes and parses Markdown inside it. This works by default, without Pandoc mode. Shared TP styles provide the formatting for this class.",
+      "adaptations": [],
+      "originalSource": "[Underline]{.underline}\n",
+      "source": "[Underline]{.underline}\n",
+      "workaround": {
+        "explanation": "Use the native inline element syntax `:u:Underline{}` to produce `<u>Underline</u>`. The standard HTML element provides underlining without an explicit style or a custom element.",
+        "source": ":u:Underline{}"
+      }
+    },
+    {
+      "id": "example-097",
+      "section": "Underline",
+      "status": "compatible",
+      "explanation": "The span is preserved and TP supplies underline styling; Pandoc emits a u element for the same visible meaning.",
+      "adaptations": [],
+      "originalSource": "<span class=\"underline\">Underline</span>\n",
+      "source": "<span class=\"underline\">Underline</span>\n"
+    },
+    {
+      "id": "example-098",
+      "section": "Small caps",
+      "status": "compatible",
+      "explanation": "Bracketed span syntax creates an inline span with its own attributes and parses Markdown inside it. This works by default, without Pandoc mode. Shared TP styles provide the formatting for this class.",
+      "adaptations": [],
+      "originalSource": "[Small caps]{.smallcaps}\n",
+      "source": "[Small caps]{.smallcaps}\n",
+      "workaround": {
+        "explanation": "Use an inline span with the shared TP smallcaps class. No inline style is needed. The font determines the appearance of the small capitals.",
+        "source": ":span:Small caps{.smallcaps}"
+      }
+    },
+    {
+      "id": "example-099",
+      "section": "Small caps",
+      "status": "compatible",
+      "explanation": "The HTML span is preserved and the shared TP smallcaps class displays its text in small capitals. The font determines their appearance.",
+      "adaptations": [],
+      "originalSource": "<span class=\"smallcaps\">Small caps</span>\n",
+      "source": "<span class=\"smallcaps\">Small caps</span>\n"
+    },
+    {
+      "id": "example-100",
+      "section": "Small caps",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "<span style=\"font-variant:small-caps;\">Small caps</span>\n",
+      "source": "<span style=\"font-variant:small-caps;\">Small caps</span>\n"
+    },
+    {
+      "id": "example-101",
+      "section": "Highlighting",
+      "status": "compatible",
+      "explanation": "Bracketed span syntax creates an inline span with its own attributes and parses Markdown inside it. This works by default, without Pandoc mode. Shared TP styles provide the formatting for this class.",
+      "adaptations": [],
+      "originalSource": "[Mark]{.mark}\n",
+      "source": "[Mark]{.mark}\n",
+      "workaround": {
+        "explanation": "Prefer the native ==Mark== syntax, which produces a mark element. To use the shared class on an inline span, write `:span:Mark{.mark}`; it has the same highlighting style.",
+        "source": "==Mark=="
+      }
+    },
+    {
+      "id": "example-102",
+      "section": "Highlighting",
+      "status": "compatible",
+      "explanation": "The HTML span is preserved and the shared TP mark class highlights its text with the same style as the mark element.",
+      "adaptations": [],
+      "originalSource": "<span class=\"mark\">Mark</span>\n",
+      "source": "<span class=\"mark\">Mark</span>\n"
+    },
+    {
+      "id": "example-103",
+      "section": "Extension: markdown_in_html_blocks",
+      "status": "partial",
+      "explanation": "The HTML table is preserved, but Markdown inside its cells stays literal.",
+      "adaptations": [],
+      "originalSource": "<table>\n<tr>\n<td>*one*</td>\n<td>[a link](https://google.com)</td>\n</tr>\n</table>\n",
+      "source": "<table>\n<tr>\n<td>*one*</td>\n<td>[a link](https://google.com)</td>\n</tr>\n</table>\n",
+      "workaround": {
+        "explanation": "Both alternatives parse Markdown emphasis and links inside the cells. Prefer the headerless pipe table for this simple case. The web-component syntax also supports standard HTML elements: use table, tr and td directives with an extra colon at each nesting level.",
+        "alternatives": [
+          {
+            "title": "Pipe table",
+            "source": "| --- | --- |\n| *one* | [a link](https://google.com) |"
+          },
+          {
+            "title": "Web-component syntax with HTML elements",
+            "source": "::: table\n:::: tr\n::::: td\n*one*\n:::::\n::::: td\n[a link](https://google.com)\n:::::\n::::\n:::"
+          }
+        ]
+      },
+      "pandocMode": {
+        "explanation": "Markdown in the HTML table cells renders as emphasis and a link.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-104",
+      "section": "Extension: raw_tex",
+      "status": "unsupported",
+      "explanation": "Raw TeX commands are not handled as Pandoc raw-format content.",
+      "adaptations": [],
+      "originalSource": "This result was proved in \\cite{jones.1967}.\n",
+      "source": "This result was proved in \\cite{jones.1967}.\n",
+      "workaround": {
+        "explanation": "Use Markdown references with a visible bibliography, or tp-ref and tp-biblio for a hover preview without displaying a bibliography. Neither alternative implements raw LaTeX passthrough or citeproc formatting. Replace the placeholder with the actual bibliographic details.",
+        "alternatives": [
+          {
+            "title": "Markdown references with a visible bibliography",
+            "source": "This result was proved in [@jones.1967].\n\n[@jones.1967]: Replace with the actual bibliographic details for Jones (1967).\n\n::bibliography{}"
+          },
+          {
+            "title": "tp-ref and tp-biblio with a hover preview only",
+            "source": "This result was proved in :tp-ref:{href=\"@jones.1967\"}.\n\n::: tp-biblio {ref=\"jones.1967\"}\nReplace with the actual bibliographic details for Jones (1967).\n:::"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-105",
+      "section": "Extension: raw_tex",
+      "status": "unsupported",
+      "explanation": "The LaTeX table is neither converted nor treated as Pandoc raw TeX.",
+      "adaptations": [],
+      "originalSource": "\\begin{tabular}{|l|l|}\\hline\nAge & Frequency \\\\ \\hline\n18--25  & 15 \\\\\n26--35  & 33 \\\\\n36--45  & 22 \\\\ \\hline\n\\end{tabular}\n",
+      "source": "\\begin{tabular}{|l|l|}\\hline\nAge & Frequency \\\\ \\hline\n18--25  & 15 \\\\\n26--35  & 33 \\\\\n36--45  & 22 \\\\ \\hline\n\\end{tabular}\n",
+      "workaround": {
+        "explanation": "Use a Markdown pipe table for this simple structure, or keep the original tabular source inside tp-latex. A script with type=\"tp/latex\" preserves the LaTeX backslashes and lets tp-latex render the table; no document wrapper is needed.",
+        "alternatives": [
+          {
+            "title": "Markdown pipe table",
+            "source": "| Age | Frequency |\n| --- | --- |\n| 18–25 | 15 |\n| 26–35 | 33 |\n| 36–45 | 22 |"
+          },
+          {
+            "title": "LaTeX tabular with tp-latex",
+            "source": "::: tp-latex\n:::: script {type=\"tp/latex\"}\n\\begin{tabular}{|l|l|}\\hline\nAge & Frequency \\\\ \\hline\n18--25  & 15 \\\\\n26--35  & 33 \\\\\n36--45  & 22 \\\\ \\hline\n\\end{tabular}\n::::\n:::"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-106",
+      "section": "Extension: raw_attribute",
+      "status": "unsupported",
+      "explanation": "The raw ms attribute is ignored; the source is displayed as code.",
+      "adaptations": [],
+      "originalSource": "```{=ms}\n.MYMACRO\nblah blah\n```\n",
+      "source": "```{=ms}\n.MYMACRO\nblah blah\n```\n",
+      "workaround": {
+        "explanation": "There is no ms/roff writer or .MYMACRO processor in TP Markdown. To show its source, keep an ordinary code fence. To obtain formatted web content, rewrite the macro’s intended output as Markdown or TP elements; an exact conversion cannot be specified without the macro definition."
+      }
+    },
+    {
+      "id": "example-107",
+      "section": "Extension: raw_attribute",
+      "status": "unsupported",
+      "explanation": "The raw HTML attribute is ignored; the HTML remains escaped code.",
+      "adaptations": [],
+      "originalSource": "This is `<a>html</a>`{=html}\n",
+      "source": "This is `<a>html</a>`{=html}\n",
+      "workaround": {
+        "explanation": "Use the native inline element notation. For this example the a element has no href, so it is not a navigable link.",
+        "source": "This is :a:html{}"
+      }
+    },
+    {
+      "id": "example-108",
+      "section": "Extension: raw_attribute",
+      "status": "unsupported",
+      "explanation": "OpenXML raw content is displayed as code, not processed for a target writer.",
+      "adaptations": [],
+      "originalSource": "```{=openxml}\n<w:p>\n  <w:r>\n    <w:br w:type=\"page\"/>\n  </w:r>\n</w:p>\n```\n",
+      "source": "```{=openxml}\n<w:p>\n  <w:r>\n    <w:br w:type=\"page\"/>\n  </w:r>\n</w:p>\n```\n",
+      "workaround": {
+        "explanation": "There is no OpenXML/DOCX output writer in TP Markdown. A DOCX page-break instruction has no equivalent in a continuously scrolling web page. For a print-only page break, use an empty div with break-before: page; this does not create a DOCX file.",
+        "source": "::: div {style=\"break-before: page\"}\n:::"
+      }
+    },
+    {
+      "id": "example-109",
+      "section": "Extension: latex_macros",
+      "status": "unsupported",
+      "explanation": "The LaTeX macro declaration is not processed, and math is not enabled in this unchanged source.",
+      "adaptations": [],
+      "originalSource": "\\newcommand{\\tuple}[1]{\\langle #1 \\rangle}\n\n$\\tuple{a, b, c}$\n",
+      "source": "\\newcommand{\\tuple}[1]{\\langle #1 \\rangle}\n\n$\\tuple{a, b, c}$\n",
+      "workaround": {
+        "explanation": "Enable the math extension and put the TeX macro declaration inside the math block it is used in. TP does not collect arbitrary raw TeX declarations outside math; keeping declaration and use together avoids relying on cross-formula macro state. Alternatively, use tp-math directly with displaystyle and a script of type=\"tp/latex\"; no Markdown math extension declaration is needed in that case.",
+        "alternatives": [
+          {
+            "title": "Markdown math extension",
+            "source": "---\nextensions: [math]\n---\n```math\n\\newcommand{\\tuple}[1]{\\langle #1 \\rangle}\n\\tuple{a, b, c}\n```"
+          },
+          {
+            "title": "tp-math with a LaTeX script",
+            "source": "::: tp-math {displaystyle}\n:::: script {type=\"tp/latex\"}\n\\newcommand{\\tuple}[1]{\\langle #1 \\rangle}\n\\tuple{a, b, c}\n::::\n:::"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-110",
+      "section": "Automatic links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "<https://google.com>\n<sam@green.eggs.ham>\n",
+      "source": "<https://google.com>\n<sam@green.eggs.ham>\n"
+    },
+    {
+      "id": "example-111",
+      "section": "Inline links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "This is an [inline link](/url), and here's [one with\na title](https://fsf.org \"click here for a good time!\").\n",
+      "source": "This is an [inline link](docs/pandoc-markdown-examples/example-target.html), and here's [one with\na title](https://fsf.org \"click here for a good time!\").\n"
+    },
+    {
+      "id": "example-112",
+      "section": "Inline links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "[Write me!](mailto:sam@green.eggs.ham)\n",
+      "source": "[Write me!](mailto:sam@green.eggs.ham)\n"
+    },
+    {
+      "id": "example-113",
+      "section": "Reference links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "See [the website *I* built][my website].\n\nSee [my website][] and [the bar page][1] and\nthe [home page of the FSF][fsf].\n\n[my website]: http://foo.bar.baz\n[1]: /foo/bar.html  \"My title, optional\"\n[fsf]: https://fsf.org (The Free Software Foundation)\n[special page]: /bar#special  'A title in single quotes'\n",
+      "source": "See [the website *I* built][my website].\n\nSee [my website][] and [the bar page][1] and\nthe [home page of the FSF][fsf].\n\n[my website]: docs/pandoc-markdown-examples/example-target.html\n[1]: docs/pandoc-markdown-examples/example-target.html  \"My title, optional\"\n[fsf]: https://fsf.org (The Free Software Foundation)\n[special page]: docs/pandoc-markdown-examples/example-target.html#special  'A title in single quotes'\n"
+    },
+    {
+      "id": "example-114",
+      "section": "Reference links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "A use of the reference is appended so the definition has a visible result.",
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "[my label 5]: <http://foo.bar.baz>\n",
+      "source": "[my label 5]: <docs/pandoc-markdown-examples/example-target.html>\n\n\nFollow [my label 5].\n"
+    },
+    {
+      "id": "example-115",
+      "section": "Reference links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "A use of the reference is appended so the definition has a visible result."
+      ],
+      "originalSource": "[my label 3]: https://fsf.org\n  \"The Free Software Foundation\"\n",
+      "source": "[my label 3]: https://fsf.org\n  \"The Free Software Foundation\"\n\n\nFollow [my label 3].\n"
+    },
+    {
+      "id": "example-116",
+      "section": "Reference links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "Here is [my link][FOO]\n\n[Foo]: /bar/baz\n",
+      "source": "Here is [my link][FOO]\n\n[Foo]: docs/pandoc-markdown-examples/example-target.html\n"
+    },
+    {
+      "id": "example-117",
+      "section": "Reference links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "> My block [quote].\n>\n> [quote]: /foo\n",
+      "source": "> My block [quote].\n>\n> [quote]: docs/pandoc-markdown-examples/example-target.html\n"
+    },
+    {
+      "id": "example-118",
+      "section": "Extension: shortcut_reference_links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Placeholder link destinations point to a bundled sample HTML page."
+      ],
+      "originalSource": "See [my website].\n\n[my website]: http://foo.bar.baz\n",
+      "source": "See [my website].\n\n[my website]: docs/pandoc-markdown-examples/example-target.html\n"
+    },
+    {
+      "id": "example-119",
+      "section": "Internal links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "A local Introduction heading supplies the link destination."
+      ],
+      "originalSource": "See the [Introduction](#introduction).\n",
+      "source": "See the [Introduction](#introduction).\n\n\n# Introduction\n\nThis is the local link destination.\n"
+    },
+    {
+      "id": "example-120",
+      "section": "Internal links",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "A local Introduction heading supplies the link destination."
+      ],
+      "originalSource": "See the [Introduction].\n\n[Introduction]: #introduction\n",
+      "source": "See the [Introduction].\n\n[Introduction]: #introduction\n\n\n# Introduction\n\nThis is the local link destination.\n"
+    },
+    {
+      "id": "example-121",
+      "section": "Images",
+      "status": "partial",
+      "explanation": "Both image forms display, but standalone images do not become captioned figures as they do in Pandoc.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![la lune](lalune.jpg \"Voyage to the moon\")\n\n![movie reel]\n\n[movie reel]: movie.gif\n",
+      "source": "![la lune](docs/pandoc-markdown-examples/images/sample.svg \"Voyage to the moon\")\n\n![movie reel]\n\n[movie reel]: docs/pandoc-markdown-examples/images/sample.svg\n",
+      "workaround": {
+        "explanation": "Wrap each image in an explicit figure and add a figcaption. Repeat this pattern for the second image, using movie reel as its caption. Standalone Markdown images are not automatically promoted to figures.",
+        "source": ":::: figure {}\n![la lune](docs/pandoc-markdown-examples/images/sample.svg)\n\n::: figcaption {}\nla lune\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "Standalone images become figures with captions.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-122",
+      "section": "Extension: implicit_figures",
+      "status": "partial",
+      "explanation": "The image displays, but TP does not turn it into a figure with a caption.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![This is the caption.](image.png)\n",
+      "source": "![This is the caption.](docs/pandoc-markdown-examples/images/sample.svg)\n",
+      "workaround": {
+        "explanation": "Use an explicit figure and figcaption rather than relying on an implicit figure.",
+        "source": ":::: figure {}\n![This is the caption.](docs/pandoc-markdown-examples/images/sample.svg)\n\n::: figcaption {}\nThis is the caption.\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "The standalone image gets a caption.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-123",
+      "section": "Extension: implicit_figures",
+      "status": "partial",
+      "explanation": "The image remains inline, but the final backslash is preserved instead of Pandoc’s empty inline separator.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![This image won't be a figure](image.png)\\\n",
+      "source": "![This image won't be a figure](docs/pandoc-markdown-examples/images/sample.svg)\\\n",
+      "workaround": {
+        "explanation": "Remove the trailing backslash. TP already keeps a standalone Markdown image as an image without an automatic caption.",
+        "source": "![This image won't be a figure](docs/pandoc-markdown-examples/images/sample.svg)"
+      },
+      "pandocMode": {
+        "explanation": "The trailing backslash keeps the image outside a figure.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-124",
+      "section": "Extension: implicit_figures",
+      "status": "partial",
+      "explanation": "No figure/caption is created and the explicit alt override is not applied.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![The caption.](image.png){alt=\"description of image\"}\n",
+      "source": "![The caption.](docs/pandoc-markdown-examples/images/sample.svg){alt=\"description of image\"}\n",
+      "workaround": {
+        "explanation": "Put the accessible description in the image’s square brackets, then write the visible caption separately in figcaption.",
+        "source": ":::: figure {}\n![description of image](docs/pandoc-markdown-examples/images/sample.svg)\n\n::: figcaption {}\nThe caption.\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "The explicit image description is distinct from the visible caption.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-125",
+      "section": "Extension: implicit_figures",
+      "status": "partial",
+      "explanation": "The image attribute is retained, but there is no figure caption or LaTeX placement behavior.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![The caption.](image.png){latex-placement=\"ht\"}\n",
+      "source": "![The caption.](docs/pandoc-markdown-examples/images/sample.svg){latex-placement=\"ht\"}\n",
+      "workaround": {
+        "explanation": "Use an explicit figure and figcaption for the web result. Omit latex-placement: it controls LaTeX float placement, which has no browser equivalent.",
+        "source": ":::: figure {}\n![The caption.](docs/pandoc-markdown-examples/images/sample.svg)\n\n::: figcaption {}\nThe caption.\n:::\n::::"
+      },
+      "pandocMode": {
+        "explanation": "The figure retains latex-placement as data-latex-placement; float placement has no web equivalent.",
+        "status": "partial"
+      }
+    },
+    {
+      "id": "example-126",
+      "section": "Extension: link_attributes",
+      "status": "partial",
+      "explanation": "Inline image attributes work; attributes on the reference definition prevent that reference from resolving.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "An inline ![image](foo.jpg){#id .class width=30 height=20px}\nand a reference ![image][ref] with attributes.\n\n[ref]: foo.jpg \"optional title\" {#id .class key=val key2=\"val 2\"}\n",
+      "source": "An inline ![image](docs/pandoc-markdown-examples/images/sample.svg){#id .class width=30 height=20px}\nand a reference ![image][ref] with attributes.\n\n[ref]: docs/pandoc-markdown-examples/images/sample.svg \"optional title\" {#id .class key=val key2=\"val 2\"}\n",
+      "workaround": {
+        "explanation": "Use inline image URLs and attach each attribute block directly to its image. This avoids TP’s limitations with attributes on reference images. Give each image a distinct ID.",
+        "source": "An inline ![image](docs/pandoc-markdown-examples/images/sample.svg){id=inline-image .class width=30 height=20}\nand another ![image](docs/pandoc-markdown-examples/images/sample.svg \"optional title\"){id=reference-image .class key=val key2=\"val 2\"}."
+      },
+      "pandocMode": {
+        "explanation": "The reference image receives its definition’s attributes and remains inline.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-127",
+      "section": "Extension: link_attributes",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [
+        "Unavailable image filenames are replaced with a bundled TP sample SVG; the Markdown structure is unchanged."
+      ],
+      "originalSource": "![](file.jpg){ width=50% }\n",
+      "source": "![](docs/pandoc-markdown-examples/images/sample.svg){ width=50% }\n"
+    },
+    {
+      "id": "example-128",
+      "section": "Extension: fenced_divs",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "::::: {#special .sidebar}\nHere is a paragraph.\n\nAnd another.\n:::::\n",
+      "source": "::::: {#special .sidebar}\nHere is a paragraph.\n\nAnd another.\n:::::\n"
+    },
+    {
+      "id": "example-129",
+      "section": "Extension: fenced_divs",
+      "status": "partial",
+      "explanation": "Some content renders, but the bare names and closing fences are interpreted differently from Pandoc nested divs.",
+      "adaptations": [],
+      "originalSource": "::: Warning ::::::\nThis is a warning.\n\n::: Danger\nThis is a warning within a warning.\n:::\n::::::::::::::::::\n",
+      "source": "::: Warning ::::::\nThis is a warning.\n\n::: Danger\nThis is a warning within a warning.\n:::\n::::::::::::::::::\n",
+      "workaround": {
+        "explanation": "Enable pandoc: true in the front matter: this example’s bare class names and nested fences are now supported. In standard TP mode, use explicit div containers with .Warning and .Danger classes and distinct matching fence lengths instead. These classes need CSS to have a special appearance.",
+        "source": "---\npandoc: true\n---\n::: Warning ::::::\nThis is a warning.\n\n::: Danger\nThis is a warning within a warning.\n:::\n::::::::::::::::::\n"
+      },
+      "pandocMode": {
+        "explanation": "Nested fenced divs use Pandoc class semantics.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-130",
+      "section": "Extension: bracketed_spans",
+      "status": "compatible",
+      "explanation": "Bracketed span syntax creates an inline span with its own attributes and parses Markdown inside it. This works by default, without Pandoc mode.",
+      "adaptations": [],
+      "originalSource": "[This is *some text*]{.class key=\"val\"}\n",
+      "source": "[This is *some text*]{.class key=\"val\"}\n",
+      "workaround": {
+        "explanation": "Use TP’s inline span syntax. Formatting inside the span is parsed normally.",
+        "source": ":span:This is *some text*{.class key=\"val\"}"
+      }
+    },
+    {
+      "id": "example-131",
+      "section": "Extension: footnotes",
+      "status": "partial",
+      "explanation": "Simple notes are recognized; the multi-block continuation leaves part of the note outside it.",
+      "adaptations": [],
+      "originalSource": "Here is a footnote reference,[^1] and another.[^longnote]\n\n[^1]: Here is the footnote.\n\n[^longnote]: Here's one with multiple blocks.\n\n    Subsequent paragraphs are indented to show that they\nbelong to the previous footnote.\n\n        { some.code }\n\n    The whole paragraph can be indented, or just the first\n    line.  In this way, multi-paragraph footnotes work like\n    multi-paragraph list items.\n\nThis paragraph won't be part of the note, because it\nisn't indented.\n",
+      "source": "Here is a footnote reference,[^1] and another.[^longnote]\n\n[^1]: Here is the footnote.\n\n[^longnote]: Here's one with multiple blocks.\n\n    Subsequent paragraphs are indented to show that they\nbelong to the previous footnote.\n\n        { some.code }\n\n    The whole paragraph can be indented, or just the first\n    line.  In this way, multi-paragraph footnotes work like\n    multi-paragraph list items.\n\nThis paragraph won't be part of the note, because it\nisn't indented.\n",
+      "workaround": {
+        "explanation": "Use tp-note and tp-ref for both notes so they share one numbering sequence. The long note retains its paragraphs and code block as structured content. Do not mix native Markdown notes and tp-ref notes in this example: their independent counters would both start at 1.",
+        "source": "Here is a footnote reference :tp-ref:{href=\"^shortnote\"} and another :tp-ref:{href=\"^longnote\"}.\n\n::: tp-note {ref=\"shortnote\"}\nHere is the footnote.\n:::\n\n::: tp-note {ref=\"longnote\"}\nHere's one with multiple blocks.\n\nSubsequent paragraphs belong to the same note.\n\n```\n{ some.code }\n```\n\nThe whole paragraph is inside the note container.\n:::\n\nThis paragraph is outside the note."
+      },
+      "pandocMode": {
+        "explanation": "The notes preserve multiple paragraphs and indented code, and appear in an automatically generated note list.",
+        "status": "compatible"
+      }
+    },
+    {
+      "id": "example-132",
+      "section": "Extension: inline_notes",
+      "status": "unsupported",
+      "explanation": "Inline footnotes using ^[...] remain literal.",
+      "adaptations": [],
+      "originalSource": "Here is an inline note.^[Inline notes are easier to write, since\nyou don't have to pick an identifier and move down to type the\nnote.]\n",
+      "source": "Here is an inline note.^[Inline notes are easier to write, since\nyou don't have to pick an identifier and move down to type the\nnote.]\n",
+      "workaround": {
+        "explanation": "Give the note an identifier and use a Markdown footnote reference and definition. TP does not support anonymous ^[...] notes.",
+        "source": "Here is an inline note[^detail].\n\n[^detail]: Inline notes are easier to write, since you don't have to pick an identifier and move down to type the note."
+      }
+    },
+    {
+      "id": "example-133",
+      "section": "Extension: citations",
+      "status": "partial",
+      "explanation": "Simple citation groups are supported: each key has its own bibliography link and preview within shared brackets. TP displays citation keys rather than applying Pandoc citeproc author–date formatting. This isolated source supplies no bibliography definitions.",
+      "adaptations": [],
+      "originalSource": "Blah blah [@doe99; @smith2000; @smith2004].\n",
+      "source": "Blah blah [@doe99; @smith2000; @smith2004].\n",
+      "workaround": {
+        "explanation": "Keep the citation group and define each key with [@key]:. Add `::bibliography{}` to display the entries and provide link targets. Each citation has its own hover preview. TP preserves the authored order and displays the keys; automatic author–date formatting, sorting and CSL styles are not implemented. Replace the placeholder entries with the real bibliography.",
+        "source": "Blah blah [@doe99; @smith2000; @smith2004].\n\n[@doe99]: Replace with the actual bibliographic details for doe99.\n\n[@smith2000]: Replace with the actual bibliographic details for smith2000.\n\n[@smith2004]: Replace with the actual bibliographic details for smith2004.\n\n::bibliography{}"
+      }
+    },
+    {
+      "id": "example-134",
+      "section": "Extension: citations",
+      "status": "partial",
+      "explanation": "TP resolves each citation key in the group and preserves prefixes, page/chapter indications and inline emphasis. Labels remain the citation keys, without Pandoc citeproc author–date formatting. This isolated source supplies no bibliography definitions.",
+      "adaptations": [],
+      "originalSource": "Blah blah [see @doe99, pp. 33-35 and *passim*; @smith04, chap. 1].\n",
+      "source": "Blah blah [see @doe99, pp. 33-35 and *passim*; @smith04, chap. 1].\n",
+      "workaround": {
+        "explanation": "Keep the original group, including see, page/chapter indications and Markdown emphasis. Define each bibliography key and add `::bibliography{}` for visible entries and link targets. Each key has its own preview. Prefixes and locators are displayed as authored text; they are not interpreted or reformatted by citeproc. Replace the placeholders with the actual bibliography.",
+        "source": "Blah blah [see @doe99, pp. 33-35 and *passim*; @smith04, chap. 1].\n\n[@doe99]: Replace with the actual bibliographic details for doe99.\n\n[@smith04]: Replace with the actual bibliographic details for smith04.\n\n::bibliography{}"
+      }
+    },
+    {
+      "id": "example-135",
+      "section": "Extension: citations",
+      "status": "partial",
+      "explanation": "TP creates reference links, but does not interpret Pandoc citation locators, suffixes or citeproc semantics.",
+      "adaptations": [],
+      "originalSource": "[@smith{ii, A, D-Z}, with a suffix]\n[@smith, {pp. iv, vi-xi, (xv)-(xvii)} with suffix here]\n[@smith{}, 99 years later]\n",
+      "source": "[@smith{ii, A, D-Z}, with a suffix]\n[@smith, {pp. iv, vi-xi, (xv)-(xvii)} with suffix here]\n[@smith{}, 99 years later]\n",
+      "workaround": {
+        "explanation": "Use one Markdown bibliography reference [@key] per key and define each entry with [@key]:. Write prefixes, page/chapter locators and suffixes as ordinary text outside the references. This preserves navigable references, but not citeproc’s automatic author–date formatting, author suppression or CSL styles. Replace the placeholder entries with the real bibliography. Add `::bibliography{}` to display the entries and create the citation link targets; definitions alone do not insert a visible bibliography.",
+        "source": "[@smith], ii, A, D–Z, with a suffix\n\n[@smith], pp. iv, vi–xi, (xv)–(xvii), with suffix here\n\n[@smith], 99 years later\n\n[@smith]: Replace with the actual bibliographic details for smith.\n\n::bibliography{}"
+      }
+    },
+    {
+      "id": "example-136",
+      "section": "Extension: citations",
+      "status": "unsupported",
+      "explanation": "Suppress-author citation syntax is not recognized.",
+      "adaptations": [],
+      "originalSource": "Smith says blah [-@smith04].\n",
+      "source": "Smith says blah [-@smith04].\n",
+      "workaround": {
+        "explanation": "Use one Markdown bibliography reference [@key] per key and define each entry with [@key]:. Write prefixes, page/chapter locators and suffixes as ordinary text outside the references. This preserves navigable references, but not citeproc’s automatic author–date formatting, author suppression or CSL styles. Replace the placeholder entries with the real bibliography. Add `::bibliography{}` to display the entries and create the citation link targets; definitions alone do not insert a visible bibliography.",
+        "source": "Smith says blah [@smith04].\n\n[@smith04]: Replace with the actual bibliographic details for smith04.\n\n::bibliography{}"
+      }
+    },
+    {
+      "id": "example-137",
+      "section": "Extension: citations",
+      "status": "unsupported",
+      "explanation": "Narrative citations and locators are not recognized.",
+      "adaptations": [],
+      "originalSource": "@smith04 says blah.\n\n@smith04 [p. 33] says blah.\n",
+      "source": "@smith04 says blah.\n\n@smith04 [p. 33] says blah.\n",
+      "workaround": {
+        "explanation": "Use one Markdown bibliography reference [@key] per key and define each entry with [@key]:. Write prefixes, page/chapter locators and suffixes as ordinary text outside the references. This preserves navigable references, but not citeproc’s automatic author–date formatting, author suppression or CSL styles. Replace the placeholder entries with the real bibliography. Add `::bibliography{}` to display the entries and create the citation link targets; definitions alone do not insert a visible bibliography.",
+        "source": "Smith [@smith04] says blah.\n\nSmith [@smith04], p. 33, says blah.\n\n[@smith04]: Replace with the actual bibliographic details for smith04.\n\n::bibliography{}"
+      }
+    },
+    {
+      "id": "example-138",
+      "section": "Extension: mark",
+      "status": "compatible",
+      "explanation": "The demonstrated Markdown structure is preserved. TP styling and generated classes may differ from Pandoc.",
+      "adaptations": [],
+      "originalSource": "This ==is deleted text.==\n",
+      "source": "This ==is deleted text.==\n"
+    },
+    {
+      "id": "example-139",
+      "section": "Extension: spaced_reference_links",
+      "status": "unsupported",
+      "explanation": "The separated reference syntax is not resolved as one link.",
+      "adaptations": [
+        "The bar reference is supplied to test the spaced-reference syntax rather than a missing definition."
+      ],
+      "originalSource": "[foo] [bar].\n",
+      "source": "[foo] [bar].\n\n\n[bar]: https://www.pandoc.org/\n",
+      "workaround": {
+        "explanation": "Remove the space between the link label and reference identifier.",
+        "source": "[foo][bar].\n\n[bar]: https://www.pandoc.org/"
+      }
+    },
+    {
+      "id": "example-140",
+      "section": "Extension: tex_math_gfm",
+      "status": "unsupported",
+      "explanation": "The math fence displays code with the default configuration; TP’s math extension is not enabled.",
+      "adaptations": [],
+      "originalSource": "``` math\ne=mc^2\n```\n",
+      "source": "``` math\ne=mc^2\n```\n",
+      "workaround": {
+        "explanation": "Enable the optional math extension in front matter. The existing math fence can then stay unchanged.",
+        "source": "---\nextensions: [math]\n---\n``` math\ne=mc^2\n```\n"
+      }
+    },
+    {
+      "id": "example-141",
+      "section": "Extension: mmd_title_block",
+      "status": "unsupported",
+      "explanation": "MultiMarkdown title metadata remains ordinary text.",
+      "adaptations": [],
+      "originalSource": "Title:   My title\nAuthor:  John Doe\nDate:    September 1, 2008\nComment: This is a sample mmd title block, with\n         a field spanning multiple lines.\n",
+      "source": "Title:   My title\nAuthor:  John Doe\nDate:    September 1, 2008\nComment: This is a sample mmd title block, with\n         a field spanning multiple lines.\n",
+      "workaround": {
+        "explanation": "Move the fields into YAML front matter and use a folded YAML string for the multiline comment. Display the metadata with `{{ title }}`, `{{ author }}`, `{{ date }}` and `{{ comment }}` rather than repeating their values in the body.",
+        "source": "---\ntitle: My title\nauthor: John Doe\ndate: \"September 1, 2008\"\ncomment: >-\n  This is a sample mmd title block, with\n  a field spanning multiple lines.\n---\n\n# {{ title }}\n\n{{ author }} — {{ date }}\n\n{{ comment }}"
+      }
+    },
+    {
+      "id": "example-142",
+      "section": "Extension: abbreviations",
+      "status": "unsupported",
+      "explanation": "TP does not recognize abbreviation definitions and leaves this declaration visible. Pandoc’s abbreviations extension only discards the declaration: its document model does not support abbreviations, so HTML occurrences are not automatically expanded or wrapped in abbr elements.",
+      "adaptations": [
+        "Text using the abbreviation is supplied."
+      ],
+      "originalSource": "*[HTML]: Hypertext Markup Language\n",
+      "source": "*[HTML]: Hypertext Markup Language\n\n\nHTML is a markup language.\n",
+      "workaround": {
+        "explanation": "To actually associate an expansion with HTML, use an abbr element for a native browser tooltip, or tp-ref with a hidden tp-glossary entry for a rich hover preview. Each occurrence must be marked explicitly. These alternatives add abbreviation behavior that Pandoc itself does not provide.",
+        "alternatives": [
+          {
+            "title": "HTML abbreviation",
+            "source": ":abbr:HTML{title=\"Hypertext Markup Language\"} is a markup language."
+          },
+          {
+            "title": "tp-glossary with a hover preview",
+            "source": ":tp-ref:{href=\"%HTML\"} is a markup language.\n\n::: tp-glossary {ref=\"HTML\"}\nHypertext Markup Language\n:::"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-143",
+      "section": "Extension: alerts",
+      "status": "unsupported",
+      "explanation": "The blockquote renders, but its [!TIP] marker is not interpreted as an alert.",
+      "adaptations": [],
+      "originalSource": "> [!TIP]\n> Helpful advice for doing things better or more easily.\n",
+      "source": "> [!TIP]\n> Helpful advice for doing things better or more easily.\n",
+      "workaround": {
+        "explanation": "Keep the blockquote and replace the alert marker with a tp-callout inside it. Prefix every line with > so the callout stays inside the quotation. Its styling follows TP rather than GitHub/Pandoc.",
+        "source": "> ::: tp-callout {variant=\"info\" heading=\"Tip\"}\n> Helpful advice for doing things better or more easily.\n> :::"
+      }
+    },
+    {
+      "id": "example-144",
+      "section": "Extension: mmd_link_attributes",
+      "status": "unsupported",
+      "explanation": "MultiMarkdown image-reference attributes are not recognized.",
+      "adaptations": [],
+      "originalSource": "This is a reference ![image][ref] with MultiMarkdown attributes.\n\n[ref]: https://path.to/image \"Image title\" width=20px height=30px\n       id=myId class=\"myClass1 myClass2\"\n",
+      "source": "This is a reference ![image][ref] with MultiMarkdown attributes.\n\n[ref]: https://path.to/image \"Image title\" width=20px height=30px\n       id=myId class=\"myClass1 myClass2\"\n",
+      "workaround": {
+        "explanation": "Replace the reference image with an inline image URL and put its attributes in braces immediately afterwards. This avoids unsupported MultiMarkdown reference attributes. The rewrite uses the bundled fixture instead of the placeholder URL.",
+        "source": "This is an ![image](docs/pandoc-markdown-examples/images/sample.svg \"Image title\"){#myId .myClass1 .myClass2 width=20 height=30}."
+      }
+    },
+    {
+      "id": "example-145",
+      "section": "Extension: short_subsuperscripts",
+      "status": "unsupported",
+      "explanation": "Unclosed superscript syntax is not recognized.",
+      "adaptations": [],
+      "originalSource": "x^2 = 4\n",
+      "source": "x^2 = 4\n",
+      "workaround": {
+        "explanation": "Close the superscript with a second ^, as required by TP’s paired-marker syntax.",
+        "source": "x^2^ = 4"
+      }
+    },
+    {
+      "id": "example-146",
+      "section": "Extension: short_subsuperscripts",
+      "status": "unsupported",
+      "explanation": "Unclosed subscript syntax is not recognized.",
+      "adaptations": [],
+      "originalSource": "Oxygen is O~2.\n",
+      "source": "Oxygen is O~2.\n",
+      "workaround": {
+        "explanation": "Close the subscript with a second ~.",
+        "source": "Oxygen is O~2~."
+      }
+    },
+    {
+      "id": "example-147",
+      "section": "Extension: wikilinks_title_after_pipe",
+      "status": "unsupported",
+      "explanation": "Pandoc wiki-link syntax is not resolved.",
+      "adaptations": [],
+      "originalSource": "[[URL|title]]\n",
+      "source": "[[URL|title]]\n",
+      "workaround": {
+        "explanation": "Use an ordinary Markdown link with an explicit destination. There is no wiki-page resolver; replace the sample URL with the real destination.",
+        "source": "[title](https://example.org/)"
+      }
+    },
+    {
+      "id": "example-148",
+      "section": "Extension: wikilinks_title_after_pipe",
+      "status": "unsupported",
+      "explanation": "The alternative wiki-link ordering is not resolved.",
+      "adaptations": [],
+      "originalSource": "[[title|URL]]\n",
+      "source": "[[title|URL]]\n",
+      "workaround": {
+        "explanation": "Use an ordinary Markdown link with an explicit destination. There is no wiki-page resolver; replace the sample URL with the real destination.",
+        "source": "[title](https://example.org/)"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "section": "Extension: header_attributes",
+      "source": "{#identifier .class .class key=value key=value}\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: fenced_code_attributes",
+      "source": "<pre id=\"mycode\" class=\"haskell numberLines\" startFrom=\"100\">\n  <code>\n  ...\n  </code>\n</pre>\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: table_attributes",
+      "source": "  : Here's the caption. {#ident .class key=\"value\"}\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Table placement in LaTeX",
+      "source": ": The caption of the table. {#ident .float latex-placement=\"ht\"}\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Table placement in LaTeX",
+      "source": ": The caption of the table. {.repeat-caption}\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Table placement in LaTeX",
+      "source": "function Table(el)\n  el.classes:insert(\"float\")\n  return el\nend\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: yaml_metadata_block",
+      "source": "pandoc chap1.md chap2.md chap3.md metadata.yaml -s -o book.html\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: yaml_metadata_block",
+      "source": "<p>This is the abstract.</p>\n<p>It consists of two paragraphs.</p>\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: yaml_metadata_block",
+      "source": "$for(author)$\n$if(author.name)$\n$author.name$$if(author.affiliation)$ ($author.affiliation$)$endif$\n$else$\n$author$\n$endif$\n$endfor$\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: yaml_metadata_block",
+      "source": "header-includes:\n- |\n  ```{=latex}\n  \\let\\oldsection\\section\n  \\renewcommand{\\section}[1]{\\clearpage\\oldsection{#1}}\n  ```\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: all_symbols_escapable",
+      "source": "<em>*hello*</em>\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: all_symbols_escapable",
+      "source": "<strong>hello</strong>\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: all_symbols_escapable",
+      "source": "\\`*_{}[]()>#+-.!\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: markdown_in_html_blocks",
+      "source": "<table>\n<tr>\n<td><em>one</em></td>\n<td><a href=\"https://google.com\">a link</a></td>\n</tr>\n</table>\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: citations",
+      "source": "Blah blah (Doe 1999, Smith 2000, 2004).\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: citations",
+      "source": "Blah blah.[^1]\n\n[^1]:  John Doe, \"Frogs,\" *Journal of Amphibians* 44 (1999);\nSusan Smith, \"Flies,\" *Journal of Insects* (2000);\nSusan Smith, \"Bees,\" *Journal of Insects* (2004).\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: citations",
+      "source": "# The Beginning {.reset-citation-positions}\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Extension: rebase_relative_paths",
+      "source": "pandoc chap*/*.md -f markdown+rebase_relative_paths\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    },
+    {
+      "section": "Markdown variants",
+      "source": "pandoc --list-extensions=FORMAT\n",
+      "reason": "Not a standalone Markdown input: syntax fragment, expected output, command, template or output-format-specific configuration."
+    }
+  ]
+}

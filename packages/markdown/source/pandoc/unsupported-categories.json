@@ -1,0 +1,144 @@
+[
+  {
+    "title": "Implicit heading references",
+    "sections": [
+      "Extension: implicit_header_references"
+    ],
+    "alternative": "Use explicit fragment links such as `[the section](#section-id)` and assign a stable `{#section-id}` to the heading."
+  },
+  {
+    "title": "List markers and starting numbers",
+    "sections": [
+      "Extension: fancy_lists",
+      "Extension: startnum"
+    ],
+    "alternative": "Use decimal markers (`1.`), including repeated `1.` for automatic numbering. Add `{type=A start=3}` after a list for alphabetic markers and a chosen start. Parenthesized marker styling may require CSS."
+  },
+  {
+    "title": "Numbered examples and cross-references",
+    "sections": [
+      "Extension: example_lists"
+    ],
+    "alternative": "Use ordinary numbered lists with explicit starts, or write example numbers with paragraph IDs and links. There is no shared automatic example counter or `(@label)` resolver."
+  },
+  {
+    "title": "Simple tables",
+    "sections": [
+      "Extension: simple_tables"
+    ],
+    "alternative": "Rewrite using the built-in MultiMarkdown pipe-table syntax. Start with the separator row for a headerless table and put captions in square brackets."
+  },
+  {
+    "title": "Multiline tables",
+    "sections": [
+      "Extension: multiline_tables"
+    ],
+    "alternative": "Use MultiMarkdown pipe tables. A trailing backslash joins source lines into one row and permits block content in cells. Captions and headerless tables are supported; ordinary text also wraps to the available width."
+  },
+  {
+    "title": "Grid tables",
+    "sections": [
+      "Extension: grid_tables"
+    ],
+    "alternative": "Use MultiMarkdown tables: adjacent pipes for column spans, ^^ for row spans, trailing backslashes for lists or code in cells, multiple header rows, and blank lines for separate tbody sections. Only a semantic tfoot still requires explicit HTML-element directives."
+  },
+  {
+    "title": "Pipe-table separator variant",
+    "sections": [
+      "Extension: pipe_tables"
+    ],
+    "alternative": "Use the usual pipe-table separator row with vertical bars instead of plus signs."
+  },
+  {
+    "title": "Pandoc title blocks",
+    "sections": [
+      "Extension: pandoc_title_block"
+    ],
+    "alternative": "Use YAML front matter and display its values with `{{ title }}`, `{{ author }}` and `{{ date }}`. Fold multiline values with `>-`. Man-page header/footer conventions have no automatic web equivalent."
+  },
+  {
+    "title": "Raw TeX",
+    "sections": [
+      "Extension: raw_tex"
+    ],
+    "alternative": "For citations, use Markdown bibliography references or `tp-ref` with `tp-biblio`. For the tabular example, use a pipe table or `tp-latex` (basic l/c/r columns, vertical rules and hline). This does not provide general raw-TeX conversion."
+  },
+  {
+    "title": "Raw output-format attributes",
+    "sections": [
+      "Extension: raw_attribute"
+    ],
+    "alternative": "Use native HTML-element directives for HTML output. There is no ms/roff or OpenXML/DOCX writer. Rewrite the desired web content; CSS `break-before: page` is only a print-page-break approximation."
+  },
+  {
+    "title": "Mathematics and LaTeX macros",
+    "sections": [
+      "Extension: latex_macros",
+      "Extension: tex_math_gfm"
+    ],
+    "alternative": "Enable `extensions: [math]` in YAML front matter and use a math fence, or use `tp-math` with a `script` of type `tp/latex`. Keep a macro declaration inside the formula that uses it."
+  },
+  {
+    "title": "Anonymous inline notes",
+    "sections": [
+      "Extension: inline_notes"
+    ],
+    "alternative": "Give the note a name and use `[^detail]` with a `[^detail]:` definition; add `::notes{}` for a visible list and link targets. For rich previews, use `tp-ref` with `tp-note`. Do not mix their independent numbering systems."
+  },
+  {
+    "title": "Author suppression and narrative citations",
+    "sections": [
+      "Extension: citations"
+    ],
+    "alternative": "Write the author name explicitly and use `[@key]` with its bibliography definition and `::bibliography{}`, or `tp-ref`/`tp-biblio`. There is no automatic author–date formatting or author suppression. Simple citation groups are already supported."
+  },
+  {
+    "title": "Spaced reference links",
+    "sections": [
+      "Extension: spaced_reference_links"
+    ],
+    "alternative": "Remove the space between the label and reference: `[foo][bar]`, with a normal `[bar]: URL` definition."
+  },
+  {
+    "title": "MultiMarkdown title blocks",
+    "sections": [
+      "Extension: mmd_title_block"
+    ],
+    "alternative": "Use YAML front matter, then `{{ title }}`, `{{ author }}`, `{{ date }}` and `{{ comment }}` in the body. Use `>-` for a folded multiline comment."
+  },
+  {
+    "title": "Abbreviation definitions",
+    "sections": [
+      "Extension: abbreviations"
+    ],
+    "alternative": "Use `:abbr:HTML{title=\"Hypertext Markup Language\"}` or `tp-ref` with `tp-glossary`. Occurrences must be marked explicitly. Pandoc itself only discards the declaration; it does not automatically expand abbreviations."
+  },
+  {
+    "title": "Alerts",
+    "sections": [
+      "Extension: alerts"
+    ],
+    "alternative": "Place a `tp-callout` inside a Markdown blockquote, prefixing each directive and content line with `>`. Select its variant and heading explicitly."
+  },
+  {
+    "title": "MultiMarkdown image-reference attributes",
+    "sections": [
+      "Extension: mmd_link_attributes"
+    ],
+    "alternative": "Use an inline image URL with attributes immediately after it: `![image](image.svg){width=20 height=30}`."
+  },
+  {
+    "title": "Unclosed superscripts and subscripts",
+    "sections": [
+      "Extension: short_subsuperscripts"
+    ],
+    "alternative": "Use paired markers: `x^2^` and `O~2~`."
+  },
+  {
+    "title": "Wiki links",
+    "sections": [
+      "Extension: wikilinks_title_after_pipe"
+    ],
+    "alternative": "Use ordinary Markdown links such as `[title](destination)`. Supply the real destination; TP does not resolve wiki page names automatically."
+  }
+]

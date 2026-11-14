@@ -1,0 +1,26 @@
+This color picker comes from the `react-colorful <https://github.com/omgovich/react-colorful>`_ React library.
+
+.. div::
+   :id: react-color-picker
+
+.. script::
+   :type: module
+
+   import React, { useState } from 'https://esm.sh/react@18.3.1';
+   import { createRoot } from 'https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1';
+   import { HexColorPicker } from 'https://esm.sh/react-colorful@5.6.1?deps=react@18.3.1,react-dom@18.3.1';
+
+   function ColorDemo() {
+     const [color, setColor] = useState('#336699');
+     return React.createElement('div', null,
+       React.createElement(HexColorPicker, { color, onChange: setColor }),
+       React.createElement('p', null, 'Selected color: ',
+         React.createElement('output', null, color))
+     );
+   }
+
+   const container = document.getElementById('react-color-picker');
+   const root = createRoot(container);
+   root.render(React.createElement(ColorDemo));
+   window.addEventListener('pagehide', () => root.unmount(), { once: true });
+

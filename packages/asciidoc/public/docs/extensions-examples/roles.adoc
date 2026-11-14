@@ -1,0 +1,3 @@
+A native element: [mark]#highlighted text#.
+
+A CSS role on a span: [.underline]#underlined text#.

@@ -1,0 +1,9 @@
+[section,aria-label="Example section"]
+====
+Use [mark]#highlighted text# and [abbr,title="HyperText Markup Language"]#HTML# inside a standard HTML section.
+
+[div,lang=fr]
+--
+Bonjour ! Ce paragraphe est en français.
+--
+====

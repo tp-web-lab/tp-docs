@@ -1,0 +1,9 @@
+[tp-icon,name=logo-tp]
+====
+====
+
+[tp-divider]
+====
+====
+
+The TP logo inline: [tp-icon,name=logo-tp]#{empty}# beside some text.

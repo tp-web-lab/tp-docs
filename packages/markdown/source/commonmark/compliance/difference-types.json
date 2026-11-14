@@ -1,0 +1,161 @@
+[
+  {
+    "id": "typography",
+    "label": "Typographic substitutions",
+    "description": "Straight quotes and apostrophes become curly quotes; double or triple hyphens become dashes. These are default typographer transformations, not changes to block structure.",
+    "cases": [
+      {
+        "example": 14,
+        "signature": "751dccc3f6d6b1e1d4f8181ee2d5bda51ce00815b9e40aa5ece89b8ae4c73efc"
+      },
+      {
+        "example": 46,
+        "signature": "7f879d69b635b254cfbb9787b2006f046d5377127bcc173b162f7494069ae5f9"
+      },
+      {
+        "example": 55,
+        "signature": "65d3cb23a211c294743a1a9dd5e712e3041e5668d2424d0fc9da60ca7fbb224d"
+      },
+      {
+        "example": 87,
+        "signature": "ed1fa3aa82c4b995f52800aad76203796d61f059fb4b54db7f971be31bb9520c"
+      },
+      {
+        "example": 106,
+        "signature": "2d5da45b8e4ee660b8468b6af48d2aee009987ec80779d35c14db9208484d939"
+      },
+      {
+        "example": 197,
+        "signature": "910b97475a476466b5374ddca1e26e8ee20756f664f145e0b7fbdd14d7275a3a"
+      },
+      {
+        "example": 209,
+        "signature": "66e63ee11900822ab5f1082b5ace151ca5556a95c77c838f055707e1779b72e4"
+      },
+      {
+        "example": 210,
+        "signature": "3658a052de1c1433e945d5d7ae11130d71629fc72f939c25606662606e29e11a"
+      },
+      {
+        "example": 352,
+        "signature": "3a1fc4899fdce69cadb2244a09fe8c268afb937e9e60bdd96fa2a91adf084619"
+      },
+      {
+        "example": 359,
+        "signature": "dfce1cf2640d37e7d342fba8ce47da039b16bbef5ca19f1310cfd527c82bc030"
+      },
+      {
+        "example": 363,
+        "signature": "a4d89dc5dca4b4c6542d34efdd4a155d6842ec51d2cfa18f14ef1b18a6124375"
+      },
+      {
+        "example": 380,
+        "signature": "f4873e77aa8ad6de4a8f4baeb319efbb420a2d0f4e3687fcc89034a1cac86b57"
+      },
+      {
+        "example": 385,
+        "signature": "950ab279441fd2d079bc13d25e0bf89e6203c464edf423361f9ebe30680c7536"
+      },
+      {
+        "example": 395,
+        "signature": "277575b95a711b1b088f34fad448e421011588b4d18564490fc5ff8dd42283a3"
+      },
+      {
+        "example": 508,
+        "signature": "9c7954376b4eefee4082b31a2fec66b40e37e211d88014b731bd1c146912120b"
+      },
+      {
+        "example": 590,
+        "signature": "c3253418d3a07b4f3e53c1018b22475fc1e27f8c7e192be9072049855ca59d26"
+      },
+      {
+        "example": 619,
+        "signature": "f7c2a4da223a36aa54bf6105c75c2e2b22af8275b29d510c47235317c3f2cf1a"
+      },
+      {
+        "example": 620,
+        "signature": "12418d9130839e548d97897007cf7e05e19c000cf213ace7951714a9276c7998"
+      },
+      {
+        "example": 622,
+        "signature": "567dfa2708a2bb02b28f4a57fd844aaa92e699dcad1a7fd07376f78230f56bb2"
+      },
+      {
+        "example": 624,
+        "signature": "1c0b3d0abf4279368667e530315a144307a073447f89e0f394fa4f3c5b6b7c7b"
+      },
+      {
+        "example": 632,
+        "signature": "b7618623dfb5beae3c363600f545ce9d79b255e76948c53ded9dca0008953a2a"
+      }
+    ]
+  },
+  {
+    "id": "hash-deletion",
+    "label": "Hash deletion syntax (#\u2026#)",
+    "description": "The formats extension interprets paired hashes as deletion markup. This changes invalid entity references (28) and escaped hashes in a heading (76). Example 76 also has generated heading attributes.",
+    "cases": [
+      {
+        "example": 28,
+        "signature": "19d2373779e0fd6e4bf087617278bd589bbca6ed23bf4b24f712cb3164e20e02"
+      },
+      {
+        "example": 76,
+        "signature": "6fbfd5ba1eae18d2456ad92ca2d80b00a867b6a61e2998d2efaf98cd46c19aaa"
+      }
+    ]
+  },
+  {
+    "id": "fence-language",
+    "label": "Code fence language decoding",
+    "description": "The language hint keeps a backslash escape (24) or an HTML entity spelling (34), instead of decoding it as CommonMark requires.",
+    "cases": [
+      {
+        "example": 24,
+        "signature": "182e2facf03ede87e7881786946f5282c986022add3160e1a9e98a283b99dbf8"
+      },
+      {
+        "example": 34,
+        "signature": "04c7d05376b4f6305cd4b476eeebb54e652b0423932e7fef258981aa86c9d347"
+      }
+    ]
+  },
+  {
+    "id": "frontmatter",
+    "label": "YAML frontmatter recognition",
+    "description": "Initial lines between --- delimiters are consumed as frontmatter instead of remaining thematic breaks and heading content. Example 96 also has generated heading attributes.",
+    "cases": [
+      {
+        "example": 96,
+        "signature": "e2085937d2f8226827daad155a914e9cde72eb48dc63599da7de849c2ed49bb1"
+      },
+      {
+        "example": 98,
+        "signature": "86f6b2310b6b3a955044ca86c1ad0cf2dbe391fd033a44e9befe0845ee33304c"
+      }
+    ]
+  },
+  {
+    "id": "linkify",
+    "label": "Automatic links (linkify)",
+    "description": "Bare URLs and an email address become links, including URLs inside text that is not a valid CommonMark autolink.",
+    "cases": [
+      {
+        "example": 602,
+        "signature": "705e17916551e73cdf88a53313a43862ca9f6eb264ca3c04a540f584b2dad05d"
+      },
+      {
+        "example": 608,
+        "signature": "f5e1c17cbc7f2abcac6e9b29cef0a1f3f1aa07c517de487fc90e8ea41681a327"
+      },
+      {
+        "example": 611,
+        "signature": "37addfe5eb094669101d1bda4137e9f0cb9159bdd75806ffbdd32e0765774d91"
+      },
+      {
+        "example": 612,
+        "signature": "4dfa2ecfd6d34b10bd0fee256b5570451bbd5565041d5be85f307d62e1f25d51"
+      }
+    ]
+  }
+]

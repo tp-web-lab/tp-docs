@@ -1,0 +1,117 @@
+[
+  {
+    "number": 1,
+    "title": "Role syntax",
+    "file": "example-01.rst"
+  },
+  {
+    "number": 2,
+    "title": ":abbreviation:",
+    "file": "example-18.rst"
+  },
+  {
+    "number": 3,
+    "title": ":acronym:",
+    "file": "example-19.rst"
+  },
+  {
+    "number": 4,
+    "title": ":code:",
+    "file": "example-20.rst"
+  },
+  {
+    "number": 5,
+    "title": ":code:",
+    "file": "example-02.rst"
+  },
+  {
+    "number": 6,
+    "title": ":code:",
+    "file": "example-03.rst"
+  },
+  {
+    "number": 7,
+    "title": ":emphasis:",
+    "file": "example-04.rst"
+  },
+  {
+    "number": 8,
+    "title": ":literal:",
+    "file": "example-05.rst"
+  },
+  {
+    "number": 9,
+    "title": ":literal:",
+    "file": "example-06.rst"
+  },
+  {
+    "number": 10,
+    "title": ":math:",
+    "file": "example-07.rst"
+  },
+  {
+    "number": 11,
+    "title": ":pep-reference:",
+    "file": "example-08.rst"
+  },
+  {
+    "number": 12,
+    "title": ":pep-reference:",
+    "file": "example-09.rst"
+  },
+  {
+    "number": 13,
+    "title": ":rfc-reference:",
+    "file": "example-10.rst"
+  },
+  {
+    "number": 14,
+    "title": ":rfc-reference:",
+    "file": "example-11.rst"
+  },
+  {
+    "number": 15,
+    "title": ":strong:",
+    "file": "example-12.rst"
+  },
+  {
+    "number": 16,
+    "title": ":subscript:",
+    "file": "example-13.rst"
+  },
+  {
+    "number": 17,
+    "title": ":subscript:",
+    "file": "example-14.rst"
+  },
+  {
+    "number": 18,
+    "title": ":superscript:",
+    "file": "example-21.rst"
+  },
+  {
+    "number": 19,
+    "title": ":title-reference:",
+    "file": "example-22.rst"
+  },
+  {
+    "number": 20,
+    "title": ":title-reference:",
+    "file": "example-15.rst"
+  },
+  {
+    "number": 21,
+    "title": ":raw:",
+    "file": "example-16.rst"
+  },
+  {
+    "number": 22,
+    "title": ":raw:",
+    "file": "example-17.rst"
+  },
+  {
+    "number": 23,
+    "title": "Custom roles and the default role",
+    "file": "example-23.rst"
+  }
+]

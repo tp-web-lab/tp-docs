@@ -1,0 +1,505 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>CommonMark compliance — TP Markdown</title>
+<style>html{color-scheme:light dark;font:16px system-ui}body{max-width:85rem;margin:2rem auto;padding:1rem}a{color:light-dark(#005cc5,#9cdcfe)}details{border:1px solid #888;padding:1rem;margin:1rem 0}summary{cursor:pointer}table{border-collapse:collapse;width:100%}th,td{border:1px solid #888;padding:.6rem;text-align:left;vertical-align:top}th{background:light-dark(#eee,#333)}td details{margin:0;padding:.3rem}pre{overflow:auto;padding:1rem;background:light-dark(#f2f2f2,#202020);white-space:pre-wrap;overflow-wrap:anywhere}.outputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,25rem),1fr));gap:1rem}</style>
+<h1>CommonMark 0.31.2 — TP Markdown — Differences only</h1><p>586/652 passed; 66 differences; 0 errors. Default TP configuration, using the official HTML normalizer.</p>
+<p>This report contains only examples whose status is difference. <a href="report.html">Inspect all examples</a>.</p>
+<p>All 66 remaining differences in this corpus result from deliberate TP Markdown implementation choices: generated heading attributes, typographic substitutions, automatic links and YAML frontmatter recognition. They remain counted as differences in the strict CommonMark comparison; this does not imply full CommonMark conformance.</p>
+<p>Every result below is static test output. Source and HTML are escaped and never executed.</p>
+<p>Corpus by John MacFarlane and contributors, <a href="https://spec.commonmark.org/0.31.2/">CommonMark specification</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. <a href="results.json">Full JSON results</a>.</p>
+<h2 id="difference-types">Main types of differences</h2>
+<p>Each differing example belongs to exactly one row; the counts add up to 66. Mixed cases are identified in their descriptions. Classification does not change the official comparison or the pass count.</p>
+<p>The largest groups concern attributes automatically added to the HTML, rather than the Markdown attribute-list notation. Attribute-only classifications are checked by removing just the named attributes from the normalized output and comparing again. The other cases have been reviewed; their classification is retained only while both HTML fingerprints remain unchanged.</p>
+<table><thead><tr><th>Type</th><th>Tests</th><th>Explanation</th><th>Examples</th></tr></thead><tbody><tr><td>Generated heading attributes only</td><td>39</td><td>TP adds id and tabindex to headings. Removing only those attributes makes the normalized HTML identical.</td><td><details><summary>Show 39 tests</summary><a href="#example-10">10</a>, <a href="#example-59">59</a>, <a href="#example-62">62</a>, <a href="#example-66">66</a>, <a href="#example-67">67</a>, <a href="#example-68">68</a>, <a href="#example-71">71</a>, <a href="#example-72">72</a>, <a href="#example-73">73</a>, <a href="#example-74">74</a>, <a href="#example-75">75</a>, <a href="#example-76">76</a>, <a href="#example-77">77</a>, <a href="#example-78">78</a>, <a href="#example-79">79</a>, <a href="#example-80">80</a>, <a href="#example-81">81</a>, <a href="#example-82">82</a>, <a href="#example-83">83</a>, <a href="#example-84">84</a>, <a href="#example-86">86</a>, <a href="#example-89">89</a>, <a href="#example-90">90</a>, <a href="#example-91">91</a>, <a href="#example-95">95</a>, <a href="#example-102">102</a>, <a href="#example-103">103</a>, <a href="#example-115">115</a>, <a href="#example-141">141</a>, <a href="#example-214">214</a>, <a href="#example-215">215</a>, <a href="#example-227">227</a>, <a href="#example-228">228</a>, <a href="#example-229">229</a>, <a href="#example-230">230</a>, <a href="#example-232">232</a>, <a href="#example-300">300</a>, <a href="#example-646">646</a>, <a href="#example-647">647</a></details></td></tr><tr><td>Typographic substitutions</td><td>21</td><td>Straight quotes and apostrophes become curly quotes; double or triple hyphens become dashes. These are default typographer transformations, not changes to block structure.</td><td><details><summary>Show 21 tests</summary><a href="#example-14">14</a>, <a href="#example-46">46</a>, <a href="#example-55">55</a>, <a href="#example-87">87</a>, <a href="#example-106">106</a>, <a href="#example-197">197</a>, <a href="#example-209">209</a>, <a href="#example-210">210</a>, <a href="#example-352">352</a>, <a href="#example-359">359</a>, <a href="#example-363">363</a>, <a href="#example-380">380</a>, <a href="#example-385">385</a>, <a href="#example-395">395</a>, <a href="#example-508">508</a>, <a href="#example-590">590</a>, <a href="#example-619">619</a>, <a href="#example-620">620</a>, <a href="#example-622">622</a>, <a href="#example-624">624</a>, <a href="#example-632">632</a></details></td></tr><tr><td>YAML frontmatter recognition</td><td>2</td><td>Initial lines between --- delimiters are consumed as frontmatter instead of remaining thematic breaks and heading content. Example 96 also has generated heading attributes.</td><td><details><summary>Show 2 tests</summary><a href="#example-96">96</a>, <a href="#example-98">98</a></details></td></tr><tr><td>Automatic links (linkify)</td><td>4</td><td>Bare URLs and an email address become links, including URLs inside text that is not a valid CommonMark autolink.</td><td><details><summary>Show 4 tests</summary><a href="#example-602">602</a>, <a href="#example-608">608</a>, <a href="#example-611">611</a>, <a href="#example-612">612</a></details></td></tr></tbody></table>
+<h2 id="section-1">Tabs — 1 differences</h2><details id="example-10"><summary>Example 10: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-10">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>#	Foo
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;Foo&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+</code></pre></section></div></details><h2 id="section-2">Backslash escapes — 1 differences</h2><details id="example-14"><summary>Example 14: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-14">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>\*not emphasized*
+\&lt;br/&gt; not a tag
+\[not a link](/foo)
+\`not code`
+1\. not a list
+\* not a list
+\# not a heading
+\[foo]: /url &quot;not a reference&quot;
+\&amp;ouml; not a character entity
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;*not emphasized*
+&amp;lt;br/&amp;gt; not a tag
+[not a link](/foo)
+`not code`
+1. not a list
+* not a list
+# not a heading
+[foo]: /url &amp;quot;not a reference&amp;quot;
+&amp;amp;ouml; not a character entity&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;*not emphasized*
+&amp;lt;br/&amp;gt; not a tag
+[not a link](/foo)
+`not code`
+1. not a list
+* not a list
+# not a heading
+[foo]: /url “not a reference”
+&amp;amp;ouml; not a character entity&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-5">Thematic breaks — 3 differences</h2><details id="example-46"><summary>Example 46: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-46">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>--
+**
+__
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;--
+**
+__&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;–
+**
+__&lt;/p&gt;
+</code></pre></section></div></details><details id="example-55"><summary>Example 55: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-55">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>_ _ _ _ a
+
+a------
+
+---a---
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;_ _ _ _ a&lt;/p&gt;
+&lt;p&gt;a------&lt;/p&gt;
+&lt;p&gt;---a---&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;_ _ _ _ a&lt;/p&gt;
+&lt;p&gt;a------&lt;/p&gt;
+&lt;p&gt;—a—&lt;/p&gt;
+</code></pre></section></div></details><details id="example-59"><summary>Example 59: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-59">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo
+---
+bar
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo&lt;/h2&gt;
+&lt;p&gt;bar&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+&lt;p&gt;bar&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-6">ATX headings — 13 differences</h2><details id="example-62"><summary>Example 62: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-62">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># foo
+## foo
+### foo
+#### foo
+##### foo
+###### foo
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;foo&lt;/h1&gt;
+&lt;h2&gt;foo&lt;/h2&gt;
+&lt;h3&gt;foo&lt;/h3&gt;
+&lt;h4&gt;foo&lt;/h4&gt;
+&lt;h5&gt;foo&lt;/h5&gt;
+&lt;h6&gt;foo&lt;/h6&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h1&gt;
+&lt;h2 id=&quot;foo-1&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h2&gt;
+&lt;h3 id=&quot;foo-2&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h3&gt;
+&lt;h4 id=&quot;foo-3&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h4&gt;
+&lt;h5 id=&quot;foo-4&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h5&gt;
+&lt;h6 id=&quot;foo-5&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h6&gt;
+</code></pre></section></div></details><details id="example-66"><summary>Example 66: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-66">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># foo *bar* \*baz\*
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;foo &lt;em&gt;bar&lt;/em&gt; *baz*&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo-bar-*baz*&quot; tabindex=&quot;-1&quot;&gt;foo &lt;em&gt;bar&lt;/em&gt; *baz*&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-67"><summary>Example 67: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-67">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>#                  foo                     
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;foo&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-68"><summary>Example 68: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-68">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code> ### foo
+  ## foo
+   # foo
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo&lt;/h3&gt;
+&lt;h2&gt;foo&lt;/h2&gt;
+&lt;h1&gt;foo&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h3&gt;
+&lt;h2 id=&quot;foo-1&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h2&gt;
+&lt;h1 id=&quot;foo-2&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-71"><summary>Example 71: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-71">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>## foo ##
+  ###   bar    ###
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;foo&lt;/h2&gt;
+&lt;h3&gt;bar&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h2&gt;
+&lt;h3 id=&quot;bar&quot; tabindex=&quot;-1&quot;&gt;bar&lt;/h3&gt;
+</code></pre></section></div></details><details id="example-72"><summary>Example 72: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-72">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># foo ##################################
+##### foo ##
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;foo&lt;/h1&gt;
+&lt;h5&gt;foo&lt;/h5&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h1&gt;
+&lt;h5 id=&quot;foo-1&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h5&gt;
+</code></pre></section></div></details><details id="example-73"><summary>Example 73: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-73">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>### foo ###     
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h3&gt;
+</code></pre></section></div></details><details id="example-74"><summary>Example 74: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-74">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>### foo ### b
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo ### b&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo-%23%23%23-b&quot; tabindex=&quot;-1&quot;&gt;foo ### b&lt;/h3&gt;
+</code></pre></section></div></details><details id="example-75"><summary>Example 75: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-75">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># foo#
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;foo#&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo%23&quot; tabindex=&quot;-1&quot;&gt;foo#&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-76"><summary>Example 76: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-76">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>### foo \###
+## foo #\##
+# foo \#
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo ###&lt;/h3&gt;
+&lt;h2&gt;foo ###&lt;/h2&gt;
+&lt;h1&gt;foo #&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo-%23%23%23&quot; tabindex=&quot;-1&quot;&gt;foo ###&lt;/h3&gt;
+&lt;h2 id=&quot;foo-%23%23%23-1&quot; tabindex=&quot;-1&quot;&gt;foo ###&lt;/h2&gt;
+&lt;h1 id=&quot;foo-%23&quot; tabindex=&quot;-1&quot;&gt;foo #&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-77"><summary>Example 77: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-77">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>****
+## foo
+****
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;hr /&gt;
+&lt;h2&gt;foo&lt;/h2&gt;
+&lt;hr /&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;hr&gt;
+&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h2&gt;
+&lt;hr&gt;
+</code></pre></section></div></details><details id="example-78"><summary>Example 78: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-78">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo bar
+# baz
+Bar foo
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;Foo bar&lt;/p&gt;
+&lt;h1&gt;baz&lt;/h1&gt;
+&lt;p&gt;Bar foo&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;Foo bar&lt;/p&gt;
+&lt;h1 id=&quot;baz&quot; tabindex=&quot;-1&quot;&gt;baz&lt;/h1&gt;
+&lt;p&gt;Bar foo&lt;/p&gt;
+</code></pre></section></div></details><details id="example-79"><summary>Example 79: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-79">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>## 
+#
+### ###
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;&lt;/h2&gt;
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h3&gt;&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;&quot; tabindex=&quot;-1&quot;&gt;&lt;/h2&gt;
+&lt;h1 id=&quot;-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/h1&gt;
+&lt;h3 id=&quot;-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/h3&gt;
+</code></pre></section></div></details><h2 id="section-7">Setext headings — 16 differences</h2><details id="example-80"><summary>Example 80: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-80">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo *bar*
+=========
+
+Foo *bar*
+---------
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;Foo &lt;em&gt;bar&lt;/em&gt;&lt;/h1&gt;
+&lt;h2&gt;Foo &lt;em&gt;bar&lt;/em&gt;&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo-bar&quot; tabindex=&quot;-1&quot;&gt;Foo &lt;em&gt;bar&lt;/em&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;foo-bar-1&quot; tabindex=&quot;-1&quot;&gt;Foo &lt;em&gt;bar&lt;/em&gt;&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-81"><summary>Example 81: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-81">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo *bar
+baz*
+====
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;Foo &lt;em&gt;bar
+baz&lt;/em&gt;&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo-barbaz&quot; tabindex=&quot;-1&quot;&gt;Foo &lt;em&gt;bar
+baz&lt;/em&gt;&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-82"><summary>Example 82: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-82">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>  Foo *bar
+baz*	
+====
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;Foo &lt;em&gt;bar
+baz&lt;/em&gt;&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo-barbaz&quot; tabindex=&quot;-1&quot;&gt;Foo &lt;em&gt;bar
+baz&lt;/em&gt;&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-83"><summary>Example 83: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-83">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo
+-------------------------
+
+Foo
+=
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo&lt;/h2&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+&lt;h1 id=&quot;foo-1&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-84"><summary>Example 84: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-84">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>   Foo
+---
+
+  Foo
+-----
+
+  Foo
+  ===
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo&lt;/h2&gt;
+&lt;h2&gt;Foo&lt;/h2&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+&lt;h2 id=&quot;foo-1&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+&lt;h1 id=&quot;foo-2&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+</code></pre></section></div></details><details id="example-86"><summary>Example 86: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-86">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo
+   ----      
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-87"><summary>Example 87: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-87">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>Foo
+    ---
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;Foo
+---&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;Foo
+—&lt;/p&gt;
+</code></pre></section></div></details><details id="example-89"><summary>Example 89: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-89">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo  
+-----
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-90"><summary>Example 90: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-90">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo\
+----
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo\&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo%5C&quot; tabindex=&quot;-1&quot;&gt;Foo\&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-91"><summary>Example 91: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-91">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>`Foo
+----
+`
+
+&lt;a title=&quot;a lot
+---
+of dashes&quot;/&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;`Foo&lt;/h2&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;h2&gt;&amp;lt;a title=&amp;quot;a lot&lt;/h2&gt;
+&lt;p&gt;of dashes&amp;quot;/&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;%60foo&quot; tabindex=&quot;-1&quot;&gt;`Foo&lt;/h2&gt;
+&lt;p&gt;`&lt;/p&gt;
+&lt;h2 id=&quot;%3Ca-title%3D%22a-lot&quot; tabindex=&quot;-1&quot;&gt;&amp;lt;a title=&amp;quot;a lot&lt;/h2&gt;
+&lt;p&gt;of dashes&amp;quot;/&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-95"><summary>Example 95: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-95">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo
+Bar
+---
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;Foo
+Bar&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foobar&quot; tabindex=&quot;-1&quot;&gt;Foo
+Bar&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-96"><summary>Example 96: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-96">Official example</a></p><p><strong>Difference type:</strong> YAML frontmatter recognition</p><h3>Markdown source</h3><pre><code>---
+Foo
+---
+Bar
+---
+Baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;hr /&gt;
+&lt;h2&gt;Foo&lt;/h2&gt;
+&lt;h2&gt;Bar&lt;/h2&gt;
+&lt;p&gt;Baz&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;bar&quot; tabindex=&quot;-1&quot;&gt;Bar&lt;/h2&gt;
+&lt;p&gt;Baz&lt;/p&gt;
+</code></pre></section></div></details><details id="example-98"><summary>Example 98: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-98">Official example</a></p><p><strong>Difference type:</strong> YAML frontmatter recognition</p><h3>Markdown source</h3><pre><code>---
+---
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;hr /&gt;
+&lt;hr /&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code></code></pre></section></div></details><details id="example-102"><summary>Example 102: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-102">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>\&gt; foo
+------
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;&amp;gt; foo&lt;/h2&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;%3E-foo&quot; tabindex=&quot;-1&quot;&gt;&amp;gt; foo&lt;/h2&gt;
+</code></pre></section></div></details><details id="example-103"><summary>Example 103: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-103">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>Foo
+
+bar
+---
+baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;Foo&lt;/p&gt;
+&lt;h2&gt;bar&lt;/h2&gt;
+&lt;p&gt;baz&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;Foo&lt;/p&gt;
+&lt;h2 id=&quot;bar&quot; tabindex=&quot;-1&quot;&gt;bar&lt;/h2&gt;
+&lt;p&gt;baz&lt;/p&gt;
+</code></pre></section></div></details><details id="example-106"><summary>Example 106: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-106">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>Foo
+bar
+\---
+baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;Foo
+bar
+---
+baz&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;Foo
+bar
+-–
+baz&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-8">Indented code blocks — 1 differences</h2><details id="example-115"><summary>Example 115: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-115">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># Heading
+    foo
+Heading
+------
+    foo
+----
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;Heading&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Heading&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;heading&quot; tabindex=&quot;-1&quot;&gt;Heading&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;heading-1&quot; tabindex=&quot;-1&quot;&gt;Heading&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;foo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</code></pre></section></div></details><h2 id="section-9">Fenced code blocks — 1 differences</h2><details id="example-141"><summary>Example 141: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-141">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>foo
+---
+~~~
+bar
+~~~
+# baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h2&gt;foo&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;baz&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h2 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&quot;baz&quot; tabindex=&quot;-1&quot;&gt;baz&lt;/h1&gt;
+</code></pre></section></div></details><h2 id="section-11">Link reference definitions — 5 differences</h2><details id="example-197"><summary>Example 197: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-197">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>[foo]: /url 'title
+
+with blank line'
+
+[foo]
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;[foo]: /url 'title&lt;/p&gt;
+&lt;p&gt;with blank line'&lt;/p&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;[foo]: /url 'title&lt;/p&gt;
+&lt;p&gt;with blank line’&lt;/p&gt;
+&lt;p&gt;[foo]&lt;/p&gt;
+</code></pre></section></div></details><details id="example-209"><summary>Example 209: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-209">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>[foo]: /url &quot;title&quot; ok
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;[foo]: /url &amp;quot;title&amp;quot; ok&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;[foo]: /url “title” ok&lt;/p&gt;
+</code></pre></section></div></details><details id="example-210"><summary>Example 210: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-210">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>[foo]: /url
+&quot;title&quot; ok
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;quot;title&amp;quot; ok&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;“title” ok&lt;/p&gt;
+</code></pre></section></div></details><details id="example-214"><summary>Example 214: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-214">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code># [Foo]
+[foo]: /url
+&gt; bar
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;&lt;a href=&quot;/url&quot;&gt;Foo&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bar&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;/url&quot;&gt;Foo&lt;/a&gt;&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bar&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section></div></details><details id="example-215"><summary>Example 215: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-215">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>[foo]: /url
+bar
+===
+[foo]
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h1&gt;bar&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;/url&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h1 id=&quot;bar&quot; tabindex=&quot;-1&quot;&gt;bar&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;/url&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-13">Blank lines — 1 differences</h2><details id="example-227"><summary>Example 227: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-227">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>  
+
+aaa
+  
+
+# aaa
+
+  
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;aaa&lt;/p&gt;
+&lt;h1&gt;aaa&lt;/h1&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;aaa&lt;/p&gt;
+&lt;h1 id=&quot;aaa&quot; tabindex=&quot;-1&quot;&gt;aaa&lt;/h1&gt;
+</code></pre></section></div></details><h2 id="section-14">Block quotes — 4 differences</h2><details id="example-228"><summary>Example 228: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-228">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>&gt; # Foo
+&gt; bar
+&gt; baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section></div></details><details id="example-229"><summary>Example 229: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-229">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>&gt;# Foo
+&gt;bar
+&gt; baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section></div></details><details id="example-230"><summary>Example 230: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-230">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>   &gt; # Foo
+   &gt; bar
+ &gt; baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section></div></details><details id="example-232"><summary>Example 232: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-232">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>&gt; # Foo
+&gt; bar
+baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;blockquote&gt;
+&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+&lt;p&gt;bar
+baz&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre></section></div></details><h2 id="section-15">List items — 1 differences</h2><details id="example-300"><summary>Example 300: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-300">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>- # Foo
+- Bar
+  ---
+  baz
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;ul&gt;
+&lt;li&gt;
+&lt;h1&gt;Foo&lt;/h1&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2&gt;Bar&lt;/h2&gt;
+baz&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;ul&gt;
+&lt;li&gt;
+&lt;h1 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;Foo&lt;/h1&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&quot;bar&quot; tabindex=&quot;-1&quot;&gt;Bar&lt;/h2&gt;
+baz&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></section></div></details><h2 id="section-19">Emphasis and strong emphasis — 6 differences</h2><details id="example-352"><summary>Example 352: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-352">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>a*&quot;foo&quot;*
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;a*&amp;quot;foo&amp;quot;*&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;a*“foo”*&lt;/p&gt;
+</code></pre></section></div></details><details id="example-359"><summary>Example 359: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-359">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>a_&quot;foo&quot;_
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;a_&amp;quot;foo&amp;quot;_&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;a_“foo”_&lt;/p&gt;
+</code></pre></section></div></details><details id="example-363"><summary>Example 363: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-363">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>aa_&quot;bb&quot;_cc
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;aa_&amp;quot;bb&amp;quot;_cc&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;aa_“bb”_cc&lt;/p&gt;
+</code></pre></section></div></details><details id="example-380"><summary>Example 380: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-380">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>a**&quot;foo&quot;**
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;a**&amp;quot;foo&amp;quot;**&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;a**“foo”**&lt;/p&gt;
+</code></pre></section></div></details><details id="example-385"><summary>Example 385: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-385">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>a__&quot;foo&quot;__
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;a__&amp;quot;foo&amp;quot;__&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;a__“foo”__&lt;/p&gt;
+</code></pre></section></div></details><details id="example-395"><summary>Example 395: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-395">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>**foo &quot;*bar*&quot; foo**
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&lt;strong&gt;foo &amp;quot;&lt;em&gt;bar&lt;/em&gt;&amp;quot; foo&lt;/strong&gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&lt;strong&gt;foo “&lt;em&gt;bar&lt;/em&gt;” foo&lt;/strong&gt;&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-20">Links — 1 differences</h2><details id="example-508"><summary>Example 508: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-508">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>[link](/url &quot;title &quot;and&quot; title&quot;)
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;[link](/url &amp;quot;title &amp;quot;and&amp;quot; title&amp;quot;)&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;[link](/url “title “and” title”)&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-21">Images — 1 differences</h2><details id="example-590"><summary>Example 590: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-590">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>![[foo]]
+
+[[foo]]: /url &quot;title&quot;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;![[foo]]&lt;/p&gt;
+&lt;p&gt;[[foo]]: /url &amp;quot;title&amp;quot;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;![[foo]]&lt;/p&gt;
+&lt;p&gt;[[foo]]: /url “title”&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-22">Autolinks — 4 differences</h2><details id="example-602"><summary>Example 602: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-602">Official example</a></p><p><strong>Difference type:</strong> Automatic links (linkify)</p><h3>Markdown source</h3><pre><code>&lt;https://foo.bar/baz bim&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;https://foo.bar/baz bim&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;&lt;a href=&quot;https://foo.bar/baz&quot;&gt;https://foo.bar/baz&lt;/a&gt; bim&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-608"><summary>Example 608: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-608">Official example</a></p><p><strong>Difference type:</strong> Automatic links (linkify)</p><h3>Markdown source</h3><pre><code>&lt; https://foo.bar &gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt; https://foo.bar &amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt; &lt;a href=&quot;https://foo.bar&quot;&gt;https://foo.bar&lt;/a&gt; &amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-611"><summary>Example 611: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-611">Official example</a></p><p><strong>Difference type:</strong> Automatic links (linkify)</p><h3>Markdown source</h3><pre><code>https://example.com
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;https://example.com&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&lt;a href=&quot;https://example.com&quot;&gt;https://example.com&lt;/a&gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-612"><summary>Example 612: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-612">Official example</a></p><p><strong>Difference type:</strong> Automatic links (linkify)</p><h3>Markdown source</h3><pre><code>foo@bar.example.com
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;foo@bar.example.com&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&lt;a href=&quot;mailto:foo@bar.example.com&quot;&gt;foo@bar.example.com&lt;/a&gt;&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-23">Raw HTML — 5 differences</h2><details id="example-619"><summary>Example 619: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-619">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>&lt;a h*#ref=&quot;hi&quot;&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;a h*#ref=&amp;quot;hi&amp;quot;&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;a h*#ref=“hi”&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-620"><summary>Example 620: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-620">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>&lt;a href=&quot;hi'&gt; &lt;a href=hi'&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href=&amp;quot;hi'&amp;gt; &amp;lt;a href=hi'&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href=&amp;quot;hi’&amp;gt; &amp;lt;a href=hi’&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-622"><summary>Example 622: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-622">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>&lt;a href='bar'title=title&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href='bar'title=title&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href='bar’title=title&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-624"><summary>Example 624: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-624">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>&lt;/a href=&quot;foo&quot;&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;/a href=&amp;quot;foo&amp;quot;&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;/a href=“foo”&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><details id="example-632"><summary>Example 632: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-632">Official example</a></p><p><strong>Difference type:</strong> Typographic substitutions</p><h3>Markdown source</h3><pre><code>&lt;a href=&quot;\&quot;&quot;&gt;
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;quot;&amp;gt;&lt;/p&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;p&gt;&amp;lt;a href=“&amp;quot;”&amp;gt;&lt;/p&gt;
+</code></pre></section></div></details><h2 id="section-24">Hard line breaks — 2 differences</h2><details id="example-646"><summary>Example 646: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-646">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>### foo\
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo\&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo%5C&quot; tabindex=&quot;-1&quot;&gt;foo\&lt;/h3&gt;
+</code></pre></section></div></details><details id="example-647"><summary>Example 647: difference</summary><p><a href="https://spec.commonmark.org/0.31.2/#example-647">Official example</a></p><p><strong>Difference type:</strong> Generated heading attributes only</p><h3>Markdown source</h3><pre><code>### foo  
+</code></pre><div class="outputs"><section><h3>Expected HTML</h3><pre><code>&lt;h3&gt;foo&lt;/h3&gt;
+</code></pre></section><section><h3>TP HTML</h3><pre><code>&lt;h3 id=&quot;foo&quot; tabindex=&quot;-1&quot;&gt;foo&lt;/h3&gt;
+</code></pre></section></div></details>
+</html>

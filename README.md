@@ -122,3 +122,21 @@ The official syntax quick reference is reproduced under CC BY 4.0 in `packages/a
 Examples 56–58 include bundled Ruby and Java source files relative to the viewer source. The last example selects the `main` tag and uses `indent=0`; links next to each viewer expose the original files.
 
 Example 74 builds a table from the bundled `customers.csv` file using `format=csv`, `options=header` and an actual include directive.
+
+## reStructuredText documentation
+
+The reStructuredText site uses **Base** (the Docutils demonstration and interpreted-text roles) and **Extensions** (TP elements, HTML, external libraries, mathematics and doctests). The reference pages are RST adaptations of the public-domain Docutils sources preserved in `packages/restructuredtext/source/`, with provenance and checksums.
+
+Run `python3 scripts/build-restructuredtext-demo.py` and `python3 scripts/build-restructuredtext-roles.py` to regenerate `base.rst`, `roles.rst` and their examples. The demonstration contains 29 editable examples, including one intentionally invalid example with six expected errors. The roles reference contains 23 editable examples. The 11 manually maintained extension examples live in `public/docs/extensions-examples/` within the reStructuredText package.
+
+The examples use `tp-restructuredtext-viewer lite`. Their relative images are bundled beside the example sources. React, Vue, Shoelace, Pyodide and MathJax still load from their respective CDNs. `Extensions` distinguishes native Docutils syntax from TP features and browser limitations.
+
+Validation: convert the RST documents with the TP Docutils converter and check that only `intentional-diagnostics.rst` produces errors; verify the enabled doctest example (two passing tests). Build with `pnpm --filter @tp/docs-restructuredtext build`. In the browser, check Base, Interpreted Text Roles and Extensions, including image loading, internal links, viewer sizing, the external-library interactions and mathematics. After parser changes, rebuild `tp-restructuredtext`, then `tp-components` and its renderers before checking this site.
+
+## Pandoc Markdown compatibility gallery
+
+The Markdown site has a dedicated `pandoc-markdown.md` page with a lite Markdown viewer and a documented compatibility status for each input example. The original Pandoc manual, extracted section, copyright/license files and curated manifest are preserved under `packages/markdown/source/pandoc/`. The manifest records original and adapted source separately and explains exclusions and adaptations. This gallery uses TP's default configuration; its badges are reviewed snapshots, not a live automatic verdict after editing.
+
+Regenerate the page and example files with `node scripts/build-pandoc-markdown-page.mjs`. Rendering without an exception is only a smoke check: review the output against the manual and Pandoc before changing a status. Images and placeholder link destinations use bundled fixtures. Preserve unsupported syntax to expose actual differences instead of silently translating it into TP syntax.
+
+Every Partial or Not supported Pandoc example must define `workaround.explanation` in the manifest, with optional `workaround.source` for a copyable TP Markdown rewrite. The generator rejects missing explanations and chooses code fences that safely contain nested code blocks. Check rewritten sources against the current TP renderer, retain the original viewer source, and explicitly state remaining differences (including export-only behavior and citeproc).

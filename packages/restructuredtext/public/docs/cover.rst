@@ -57,7 +57,7 @@
             :intrinsic:
             :center-text:
             
-            :raw-html:`<tp-button size=xxl variant=brand href="https://tp-web-lab.github.io/tp-restructuredtext/">Read the doc</tp-button>`
+            :raw-html:`<tp-button size=xxl variant=brand href="base.rst">Read the doc</tp-button>`
 
     .. tp-card::
 

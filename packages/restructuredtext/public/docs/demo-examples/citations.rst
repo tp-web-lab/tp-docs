@@ -1,0 +1,4 @@
+.. [CIT2002] Citations are text-labeled footnotes. They may be
+   rendered separately and differently from footnotes.
+
+Here's a reference to the above, [CIT2002]_.

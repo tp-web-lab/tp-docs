@@ -1,17 +1,8 @@
 Introduction
 ============
 
-This is the new home for the TP reStructuredText documentation. Migration of the full guide is in progress; the original repository remains the reference.
+**tp-restructuredtext** adapts Docutils for the web through Pyodide, with direct support for HTML custom elements and TP components.
 
-Shared components
------------------
-
-This documentation uses ``tp-restructuredtext-multi-pages``. Its ``.rst`` pages are rendered by ``tp-restructuredtext`` and can use the same TP web components as the other documentation spaces.
-
-Use the sidebar to choose a page and the TP logo to return to the documentation portal.
-
-Source
-------
-
-* `Documentation workspace <https://github.com/tp-web-lab/tp-docs>`_
-* `Library repository <https://github.com/tp-web-lab/tp-restructuredtext>`_
+* `Base: Demonstration <base.rst>`_ presents native reStructuredText through editable examples adapted from Docutils.
+* `Interpreted Text Roles <roles.rst>`_ describes native roles and their customization.
+* `Extensions <extensions.rst>`_ explains TP elements, HTML elements, external component libraries and TP rendering features.

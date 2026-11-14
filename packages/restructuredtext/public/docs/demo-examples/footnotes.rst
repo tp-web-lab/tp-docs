@@ -1,0 +1,20 @@
+Manual [1]_, named [#label]_, anonymous [#]_ and symbolic [*]_ notes.
+
+.. [1] A footnote contains body elements, consistently indented by at
+   least 3 spaces.
+
+   This is the footnote's second paragraph.
+
+.. [#label] Footnotes may be numbered, either manually (as in [1]_) or
+   automatically using a "#"-prefixed label.  This footnote has a
+   label so it can be referred to from multiple places, both as a
+   footnote reference ([#label]_) and as a hyperlink reference
+   (label_).
+
+.. [#] This footnote is numbered automatically and anonymously using a
+   label of "#" only.
+
+.. [*] Footnotes may also use symbols, specified with a "*" label.
+   Here's a reference to the next footnote: [*]_.
+
+.. [*] This footnote shows the next symbol in the sequence.

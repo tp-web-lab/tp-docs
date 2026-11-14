@@ -1,0 +1,39 @@
+<main id="document-top" class="tp-markdown-output" aria-live="polite"></main>
+<script type="module">
+  const { createTpMarkdownParser } = await import(
+    new URL("../../@tp/tp-components/components/markdown/markdown.js", document.baseURI).href
+  );
+  const files = {
+    "/sidebar.md": "- [Introduction](intro.md)\n- [Practice](practice.md)\n- [Summary](summary.md)",
+    "/intro.md": "# Introduction\n\nThis is the first of three pages. Choose **Next** to start the practice.\n\n## Before you begin\n\nNotice that the first page has no Previous link.",
+    "/practice.md": "# Practice\n\nThis middle page has both **Previous** and **Next** links.\n\n## Try the navigation\n\nReturn to the introduction or continue to the summary.\n\n## A longer page\n\n" + Array.from({ length: 8 }, (_, index) => `Paragraph ${index + 1}: explore the page navigation.`).join("\n\n"),
+    "/summary.md": "# Summary\n\nYou have reached the last page. There is no Next link.\n\nUse **Previous** to return to Practice."
+  };
+  const parser = createTpMarkdownParser("/intro.md");
+  parser.configure({
+    files,
+    pageNavRoot: true,
+    attributes: { pageNav: { topHref: "#document-top", topLabel: "Top" } }
+  });
+  const output = document.querySelector("main");
+  let rendering = false;
+  async function show(path) {
+    if (rendering || !Object.hasOwn(files, path)) return;
+    rendering = true;
+    try {
+      parser.configure({ path });
+      await parser.renderInto(files[path], output);
+      window.scrollTo(0, 0);
+    } finally {
+      rendering = false;
+    }
+  }
+  output.addEventListener("click", event => {
+    const link = event.target.closest("a[rel=prev], a[rel=next]");
+    if (!link) return;
+    event.preventDefault();
+    const path = link.getAttribute("href").replace(/^#?\/?/, "/").replace(/\.html$/, ".md");
+    void show(path);
+  });
+  await show("/intro.md");
+</script>

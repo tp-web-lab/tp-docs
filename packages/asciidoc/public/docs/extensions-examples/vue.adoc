@@ -1,0 +1,31 @@
+The counter below is a Vue component exposed as the custom element `demo-vue-counter`.
+
+[script,type=module]
+====
+import { defineCustomElement, h, ref } from 'https://cdn.jsdelivr.net/npm/vue@3.5.13/dist/vue.esm-browser.prod.js';
+
+const CounterElement = defineCustomElement({
+  props: {
+    start: { type: Number, default: 0 }
+  },
+  styles: [`
+    :host { display: inline-block; }
+    button { font: inherit; padding: 0.5rem 1rem; cursor: pointer; }
+  `],
+  setup(props) {
+    const count = ref(props.start);
+    return () => h('button', {
+      type: 'button',
+      onClick: () => count.value++
+    }, `Count: ${count.value}`);
+  }
+});
+
+if (!customElements.get('demo-vue-counter')) {
+  customElements.define('demo-vue-counter', CounterElement);
+}
+====
+
+[demo-vue-counter,start=3]
+====
+====

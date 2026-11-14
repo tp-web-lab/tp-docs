@@ -1,0 +1,2 @@
+**text**
+:strong:`text`

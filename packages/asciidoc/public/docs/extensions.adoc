@@ -1,8 +1,138 @@
 = Extensions
 :showtitle:
 
-`tp-asciidoc` extends Asciidoctor with TP web component support.
+*tp-asciidoc* extends Asciidoctor.js with a compact syntax for HTML custom elements, including the components from `@tp/tp-components`, and standard HTML elements. You can write their attributes and content directly in AsciiDoc without an HTML passthrough block.
 
-The component library provides controls, viewers and interactive activities that can be included in AsciiDoc documents.
+[tp-callout,variant=info,heading="Experiment with the examples"]
+====
+The examples use https://tp-web-lab.github.io/tp-components/#/components/asciidoc-viewer/index.md[`tp-asciidoc-viewer`] in lite mode. Edit their source to experiment and see the result immediately.
+====
 
-The detailed extension guide is being migrated. Consult the https://github.com/tp-web-lab/tp-asciidoc[library repository] for the current reference.
+[tp-toc%expand-all,position=end]
+====
+====
+
+== Block elements
+
+Place the element name first in an attribute list, followed by its named attributes. Put the content between matching `====` delimiters, each on its own line. Leave a blank line between paragraphs and around nested blocks.
+
+The following example creates a `tp-callout` element with `variant` and `heading` attributes. Its content is parsed as AsciiDoc: emphasis, lists, links and other components remain available.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/block.adoc]
+====
+====
+
+== Inline elements
+
+Use `[element-name,attribute=value]#content#` to insert an element within a paragraph. Custom element names contain a hyphen, such as `tp-badge` or `my-widget`.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/inline.adoc]
+====
+====
+
+== Attributes, identifiers and classes
+
+* `name=value` sets an HTML attribute. Quote values containing spaces or commas, for example `heading="Hello, world"`.
+* `#identifier` sets the element's `id`.
+* `.class-name` adds a CSS class; several classes can be chained.
+* `%attribute` adds a boolean attribute. For example, `%disabled` produces `disabled`. Omit it to leave the attribute absent; `disabled=false` still adds the HTML boolean attribute and does not enable the button.
+* For block elements, `options="disabled"` is an alternative to `%disabled`, and `role="notice"` is an alternative to `.notice`.
+
+The available attributes and their values depend on the element. A CSS class only has a visual effect if the page defines its style.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/attributes.adoc]
+====
+====
+
+== Nested elements
+
+Use more `=` characters for each nested level. Each block must end with exactly the same number of `=` characters as its opening delimiter. This allows several levels of nesting without closing the parent prematurely.
+
+The following example nests three TP elements: an outer `tp-box` delimited by `====`, a `tp-callout` delimited by `======`, and an inner `tp-box` delimited by `========`.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/nested.adoc]
+====
+====
+
+Open-block delimiters (`--`) are another option for a simple block, but they cannot be nested inside one another. Prefer `====` and longer matching delimiters for nested components.
+
+Increase only the number of `=` characters for nesting. Do not replace them with `---`, `----` or `+`: these are not interchangeable nesting delimiters. A line of `---` creates a thematic break, `----` delimits a listing block, and a standalone `+` is a list continuation marker.
+
+== Elements without content
+
+For components that need no text, use an empty block. Their attributes still configure the component.
+
+If the component supports inline placement, as `tp-icon` does, you can also use the inline notation within a paragraph. Write `+[tp-icon,name=logo-tp]#{empty}#+`: the built-in AsciiDoc attribute `\{empty}` supplies an empty string, so the generated element has no content. Simply writing `##` does not create an empty inline element.
+
+The example below shows both forms. Use the block form for components that do not support inline placement.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/empty.adoc]
+====
+====
+
+== Standard HTML elements
+
+The same block syntax accepts standard HTML elements such as `section` and `div`. Inline elements such as `mark`, `abbr` and `span` use the inline syntax. This example also sets the language of a nested `div` with the standard `lang` attribute.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/html.adoc]
+====
+====
+
+Do not confuse an element name with a CSS role: `[mark]#text#` creates a `mark` element, whereas `[.underline]#text#` keeps a `span` and adds the CSS class `underline`.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/roles.adoc]
+====
+====
+
+== Loading custom elements
+
+This syntax creates HTML elements; their implementation must also be loaded in the page. The TP documentation and its viewers already load TP components. In your own page, use the TP autoloader or import the individual components you need. For a custom element from another library, load that library's JavaScript module.
+
+Refer to the https://tp-web-lab.github.io/tp-components/[TP component documentation] for each component's attributes, methods and examples. Standard HTML elements are implemented by the browser and require no custom element registration.
+
+=== Example with Shoelace
+
+This example loads the https://shoelace.style/components/button[Shoelace button] module and its light theme from a CDN, with the version pinned to `2.20.1`. The `link` block creates the stylesheet link; the `script` block imports the JavaScript module that registers `sl-button`. The button then uses the same inline syntax as a TP component.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/shoelace.adoc]
+====
+====
+
+Try changing `variant=primary` to `variant=success`, adding `disabled` to its comma-separated attribute list, or editing the label. Clicking the enabled button opens the Shoelace documentation.
+
+The module and stylesheet are loaded inside the example's iframe. In your own page, load them once in the document that contains the component. This example requires an internet connection to reach the CDN. See the https://shoelace.style/getting-started/installation[Shoelace installation guide] for other loading options.
+
+=== React and Vue components
+
+A React or Vue component is not automatically an HTML custom element. These frameworks normally manage rendering through their own component runtime and virtual DOM, whereas a custom element is registered with the browser through `customElements.define()`. These approaches can coexist: a custom element can use React or Vue internally.
+
+Simply loading a React or Vue component's module and writing an AsciiDoc element declaration does not mount that component. `tp-asciidoc` generates HTML; it does not compile JSX, Vue templates or `.vue` files, and it does not create a React root or a Vue application automatically.
+
+There are two integration approaches:
+
+* *Mount the framework in a container.* Create an empty `div` with an identifier using the block syntax, then run your application module after the container exists. With React, use https://react.dev/reference/react-dom/client/createRoot[`createRoot(container)`] followed by `root.render(...)`. With Vue, use https://vuejs.org/guide/essentials/application.html[`createApp(...)`] followed by `app.mount(container)`. Load the framework runtime and any required compiled application code. Keep the container dedicated to the framework; when removing it, call `root.unmount()` or `app.unmount()` to release the application.
+* *Expose the component as a custom element.* Vue provides https://vuejs.org/guide/extras/web-components.html[`defineCustomElement()`]; register its returned constructor with `customElements.define()`. For React, provide a custom element wrapper that mounts and unmounts the React root and maps the element's attributes, properties and events to the React component. Once registered, the wrapper can use the same AsciiDoc element syntax as `tp-*` or `sl-button`.
+
+In a viewer, the runtime and application must be loaded in the result iframe, where the generated container lives. Loading React or Vue only in the parent documentation page does not mount a component in that iframe.
+
+==== Mount React in a container: react-colorful
+
+The https://github.com/omgovich/react-colorful[`react-colorful`] library provides `HexColorPicker`, a React component. This example creates an empty `div`, imports React and the picker, and mounts them with `createRoot`. React manages the selected color and updates the displayed value.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/react.adoc]
+====
+====
+
+Move the picker or change the initial color in `useState`. The example uses `React.createElement` instead of JSX so it runs directly in the browser without a compilation step. CDN imports pin compatible versions and share the same React dependency. The root is unmounted when the example document is left; if your application removes just the container, call `root.unmount()` before removing it.
+
+==== Expose a Vue component as a custom element
+
+This example defines a Vue counter with https://vuejs.org/api/custom-elements[`defineCustomElement()`] and registers it as `demo-vue-counter`. Its `start` attribute becomes a numeric Vue prop. The AsciiDoc declaration then creates the custom element; Vue handles mounting and unmounting through its lifecycle.
+
+[tp-asciidoc-viewer%lite,src=docs/extensions-examples/vue.adoc]
+====
+====
+
+Click the counter to increment it, or edit `start=3` to change its initial value. The render function uses `h()` and needs no `.vue` compiler. Its styles are applied inside the custom element's shadow root. The registration guard avoids defining the same element twice; a new definition requires a new document, as provided when the viewer refreshes its result.
+
+Both examples download their dependencies from public CDNs and require an internet connection. Their modules run inside each result iframe.

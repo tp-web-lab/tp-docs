@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "file": "demo.rst",
+      "url": "https://docutils.sourceforge.io/docs/user/rst/demo.rst",
+      "revision": "10266",
+      "sha256": "7963d4d168f2e5291dbd87ecd7e003cc405f76c64beefcf9e27cb2a3925d7eda",
+      "license": "Public domain (explicit copyright statement in the source)"
+    },
+    {
+      "file": "roles.rst",
+      "url": "https://docutils.sourceforge.io/docs/ref/rst/roles.rst",
+      "revision": "10287",
+      "sha256": "363e7f2b404d1c65528014f9ac481f432f2a22a9ea84a5e937eb247d0f2d4023",
+      "license": "Public domain (explicit copyright statement in the source)"
+    }
+  ]
+}

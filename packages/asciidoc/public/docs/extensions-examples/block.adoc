@@ -1,0 +1,7 @@
+[tp-callout,variant=info,heading="Try it yourself"]
+====
+Write *AsciiDoc* inside a custom element.
+
+* Change the heading.
+* Try `variant=success`.
+====

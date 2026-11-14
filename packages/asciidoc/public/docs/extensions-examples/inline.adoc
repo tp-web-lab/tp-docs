@@ -1,0 +1,1 @@
+Status: [tp-badge,variant=success]#Ready#. Open the [tp-button,href="https://asciidoc.org"]#AsciiDoc website#.

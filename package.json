@@ -24,7 +24,8 @@
     "dev:jt-vr": "pnpm --dir ../tp-examples dev:jt-vr",
     "dev:pint-of-science-rv": "pnpm --dir ../tp-examples dev:pint-of-science-rv",
     "dev:tcf": "pnpm --dir ../tp-examples dev:tcf",
-    "dev:jazz": "pnpm --dir ../tp-examples dev:jazz"
+    "dev:jazz": "pnpm --dir ../tp-examples dev:jazz",
+    "docs:markdown:compliance": "node scripts/build-commonmark-compliance.mjs"
   },
   "devDependencies": {
     "vite": "8.1.5",

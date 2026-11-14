@@ -1,0 +1,17 @@
+[tp-box]
+====
+This is the outer box (level 1).
+
+[tp-callout,variant=success,heading="Nested callout (level 2)"]
+======
+The callout contains another TP component.
+
+[tp-box]
+========
+This inner box is at *level 3*.
+
+* Edit the content at any level.
+* Keep each opening and closing delimiter the same length.
+========
+======
+====

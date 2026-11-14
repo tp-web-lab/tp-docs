@@ -1,0 +1,2 @@
+My other heading   {#foo}
+---------------
